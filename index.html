@@ -2004,11 +2004,11 @@ function switchToolPanel(panel){
   const teamOnly=['oee','risk'];
   ['forecast','freight'].forEach(mod=>{const lock=document.getElementById(mod+'-lock');if(lock)lock.style.display=(mod===panel&&plan==='starter')?'flex':'none';});
   if(proOnly.includes(panel)&&plan==='starter'){
-    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Pro Plan Required</div><div class="plo-desc">Upgrade to Pro to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe('pro')">Upgrade to Pro</button></div>';}
+    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Pro Plan Required</div><div class="plo-desc">Upgrade to Pro to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\'pro\')">Upgrade to Pro</button></div>';}
     return;
   }
   if(teamOnly.includes(panel)&&(plan==='starter'||plan==='pro')){
-    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Team Plan Required</div><div class="plo-desc">Upgrade to Team to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe('team')">Upgrade to Team</button></div>';}
+    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Team Plan Required</div><div class="plo-desc">Upgrade to Team to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\'team\')">Upgrade to Team</button></div>';}
     return;
   }
   renderToolPanel(panel);
