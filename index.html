@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChainSheet — Supply Chain Excel Templates</title>
+<title>ChainSheet — Supply Chain Workspace</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -332,21 +334,122 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 .plan-benefit-box ul{list-style:none}
 .plan-benefit-box li{font-size:12px;color:var(--ink);padding:2px 0}
 .plan-benefit-box li::before{content:'✓ ';color:var(--accent);font-weight:700}
+/* ── TABLET ── */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:36px}.hero-preview{display:none}
-  .pricing-grid{grid-template-columns:1fr;max-width:380px}
+  .hero{grid-template-columns:1fr;gap:32px;padding:60px 5% 64px}
+  .hero-preview{display:none}
+  .hero h1{font-size:36px;letter-spacing:-1.5px}
+  .pricing-grid{grid-template-columns:1fr;max-width:420px}
+  .pricing-card.popular{margin-top:8px}
   .cc-features{grid-template-columns:1fr}
+  .cc-header{flex-direction:column;gap:16px}
+  .cc-btn{width:100%;text-align:center}
   .how-steps{grid-template-columns:1fr 1fr}
-  .how-step:nth-child(even){border-right:none}
+  .how-step:nth-child(2n){border-right:none}
+  .how-step:nth-last-child(-n+2){border-bottom:none}
   .forecast-grid{grid-template-columns:1fr}
+  .templates-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .compare-card{padding:22px}
 }
+
+/* ── MOBILE ── */
 @media(max-width:600px){
-  nav .nav-links{display:none}.tool-sidebar{display:none}
+  /* Nav */
+  nav{padding:0 4%;height:56px}
+  nav .nav-links{display:none}
+  .nav-login-btn{padding:6px 12px;font-size:12px}
+  .nav-signup-btn{padding:7px 14px;font-size:12px}
+  .logo{font-size:17px}
+
+  /* Hero */
+  .hero{padding:44px 4% 52px;gap:24px}
+  .hero-eyebrow{font-size:10px;letter-spacing:1.5px;margin-bottom:12px}
+  .hero h1{font-size:28px;letter-spacing:-1px;margin-bottom:14px}
+  .hero-desc{font-size:15px;margin-bottom:24px}
+  .hero-preview{display:none}
+  .hero-actions{gap:10px}
+  .btn-primary{padding:12px 20px;font-size:14px}
+  .hero-social-proof{flex-direction:column;align-items:flex-start;gap:6px}
+
+  /* Trust bar */
+  .trust-bar{gap:14px;padding:14px 4%;justify-content:flex-start}
+  .trust-item{font-size:12px}
+  .tdiv{display:none}
+
+  /* Sections */
+  .section{padding:48px 4%}
+  .sh{font-size:24px;letter-spacing:-.5px}
+  .ss{font-size:14px;margin-bottom:32px}
+
+  /* Pricing */
+  .pricing-grid{grid-template-columns:1fr;max-width:100%;gap:16px}
+  .pricing-card{padding:22px}
+  .plan-price{font-size:40px}
+  .popular-badge{font-size:10px;padding:3px 12px}
+
+  /* Template cards */
+  .templates-grid{grid-template-columns:1fr;gap:14px}
+  .tcard-visual{height:90px;font-size:32px}
+  .template-filter{gap:6px}
+  .filter-btn{padding:6px 12px;font-size:12px}
+
+  /* Compare tabs */
+  .compare-tabs{max-width:100%}
+  .ctab{padding:9px 10px;font-size:13px}
+  .compare-card{padding:18px}
+  .cc-price{font-size:34px}
+  .cc-features{grid-template-columns:1fr;gap:5px}
+  .cc-feat{font-size:12px}
+  .cc-header{flex-direction:column;gap:14px}
+  .cc-btn{width:100%;text-align:center;padding:11px 20px}
+
+  /* How it works */
   .how-steps{grid-template-columns:1fr}
-  .how-step{border-right:none;border-bottom:1px solid var(--border)}
+  .how-step{border-right:none;border-bottom:1px solid var(--border);padding:20px 16px}
   .how-step:last-child{border-bottom:none}
-  .modal{padding:22px 16px 18px}.card-row{grid-template-columns:1fr}
+
+  /* About grid */
+  #about .sh ~ div[style*="grid"]{grid-template-columns:1fr!important}
+
+  /* FAQ */
+  .faq-q{font-size:14px}
+
+  /* Footer */
+  footer{flex-direction:column;align-items:flex-start;padding:32px 4%;gap:16px}
+  .footer-links{gap:16px}
+
+  /* Modals */
+  .modal{padding:22px 16px 20px;border-radius:14px}
+  .modal-title{font-size:19px}
+  .card-row{grid-template-columns:1fr}
+  .plan-selector{grid-template-columns:repeat(3,1fr);gap:6px}
+  .plan-opt{padding:8px 4px}
+  .plan-opt-price{font-size:15px}
+  .plan-opt-name{font-size:9px}
+
+  /* Tool sidebar hidden on mobile */
+  .tool-sidebar{display:none}
+  .tool-content{padding:16px}
+  .tp-title{font-size:17px}
+  .kpi-row{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi-value{font-size:20px}
+  .data-table{font-size:11px}
+  .data-table th,.data-table td{padding:6px 8px}
+
+  /* Mobile tool nav at bottom */
+  .tool-body{flex-direction:column}
+  .tool-topbar{height:50px;padding:0 14px}
+  .tool-name{font-size:12px}
+  .tool-close-btn{font-size:11px;padding:5px 10px}
 }
+
+/* Hamburger button */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
+.hamburger span{display:block;width:22px;height:2px;background:white;border-radius:2px;transition:all .2s}
+@media(max-width:600px){
+  .hamburger{display:flex}
+}
+
 </style>
 </head>
 <body>
@@ -354,11 +457,15 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <!-- NAV -->
 <nav>
   <div class="logo" onclick="scrollTo(0,0)">Chain<span>Sheet</span></div>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#templates">Templates</a></li>
     <li><a href="#compare">Compare</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+    
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-user-area" id="navUserArea">
@@ -372,15 +479,12 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
   <div>
     <p class="hero-eyebrow">Supply chain Excel templates + live workspace</p>
     <h1>The supply chain toolkit your team will actually <em>use</em></h1>
-    <p class="hero-desc">12 advanced Excel templates + a protected web workspace with live formulas. New templates every month. Cancel anytime.</p>
+    <p class="hero-desc">A complete supply chain web workspace with live formulas — inventory, procurement, forecasting, KPIs and more. Cancel anytime.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="openAuthModal('signup')">Start 7-day free trial</button>
       <button class="btn-ghost" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See pricing →</button>
     </div>
-    <div class="hero-social-proof">
-      <div class="avatars"><span>JM</span><span>AK</span><span>TR</span><span>SL</span><span>+</span></div>
-      <p class="social-proof-text"><strong>2,400+ teams</strong> running on ChainSheet</p>
-    </div>
+    <div class="hero-social-proof"><p class="social-proof-text">Built for supply chain professionals worldwide</p></div>
   </div>
   <div class="hero-preview">
     <div class="preview-bar"><div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div></div>
@@ -399,11 +503,11 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Card required · no charge for 7 days</div>
-  <div class="tdiv"></div>
-  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>New templates monthly</div>
+  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>No charge for 7 days</div>
   <div class="tdiv"></div>
   <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Live web workspace included</div>
+  <div class="tdiv"></div>
+  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Secure checkout via Lemon Squeezy</div>
   <div class="tdiv"></div>
   <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Cancel anytime</div>
 </div>
@@ -480,7 +584,7 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <section class="section templates-section" id="templates">
   <p class="sl">Template Library</p>
   <h2 class="sh">12 advanced templates + live workspace</h2>
-  <p class="ss">Every template ships with sample data, formula docs, and a user guide. Use in Excel, or open the live workspace — formulas run in the browser, logic is protected so it stays on-platform.</p>
+  <p class="ss">All 12 supply chain tools are available directly in your browser workspace. No downloads, no Excel required — just log in and start managing your supply chain.</p>
   <div class="template-filter">
     <button class="filter-btn active" onclick="filterTemplates('all',this)">All</button>
     <button class="filter-btn" onclick="filterTemplates('inventory',this)">Inventory</button>
@@ -491,174 +595,193 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
     <button class="filter-btn" onclick="filterTemplates('analytics',this)">Analytics</button>
   </div>
   <div class="templates-grid" id="templatesGrid">
-    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#E0FBF4">?\u56550 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">ABC</span></div><div class="tcard-title">Inventory Management System</div><p class="tcard-desc">Multi-location stock with ABC classification, EOQ, safety stock, auto reorder alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">Tracker</span><span class="tcard-sheet">Reorder Planner</span><span class="tcard-sheet">ABC Analysis</span><span class="tcard-sheet">Dashboard</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('inventory')">Open in App \u8594 </button></div></div></div>
-    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#EEF2FF">?\u57042 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Procurement</span><span class="ttag">PO</span></div><div class="tcard-title">Purchase Order &amp; Vendor Tracker</div><p class="tcard-desc">Full PO lifecycle, vendor scorecards, approval log, spend analytics, on-time tracking.</p><div class="tcard-sheets"><span class="tcard-sheet">PO Log</span><span class="tcard-sheet">Vendor Scorecard</span><span class="tcard-sheet">Spend Analytics</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('procurement')">Open in App \u8594 </button></div></div></div>
-    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F5F3FF">?\u56522 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">KPIs</span><span class="ttag">Dashboard</span></div><div class="tcard-title">Supply Chain KPI Dashboard</div><p class="tcard-desc">20-metric executive dashboard: OTIF, inventory turns, freight % of COGS, PO on-time rate.</p><div class="tcard-sheets"><span class="tcard-sheet">Monthly Data</span><span class="tcard-sheet">KPI Dashboard</span><span class="tcard-sheet">Trend Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('kpi')">Open in App \u8594 </button></div></div></div>
-    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#FEF3C7">?\u56520 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Forecasting</span><span class="ttag">Demand</span></div><div class="tcard-title">Demand Forecasting Model</div><p class="tcard-desc">Moving average, exponential smoothing, linear regression — MAPE scoring, seasonal index.</p><div class="tcard-sheets"><span class="tcard-sheet">Forecast Engine</span><span class="tcard-sheet">Seasonal Index</span><span class="tcard-sheet">Accuracy</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('forecast')">Open in App \u8594 </button></div></div></div>
-    <div class="tcard" data-cat="logistics"><div class="tcard-visual" style="background:#FEE2E2">?\u56986 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Logistics</span><span class="ttag">Freight</span></div><div class="tcard-title">Freight &amp; Shipment Tracker</div><p class="tcard-desc">Inbound/outbound shipments, carrier scorecards, OTIF, freight cost/kg, delay log.</p><div class="tcard-sheets"><span class="tcard-sheet">Shipment Log</span><span class="tcard-sheet">Carrier Perf.</span><span class="tcard-sheet">Cost Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('freight')">Open in App \u8594 </button></div></div></div>
-    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#ECFDF5">?\u57325 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">BOM</span><span class="ttag">MRP</span></div><div class="tcard-title">Bill of Materials + MRP Planner</div><p class="tcard-desc">4-level BOM with cost rollup, 12-week net requirements, shortage alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">BOM</span><span class="tcard-sheet">MRP Planner</span><span class="tcard-sheet">Shortage Alerts</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn locked" onclick="launchTool('bom')">Open in App \u8594 </button></div></div></div>
-    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#F0FDF4">?\u56771 \u65039 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">FIFO</span></div><div class="tcard-title">Multi-Warehouse Inventory Planner</div><p class="tcard-desc">8 warehouse locations, inter-warehouse transfers, FIFO costing, slow-mover analysis.</p><div class="tcard-sheets"><span class="tcard-sheet">Master Stock</span><span class="tcard-sheet">By Location</span><span class="tcard-sheet">FIFO Costing</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">\u55357 \u56594  Pro</button></div></div></div>
-    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#FFF7ED">?\u56523 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">RFQ</span><span class="ttag">TCO</span></div><div class="tcard-title">Supplier RFQ &amp; Negotiation Tracker</div><p class="tcard-desc">Multi-supplier bid comparison, weighted scoring, TCO calculator, award recommendation.</p><div class="tcard-sheets"><span class="tcard-sheet">RFQ Log</span><span class="tcard-sheet">Bid Comparison</span><span class="tcard-sheet">TCO Calc</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">\u55357 \u56594  Pro</button></div></div></div>
-    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#EFF6FF">?\u56622 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">S&OP</span><span class="ttag">Planning</span></div><div class="tcard-title">S&amp;OP Planner</div><p class="tcard-desc">Full monthly S&OP: demand vs supply reconciliation, capacity constraints, scenario modelling.</p><div class="tcard-sheets"><span class="tcard-sheet">Demand Plan</span><span class="tcard-sheet">Supply Plan</span><span class="tcard-sheet">Gap Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">\u55357 \u56594  Pro</button></div></div></div>
-    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#FDF2F8">?\u56496 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Landed Cost</span><span class="ttag">Margin</span></div><div class="tcard-title">Landed Cost &amp; Margin Calculator</div><p class="tcard-desc">True landed cost per SKU: FOB, freight, duties, insurance, last-mile. Multi-scenario.</p><div class="tcard-sheets"><span class="tcard-sheet">Cost Breakdown</span><span class="tcard-sheet">Scenarios</span><span class="tcard-sheet">Margin by SKU</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">\u55357 \u56594  Pro</button></div></div></div>
-    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#FFFBEB">⚙\u65039 <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">OEE</span><span class="ttag">Capacity</span></div><div class="tcard-title">Production Capacity &amp; OEE Tracker</div><p class="tcard-desc">OEE per machine/line, planned vs actual, downtime classification, utilization heat maps.</p><div class="tcard-sheets"><span class="tcard-sheet">Capacity Plan</span><span class="tcard-sheet">OEE by Line</span><span class="tcard-sheet">Downtime Log</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">\u55357 \u56594  Team</button></div></div></div>
-    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F0F9FF">?\u56521 <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Risk</span><span class="ttag">Resilience</span></div><div class="tcard-title">Supply Chain Risk Scorecard</div><p class="tcard-desc">Supplier, logistics, demand-side risk — probability/impact matrix and resilience index.</p><div class="tcard-sheets"><span class="tcard-sheet">Risk Register</span><span class="tcard-sheet">Impact Matrix</span><span class="tcard-sheet">Mitigation Plan</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">\u55357 \u56594  Team</button></div></div></div>
+    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#E0FBF4">📦 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">ABC</span></div><div class="tcard-title">Inventory Management System</div><p class="tcard-desc">Multi-location stock with ABC classification, EOQ, safety stock, auto reorder alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">Tracker</span><span class="tcard-sheet">Reorder Planner</span><span class="tcard-sheet">ABC Analysis</span><span class="tcard-sheet">Dashboard</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('inventory')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#EEF2FF">🛒 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Procurement</span><span class="ttag">PO</span></div><div class="tcard-title">Purchase Order &amp; Vendor Tracker</div><p class="tcard-desc">Full PO lifecycle, vendor scorecards, approval log, spend analytics, on-time tracking.</p><div class="tcard-sheets"><span class="tcard-sheet">PO Log</span><span class="tcard-sheet">Vendor Scorecard</span><span class="tcard-sheet">Spend Analytics</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('procurement')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F5F3FF">📈 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">KPIs</span><span class="ttag">Dashboard</span></div><div class="tcard-title">Supply Chain KPI Dashboard</div><p class="tcard-desc">20-metric executive dashboard: OTIF, inventory turns, freight % of COGS, PO on-time rate.</p><div class="tcard-sheets"><span class="tcard-sheet">Monthly Data</span><span class="tcard-sheet">KPI Dashboard</span><span class="tcard-sheet">Trend Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('kpi')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#FEF3C7">📊 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Forecasting</span><span class="ttag">Demand</span></div><div class="tcard-title">Demand Forecasting Model</div><p class="tcard-desc">Moving average, exponential smoothing, linear regression — MAPE scoring, seasonal index.</p><div class="tcard-sheets"><span class="tcard-sheet">Forecast Engine</span><span class="tcard-sheet">Seasonal Index</span><span class="tcard-sheet">Accuracy</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('forecast')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="logistics"><div class="tcard-visual" style="background:#FEE2E2">🚚 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Logistics</span><span class="ttag">Freight</span></div><div class="tcard-title">Freight &amp; Shipment Tracker</div><p class="tcard-desc">Inbound/outbound shipments, carrier scorecards, OTIF, freight cost/kg, delay log.</p><div class="tcard-sheets"><span class="tcard-sheet">Shipment Log</span><span class="tcard-sheet">Carrier Perf.</span><span class="tcard-sheet">Cost Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('freight')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#ECFDF5">🏭 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">BOM</span><span class="ttag">MRP</span></div><div class="tcard-title">Bill of Materials + MRP Planner</div><p class="tcard-desc">4-level BOM with cost rollup, 12-week net requirements, shortage alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">BOM</span><span class="tcard-sheet">MRP Planner</span><span class="tcard-sheet">Shortage Alerts</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn locked" onclick="launchTool('bom')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#F0FDF4">🗃️ <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">FIFO</span></div><div class="tcard-title">Multi-Warehouse Inventory Planner</div><p class="tcard-desc">8 warehouse locations, inter-warehouse transfers, FIFO costing, slow-mover analysis.</p><div class="tcard-sheets"><span class="tcard-sheet">Master Stock</span><span class="tcard-sheet">By Location</span><span class="tcard-sheet">FIFO Costing</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#FFF7ED">🔮 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">RFQ</span><span class="ttag">TCO</span></div><div class="tcard-title">Supplier RFQ &amp; Negotiation Tracker</div><p class="tcard-desc">Multi-supplier bid comparison, weighted scoring, TCO calculator, award recommendation.</p><div class="tcard-sheets"><span class="tcard-sheet">RFQ Log</span><span class="tcard-sheet">Bid Comparison</span><span class="tcard-sheet">TCO Calc</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#EFF6FF">🔮 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">S&OP</span><span class="ttag">Planning</span></div><div class="tcard-title">S&amp;OP Planner</div><p class="tcard-desc">Full monthly S&OP: demand vs supply reconciliation, capacity constraints, scenario modelling.</p><div class="tcard-sheets"><span class="tcard-sheet">Demand Plan</span><span class="tcard-sheet">Supply Plan</span><span class="tcard-sheet">Gap Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#FDF2F8">💰 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Landed Cost</span><span class="ttag">Margin</span></div><div class="tcard-title">Landed Cost &amp; Margin Calculator</div><p class="tcard-desc">True landed cost per SKU: FOB, freight, duties, insurance, last-mile. Multi-scenario.</p><div class="tcard-sheets"><span class="tcard-sheet">Cost Breakdown</span><span class="tcard-sheet">Scenarios</span><span class="tcard-sheet">Margin by SKU</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#FFFBEB">⚙️ <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">OEE</span><span class="ttag">Capacity</span></div><div class="tcard-title">Production Capacity &amp; OEE Tracker</div><p class="tcard-desc">OEE per machine/line, planned vs actual, downtime classification, utilization heat maps.</p><div class="tcard-sheets"><span class="tcard-sheet">Capacity Plan</span><span class="tcard-sheet">OEE by Line</span><span class="tcard-sheet">Downtime Log</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">🔒 Team</button></div></div></div>
+    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F0F9FF">📉 <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Risk</span><span class="ttag">Resilience</span></div><div class="tcard-title">Supply Chain Risk Scorecard</div><p class="tcard-desc">Supplier, logistics, demand-side risk — probability/impact matrix and resilience index.</p><div class="tcard-sheets"><span class="tcard-sheet">Risk Register</span><span class="tcard-sheet">Impact Matrix</span><span class="tcard-sheet">Mitigation Plan</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">🔒 Team</button></div></div></div>
   </div>
 </section>
 
 <!-- COMPARE SLIDER -->
-<section class="section compare-section" id="compare">
-  <p class="sl">Plan Comparison</p>
-  <h2 class="sh">Explore each plan in detail</h2>
-  <p class="ss" style="margin-bottom:24px">Switch plans with the tabs below to see exactly what's included at each tier.</p>
-  <div class="compare-tabs">
-    <button class="ctab active" onclick="switchComparePlan('starter',this)">Starter</button>
-    <button class="ctab" onclick="switchComparePlan('pro',this)">Pro</button>
-    <button class="ctab" onclick="switchComparePlan('team',this)">Team</button>
-  </div>
-  <div class="compare-pane active" id="cp-starter">
-    <div class="compare-card">
-      <div class="cc-header">
-        <div>
-          <div class="cc-plan-name">Starter Plan</div>
-          <div class="cc-price">$<span id="cp-starter-price">9</span><sub>/mo</sub></div>
-          <div class="cc-price-note" id="cp-starter-note">&nbsp;</div>
-          <p class="cc-desc">For individual ops managers, freelance consultants, or small teams just getting started.</p>
-        </div>
-        <button class="cc-btn outline" onclick="handleSubscribe('starter')">Start free trial</button>
-      </div>
-      <div class="cc-features">
-        <div class="cc-feat">6 core Excel templates (.xlsx)</div>
-        <div class="cc-feat">Inventory Management System</div>
-        <div class="cc-feat">Purchase Order &amp; Vendor Tracker</div>
-        <div class="cc-feat">Demand Forecasting Model</div>
-        <div class="cc-feat">Freight &amp; Shipment Tracker</div>
-        <div class="cc-feat">BOM + MRP Planner</div>
-        <div class="cc-feat">KPI Dashboard</div>
-        <div class="cc-feat">Web workspace — Inventory module</div>
-        <div class="cc-feat">Web workspace — KPI module</div>
-        <div class="cc-feat">Email support (48h)</div>
-        <div class="cc-feat">Monthly new template drops</div>
-        <div class="cc-feat no">Advanced Pro templates (4)</div>
-        <div class="cc-feat no">Full workspace (5 modules)</div>
-        <div class="cc-feat no">Team seats</div>
-        <div class="cc-feat no">Custom branding</div>
-      </div>
-      <div class="cc-nav">
-        <button class="cc-nav-btn" onclick="switchComparePlan('team',document.querySelectorAll('.ctab')[2])">← Team</button>
-        <span class="cc-nav-label">1 of 3</span>
-        <button class="cc-nav-btn" onclick="switchComparePlan('pro',document.querySelectorAll('.ctab')[1])">Pro →</button>
-      </div>
-    </div>
-  </div>
-  <div class="compare-pane" id="cp-pro">
-    <div class="compare-card popular">
-      <div class="cc-header">
-        <div>
-          <div class="cc-plan-name">⭐ Pro Plan — Most Popular</div>
-          <div class="cc-price">$<span id="cp-pro-price">19</span><sub>/mo</sub></div>
-          <div class="cc-price-note" id="cp-pro-note">&nbsp;</div>
-          <p class="cc-desc">Every template, the full workspace, and priority support. What most subscribers choose.</p>
-        </div>
-        <button class="cc-btn accent" onclick="handleSubscribe('pro')">Start free trial</button>
-      </div>
-      <div class="cc-features">
-        <div class="cc-feat">Everything in Starter</div>
-        <div class="cc-feat">All 12 templates (.xlsx)</div>
-        <div class="cc-feat">Multi-Warehouse Inventory Planner</div>
-        <div class="cc-feat">Supplier RFQ &amp; Negotiation Tracker</div>
-        <div class="cc-feat">S&amp;OP Planner</div>
-        <div class="cc-feat">Landed Cost &amp; Margin Calculator</div>
-        <div class="cc-feat">Full workspace — all 5 modules</div>
-        <div class="cc-feat">Procurement web module</div>
-        <div class="cc-feat">Forecasting web module</div>
-        <div class="cc-feat">Logistics web module</div>
-        <div class="cc-feat">Priority email support (24h)</div>
-        <div class="cc-feat">Custom formula help</div>
-        <div class="cc-feat no">Team seats (5)</div>
-        <div class="cc-feat no">Custom branding</div>
-        <div class="cc-feat no">Onboarding call</div>
-      </div>
-      <div class="cc-nav">
-        <button class="cc-nav-btn" onclick="switchComparePlan('starter',document.querySelectorAll('.ctab')[0])">← Starter</button>
-        <span class="cc-nav-label">2 of 3</span>
-        <button class="cc-nav-btn" onclick="switchComparePlan('team',document.querySelectorAll('.ctab')[2])">Team →</button>
-      </div>
-    </div>
-  </div>
-  <div class="compare-pane" id="cp-team">
-    <div class="compare-card">
-      <div class="cc-header">
-        <div>
-          <div class="cc-plan-name">Team Plan</div>
-          <div class="cc-price">$<span id="cp-team-price">39</span><sub>/mo</sub></div>
-          <div class="cc-price-note" id="cp-team-note">&nbsp;</div>
-          <p class="cc-desc">For procurement, ops, and logistics teams. One subscription, up to 5 people, all templates.</p>
-        </div>
-        <button class="cc-btn navy" onclick="handleSubscribe('team')">Start free trial</button>
-      </div>
-      <div class="cc-features">
-        <div class="cc-feat">Everything in Pro</div>
-        <div class="cc-feat">5 team seats — shared access</div>
-        <div class="cc-feat">Production Capacity &amp; OEE Tracker</div>
-        <div class="cc-feat">Supply Chain Risk Scorecard</div>
-        <div class="cc-feat">Full workspace — all 5 modules</div>
-        <div class="cc-feat">Same-day dedicated support</div>
-        <div class="cc-feat">Onboarding call included</div>
-        <div class="cc-feat">Custom branding on templates</div>
-        <div class="cc-feat">Priority support queue</div>
-        <div class="cc-feat">Shared workspace data (team)</div>
-        <div class="cc-feat">Monthly new template drops</div>
-        <div class="cc-feat">Custom formula help</div>
-      </div>
-      <div class="cc-nav">
-        <button class="cc-nav-btn" onclick="switchComparePlan('pro',document.querySelectorAll('.ctab')[1])">← Pro</button>
-        <span class="cc-nav-label">3 of 3</span>
-        <button class="cc-nav-btn" onclick="switchComparePlan('starter',document.querySelectorAll('.ctab')[0])">Starter →</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section">
+<section class="section compare-section" <section class="section">
   <p class="sl">Process</p>
   <h2 class="sh">Up and running in 4 steps</h2>
   <p class="ss" style="margin-bottom:32px">No ERP integrations, no IT tickets.</p>
   <div class="how-steps">
-    <div class="how-step"><p class="step-n">01 / Sign up</p><p class="step-t">Start your trial</p><p class="step-d">Card collected on signup — no charge for 7 days. Cancel before day 7 and pay nothing.</p></div>
-    <div class="how-step"><p class="step-n">02 / Download</p><p class="step-t">Instant .xlsx files</p><p class="step-d">Every template immediately available in your account. Open in Excel 2016+, 365, or Google Sheets.</p></div>
-    <div class="how-step"><p class="step-n">03 / Use the workspace</p><p class="step-t">Live browser tool</p><p class="step-d">Formulas run in the browser. Data saved to your account. Logic protected — stays on platform.</p></div>
-    <div class="how-step"><p class="step-n">04 / Operate</p><p class="step-t">Dashboards stay live</p><p class="step-d">Your data persists between sessions. Export reports or share with teammates on the Team plan.</p></div>
+    <div class="how-step"><p class="step-n">01 / Sign up</p><p class="step-t">Create your account</p><p class="step-d">Pick a plan, create your account, and complete checkout via Lemon Squeezy. Your workspace is ready instantly.</p></div>
+    <div class="how-step"><p class="step-n">02 / Open workspace</p><p class="step-t">Everything runs in the browser</p><p class="step-d">No downloads, no installs. Log in and open your workspace — all your supply chain tools are ready to use immediately.</p></div>
+    <div class="how-step"><p class="step-n">03 / Enter your data</p><p class="step-t">Live formulas, instant results</p><p class="step-d">Add your SKUs, purchase orders, and forecasts. Every formula runs instantly in the browser and your data saves automatically to your account.</p></div>
+    <div class="how-step"><p class="step-n">04 / Operate</p><p class="step-t">Dashboards stay live</p><p class="step-d">Your data persists between sessions. KPIs, inventory status, and forecasts update in real time every time you log in.</p></div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section" id="testimonials" style="background:var(--white)">
-  <p class="sl">Reviews</p>
-  <h2 class="sh">What our subscribers say</h2>
-  <p class="ss">From solo consultants to 300-person procurement departments.</p>
-  <div class="testi-grid">
-    <div class="testi"><div class="stars">★\u9733 \u9733 \u9733 \u9733 </div><p class="testi-text">"The S&OP Planner alone is worth the subscription 10x. We used to spend 3 days reconciling demand and supply. Now it's done in an afternoon."</p><div class="testi-author"><div class="tav" style="background:#0D1F3C">JS</div><div><p class="ta-name">Jamie S.</p><p class="ta-role">VP Operations, Distributed Foods</p></div></div><div class="testi-plan">Pro · 8 months</div></div>
-    <div class="testi"><div class="stars">★\u9733 \u9733 \u9733 \u9733 </div><p class="testi-text">"The Multi-Warehouse Planner gave us visibility across our 4 DCs. FIFO costing handles batch lots correctly — something most templates get wrong."</p><div class="testi-author"><div class="tav" style="background:#1D9E75">AK</div><div><p class="ta-name">Ananya K.</p><p class="ta-role">Supply Chain Manager, Pharma Dist.</p></div></div><div class="testi-plan">Team · 14 months</div></div>
-    <div class="testi"><div class="stars">★\u9733 \u9733 \u9733 \u9733 </div><p class="testi-text">"I'm a freelance SC consultant. The Pro plan is my secret weapon — I drop these into client engagements and close projects faster."</p><div class="testi-author"><div class="tav" style="background:#533AB7">TR</div><div><p class="ta-name">Thomas R.</p><p class="ta-role">Independent Supply Chain Consultant</p></div></div><div class="testi-plan">Pro · 11 months</div></div>
-    <div class="testi"><div class="stars">★\u9733 \u9733 \u9733 \u9734 </div><p class="testi-text">"The RFQ Tracker changed how we run supplier bids. TCO calculator found hidden costs that switched a key supplier — saving us $40k/yr."</p><div class="testi-author"><div class="tav" style="background:#D97706">SL</div><div><p class="ta-name">Sofia L.</p><p class="ta-role">Senior Buyer, Industrial Manufacturer</p></div></div><div class="testi-plan">Pro · 6 months</div></div>
-    <div class="testi"><div class="stars">★\u9733 \u9733 \u9733 \u9733 </div><p class="testi-text">"The OEE Tracker is the best Excel-based tool I've seen — line-level downtime with classification, something I expected to pay thousands for."</p><div class="testi-author"><div class="tav" style="background:#DC2626">MP</div><div><p class="ta-name">Marcus P.</p><p class="ta-role">Plant Director, Auto Components</p></div></div><div class="testi-plan">Team · 9 months</div></div>
-    <div class="testi"><div class="stars">★\u9733 \u9733 \u9733 \u9733 </div><p class="testi-text">"New templates drop regularly and they're actually useful. The Risk Scorecard appeared right when we needed it for a board presentation."</p><div class="testi-author"><div class="tav" style="background:#0891B2">LC</div><div><p class="ta-name">Lena C.</p><p class="ta-role">Head of Procurement, Retail Group</p></div></div><div class="testi-plan">Pro · 5 months</div></div>
+<section class="section" id="compare" style="background:var(--warm)">
+  <p class="sl">Plan Comparison</p>
+  <h2 class="sh">Explore each plan in detail</h2>
+  <p class="ss" style="margin-bottom:24px">Switch plans with the tabs below to see exactly what's included at each tier.</p>
+  <div class="compare-tabs">
+    <button class="ctab active" id="ctab-starter" onclick="showPlan('starter')">Starter</button>
+    <button class="ctab" id="ctab-pro" onclick="showPlan('pro')">Pro</button>
+    <button class="ctab" id="ctab-team" onclick="showPlan('team')">Team</button>
+  </div>
+
+  <!-- STARTER PANE -->
+  <div class="compare-pane" id="cp-starter" style="display:block">
+    <div class="compare-card">
+      <div class="cc-header">
+        <div>
+          <p class="cc-plan">STARTER PLAN</p>
+          <div class="cc-price">$<span id="cp-starter-price">9</span><sub>/mo</sub></div>
+          <p class="cc-desc">For individual ops managers, freelance consultants, or small teams just getting started.</p>
+        </div>
+        <button class="cc-btn" onclick="handleSubscribe('starter')">Start free trial</button>
+      </div>
+      <div class="cc-features">
+        <div class="cc-col">
+          <div class="cc-feat yes">6 workspace tools included</div>
+          <div class="cc-feat yes">Inventory Management System</div>
+          <div class="cc-feat yes">Purchase Order &amp; Vendor Tracker</div>
+          <div class="cc-feat yes">Demand Forecasting Model</div>
+          <div class="cc-feat yes">Freight &amp; Shipment Tracker</div>
+          <div class="cc-feat yes">BOM + MRP Planner</div>
+        </div>
+        <div class="cc-col">
+          <div class="cc-feat yes">KPI Dashboard</div>
+          <div class="cc-feat yes">Web workspace — browser based</div>
+          <div class="cc-feat yes">Data saved to your account</div>
+          <div class="cc-feat yes">Email support (48h)</div>
+          <div class="cc-feat no">Advanced Pro tools (6)</div>
+          <div class="cc-feat no">Team seats</div>
+        </div>
+      </div>
+      <div class="cc-nav">
+        <button class="cc-nav-btn" onclick="showPlan('team')">&#8592; Team</button>
+        <span class="cc-nav-pos">1 of 3</span>
+        <button class="cc-nav-btn" onclick="showPlan('pro')">Pro &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRO PANE -->
+  <div class="compare-pane" id="cp-pro" style="display:none">
+    <div class="compare-card popular">
+      <div class="cc-header">
+        <div>
+          <p class="cc-plan">PRO PLAN <span class="popular-badge">Most Popular</span></p>
+          <div class="cc-price">$<span id="cp-pro-price">19</span><sub>/mo</sub></div>
+          <p class="cc-desc">Every tool, full workspace, and priority support. The plan most subscribers choose.</p>
+        </div>
+        <button class="cc-btn" onclick="handleSubscribe('pro')">Start free trial</button>
+      </div>
+      <div class="cc-features">
+        <div class="cc-col">
+          <div class="cc-feat yes">Everything in Starter</div>
+          <div class="cc-feat yes">All 12 workspace tools</div>
+          <div class="cc-feat yes">Multi-Warehouse Planner</div>
+          <div class="cc-feat yes">Supplier RFQ &amp; Negotiation Tracker</div>
+          <div class="cc-feat yes">S&amp;OP Planner</div>
+          <div class="cc-feat yes">Landed Cost &amp; Margin Calculator</div>
+        </div>
+        <div class="cc-col">
+          <div class="cc-feat yes">Full workspace — all modules</div>
+          <div class="cc-feat yes">Priority email support (24h)</div>
+          <div class="cc-feat yes">Custom formula help</div>
+          <div class="cc-feat yes">Data saved to your account</div>
+          <div class="cc-feat no">Team seats (5)</div>
+          <div class="cc-feat no">Custom branding</div>
+        </div>
+      </div>
+      <div class="cc-nav">
+        <button class="cc-nav-btn" onclick="showPlan('starter')">&#8592; Starter</button>
+        <span class="cc-nav-pos">2 of 3</span>
+        <button class="cc-nav-btn" onclick="showPlan('team')">Team &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM PANE -->
+  <div class="compare-pane" id="cp-team" style="display:none">
+    <div class="compare-card">
+      <div class="cc-header">
+        <div>
+          <p class="cc-plan">TEAM PLAN</p>
+          <div class="cc-price">$<span id="cp-team-price">39</span><sub>/mo</sub></div>
+          <p class="cc-desc">For procurement, ops, and logistics teams. One subscription, up to 5 people, all tools.</p>
+        </div>
+        <button class="cc-btn" onclick="handleSubscribe('team')">Start free trial</button>
+      </div>
+      <div class="cc-features">
+        <div class="cc-col">
+          <div class="cc-feat yes">Everything in Pro</div>
+          <div class="cc-feat yes">5 team seats — shared access</div>
+          <div class="cc-feat yes">Production OEE Tracker</div>
+          <div class="cc-feat yes">Supply Chain Risk Scorecard</div>
+          <div class="cc-feat yes">Full workspace — all 5 modules</div>
+          <div class="cc-feat yes">Onboarding call included</div>
+        </div>
+        <div class="cc-col">
+          <div class="cc-feat yes">Same-day dedicated support</div>
+          <div class="cc-feat yes">Shared workspace data (team)</div>
+          <div class="cc-feat yes">Custom formula help</div>
+          <div class="cc-feat yes">Data saved to your account</div>
+          <div class="cc-feat yes">Priority support queue</div>
+          <div class="cc-feat yes">Custom branding on workspace</div>
+        </div>
+      </div>
+      <div class="cc-nav">
+        <button class="cc-nav-btn" onclick="showPlan('pro')">&#8592; Pro</button>
+        <span class="cc-nav-pos">3 of 3</span>
+        <button class="cc-nav-btn" onclick="showPlan('starter')">Starter &#8594;</button>
+      </div>
+    </div>
   </div>
 </section>
-
-<!-- FAQ -->
+<section class="section" id="about" style="background:var(--white)">
+  <p class="sl">About</p>
+  <h2 class="sh">The story behind ChainSheet</h2>
+  <p class="ss" style="max-width:680px">ChainSheet was built out of a simple frustration: supply chain management software is either too expensive, too complex, or not designed for teams in Central America and Latin America.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:820px">
+    <div style="background:var(--warm);border-radius:14px;padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">🌍</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Built for teams worldwide</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6">Most supply chain tools are built for large enterprises with big budgets. ChainSheet is designed to work for growing businesses everywhere — from solo consultants to mid-size operations teams across any industry or country.</p>
+    </div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">📊</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Excel-first philosophy</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6">Your team already knows Excel. ChainSheet gives you professional-grade supply chain templates that work in Excel, Google Sheets, or directly in our browser workspace — no new software to learn.</p>
+    </div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">🔒</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Your data, protected</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6">All data entered in the web workspace is saved securely to your account and encrypted at rest. The formula logic stays on our platform so your workflows are always protected.</p>
+    </div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">🚀</div>
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Currently launching</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6">ChainSheet is in its early launch phase. We are actively improving the platform based on feedback from our first users. Have a suggestion? Email us at <a href="mailto:support@chainsheet.co" style="color:var(--accent-dim);font-weight:600">support@chainsheet.co</a></p>
+    </div>
+  </div>
+</section>
 <section class="section" id="faq">
   <p class="sl">FAQ</p>
   <h2 class="sh">Frequently asked</h2>
   <div style="max-width:660px">
     <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Why is a card required for the free trial?</span><span class="faq-chevron">▾</span></button><div class="faq-a">We collect card details upfront so you get instant, uninterrupted access. You won't be charged until day 8. Cancel any time before that in your account settings and you pay nothing.</div></div>
-    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What Excel version do I need?</span><span class="faq-chevron">▾</span></button><div class="faq-a">Excel 2016+, Microsoft 365, or Google Sheets. All templates use standard Excel functions — no VBA, no add-ins required.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Do I need to install anything?</span><span class="faq-chevron">&#9662;</span></button><div class="faq-a">No. ChainSheet runs entirely in your browser &#8212; no downloads, no installs, no Excel required. All you need is an internet connection and a modern browser like Chrome, Safari, or Firefox.</div></div>
     <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What is the "web workspace"?</span><span class="faq-chevron">▾</span></button><div class="faq-a">The web workspace is a live in-browser supply chain tool. You enter your data on the site, and all calculations — EOQ, MAPE, OTIF, etc. — run instantly. Your data is saved to your account. The formula logic is protected on-platform so it can't be extracted or copied out. It's the same power as the Excel templates but always accessible and always live.</div></div>
     <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Can I cancel anytime?</span><span class="faq-chevron">▾</span></button><div class="faq-a">Yes. Cancel any time from your account. Monthly plans: access until end of billing period. Annual plans: cancellable anytime, non-refundable after 30 days.</div></div>
     <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What's the difference between Starter and Pro?</span><span class="faq-chevron">▾</span></button><div class="faq-a">Starter gives you the 6 core templates plus the Inventory and KPI workspace modules. Pro unlocks all 12 templates and all 5 workspace modules — Inventory, Procurement, Forecasting, KPIs, and Logistics — plus priority support and custom formula help.</div></div>
-    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">How often are new templates added?</span><span class="faq-chevron">▾</span></button><div class="faq-a">At least one new template each month. All subscribers get new drops automatically — no extra charge, ever.</div></div>
+    
   </div>
 </section>
 
@@ -666,6 +789,7 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <footer>
   <div><div class="logo">Chain<span>Sheet</span></div><p class="footer-copy">&copy; 2025 ChainSheet. All rights reserved.</p></div>
   <ul class="footer-links"><li><a href="#pricing">Pricing</a></li><li><a href="#templates">Templates</a></li><li><a href="#">Support</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul>
+<div style="text-align:center;font-size:10px;color:var(--border);padding:4px">v3.0</div>
 </footer>
 
 <!-- TOOL OVERLAY -->
@@ -683,6 +807,13 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <div class="tool-nav-item" id="tnav-forecast" onclick="switchToolPanel('forecast')"><span class="tni">&#128200;</span>Forecasting</div>
       <div class="tool-nav-item" id="tnav-kpi" onclick="switchToolPanel('kpi')"><span class="tni">&#128202;</span>KPI Dashboard</div>
       <div class="tool-nav-item" id="tnav-freight" onclick="switchToolPanel('freight')"><span class="tni">&#128666;</span>Logistics</div>
+      <div class="tool-nav-item" id="tnav-bom" onclick="switchToolPanel('bom')"><span class="tni">&#127981;</span>BOM + MRP</div>
+      <div class="tool-nav-item" id="tnav-warehouse" onclick="switchToolPanel('warehouse')"><span class="tni">&#128451;</span>Multi-Warehouse</div>
+      <div class="tool-nav-item" id="tnav-rfq" onclick="switchToolPanel('rfq')"><span class="tni">&#128203;</span>RFQ Tracker</div>
+      <div class="tool-nav-item" id="tnav-sop" onclick="switchToolPanel('sop')"><span class="tni">&#128200;</span>S&amp;OP Planner</div>
+      <div class="tool-nav-item" id="tnav-landed" onclick="switchToolPanel('landed')"><span class="tni">&#128176;</span>Landed Cost</div>
+      <div class="tool-nav-item" id="tnav-oee" onclick="switchToolPanel('oee')"><span class="tni">&#9881;&#65039;</span>OEE Tracker</div>
+      <div class="tool-nav-item" id="tnav-risk" onclick="switchToolPanel('risk')"><span class="tni">&#128201;</span>Risk Scorecard</div>
     </div>
     <div class="tool-content">
       <!-- INVENTORY -->
@@ -783,6 +914,154 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
   </div>
 </div>
 
+      <!-- BOM + MRP PANEL -->
+      <div class="tool-panel" id="panel-bom">
+        <div class="tp-header">
+          <div><div class="tp-title">Bill of Materials + MRP Planner</div><div class="tp-subtitle">4-level BOM with cost rollup and 12-week net requirements planning</div></div>
+          <div class="tp-actions">
+            <button class="tp-btn ghost" onclick="resetBOM()">Reset data</button>
+            <button class="tp-btn accent" onclick="showBOMForm()">+ Add Component</button>
+          </div>
+        </div>
+        <div class="kpi-row" id="bom-kpis"></div>
+        <div class="add-row-form" id="bom-add-form" style="display:none">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add BOM Component</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>Level (1-4)</label><input id="fb-level" type="number" min="1" max="4" value="1"></div>
+            <div class="fg-field"><label>Parent Item</label><input id="fb-parent" placeholder="PUMP-ASSY-001"></div>
+            <div class="fg-field"><label>Component SKU</label><input id="fb-sku" placeholder="SC-001"></div>
+            <div class="fg-field"><label>Component Name</label><input id="fb-name" placeholder="Bearing Type A4"></div>
+            <div class="fg-field"><label>Qty per Unit</label><input id="fb-qty" type="number" value="1"></div>
+            <div class="fg-field"><label>Unit Cost ($)</label><input id="fb-cost" type="number" step="0.01" placeholder="4.50"></div>
+            <div class="fg-field"><label>Lead Time (days)</label><input id="fb-lead" type="number" placeholder="7"></div>
+            <div class="fg-field"><label>Unit of Measure</label><input id="fb-uom" placeholder="EA"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="tp-btn accent" onclick="saveBOMRow()">Save Component</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('bom-add-form').style.display='none'">Cancel</button>
+          </div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Level</th><th>Parent</th><th>SKU</th><th>Component</th><th>Qty/Unit</th><th>UOM</th><th>Unit Cost</th><th>Ext. Cost</th><th>Lead Time</th><th></th></tr></thead><tbody id="bom-tbody"></tbody></table></div>
+        <div class="chart-wrap">
+          <div class="chart-title">MRP — 12-Week Net Requirements</div>
+          <div style="margin-bottom:12px;display:flex;align-items:center;gap:12px">
+            <div class="fg-field" style="margin:0"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Weekly Production Target (units)</label><input id="mrp-target" type="number" value="10" style="width:120px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:var(--sans)" oninput="renderBOM()"></div>
+          </div>
+          <div class="data-table-wrap" style="margin:0"><table class="data-table" id="mrp-table"><thead><tr><th>Component</th><th>Wk1</th><th>Wk2</th><th>Wk3</th><th>Wk4</th><th>Wk5</th><th>Wk6</th><th>Wk7</th><th>Wk8</th><th>Wk9</th><th>Wk10</th><th>Wk11</th><th>Wk12</th><th>Total</th></tr></thead><tbody id="mrp-tbody"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- MULTI-WAREHOUSE PANEL -->
+      <div class="tool-panel" id="panel-warehouse">
+        <div class="tp-header">
+          <div><div class="tp-title">Multi-Warehouse Inventory Planner</div><div class="tp-subtitle">Track stock across up to 4 warehouse locations with FIFO costing</div></div>
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addWarehouseItem()">+ Add Item</button></div>
+        </div>
+        <div class="kpi-row" id="wh-kpis"></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;margin-bottom:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Warehouse Locations</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px" id="wh-locations"></div>
+        </div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>WH-A</th><th>WH-B</th><th>WH-C</th><th>WH-D</th><th>Total Stock</th><th>Unit Cost</th><th>FIFO Value</th><th>Status</th></tr></thead><tbody id="wh-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">Total Stock by SKU</div><div class="bar-chart" id="wh-chart"></div></div>
+      </div>
+
+      <!-- RFQ PANEL -->
+      <div class="tool-panel" id="panel-rfq">
+        <div class="tp-header">
+          <div><div class="tp-title">Supplier RFQ &amp; Negotiation Tracker</div><div class="tp-subtitle">Compare supplier bids with weighted scoring and TCO calculation</div></div>
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addRFQ()">+ New RFQ Bid</button></div>
+        </div>
+        <div class="kpi-row" id="rfq-kpis"></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>RFQ #</th><th>Item</th><th>Supplier</th><th>Unit Price</th><th>Lead Time</th><th>Quality Score</th><th>Freight Est.</th><th>TCO/Unit</th><th>Weighted Score</th><th>Recommendation</th></tr></thead><tbody id="rfq-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">Supplier Weighted Score Comparison</div><div class="bar-chart" id="rfq-chart"></div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px">
+          <div style="font-size:13px;font-weight:700;margin-bottom:10px">Scoring Weights (must total 100%)</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+            <div class="fg-field"><label>Price Weight %</label><input id="w-price" type="number" value="40" oninput="renderRFQ()"></div>
+            <div class="fg-field"><label>Lead Time %</label><input id="w-lead" type="number" value="25" oninput="renderRFQ()"></div>
+            <div class="fg-field"><label>Quality %</label><input id="w-quality" type="number" value="25" oninput="renderRFQ()"></div>
+            <div class="fg-field"><label>Reliability %</label><input id="w-rel" type="number" value="10" oninput="renderRFQ()"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S&OP PANEL -->
+      <div class="tool-panel" id="panel-sop">
+        <div class="tp-header">
+          <div><div class="tp-title">S&amp;OP Planner</div><div class="tp-subtitle">Reconcile demand vs supply — monthly planning cycle with gap analysis</div></div>
+          <div class="tp-actions">
+            <button class="tp-btn ghost" onclick="resetSOP()">Reset</button>
+            <button class="tp-btn accent" onclick="saveSOP()">Save Plan</button>
+          </div>
+        </div>
+        <div class="kpi-row" id="sop-kpis"></div>
+        <div class="data-table-wrap"><table class="data-table" id="sop-table"><thead><tr><th>Month</th><th>Demand Forecast</th><th>Supply Plan</th><th>Opening Stock</th><th>Closing Stock</th><th>Gap</th><th>Capacity %</th><th>Status</th></tr></thead><tbody id="sop-tbody"></tbody></table></div>
+        <div class="forecast-grid" style="margin-top:16px">
+          <div class="forecast-card">
+            <div class="fc-title">Scenario Analysis</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+              <div class="fg-field"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Upside %</label><input id="sop-upside" type="number" value="15" oninput="renderSOP()"></div>
+              <div class="fg-field"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Downside %</label><input id="sop-downside" type="number" value="10" oninput="renderSOP()"></div>
+            </div>
+            <div id="sop-scenarios"></div>
+          </div>
+          <div class="forecast-card"><div class="fc-title">Executive Summary</div><div id="sop-exec-summary"></div></div>
+        </div>
+      </div>
+
+      <!-- LANDED COST PANEL -->
+      <div class="tool-panel" id="panel-landed">
+        <div class="tp-header">
+          <div><div class="tp-title">Landed Cost &amp; Margin Calculator</div><div class="tp-subtitle">True landed cost per SKU — FOB + freight + duties + last mile</div></div>
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addLandedItem()">+ Add SKU</button></div>
+        </div>
+        <div class="kpi-row" id="lc-kpis"></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>FOB</th><th>Freight</th><th>Duties %</th><th>Insurance</th><th>Last Mile</th><th>Handling</th><th>Landed Cost</th><th>Sell Price</th><th>Gross Margin</th></tr></thead><tbody id="lc-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">Cost Breakdown by SKU (FOB / Freight / Duties / Other)</div><div class="bar-chart" id="lc-chart"></div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px">
+          <div style="font-size:13px;font-weight:700;margin-bottom:12px">Add New SKU</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>SKU</label><input id="lc-sku" placeholder="SC-001"></div>
+            <div class="fg-field"><label>Item Name</label><input id="lc-name" placeholder="Bearing Type A4"></div>
+            <div class="fg-field"><label>FOB Price ($)</label><input id="lc-fob" type="number" step="0.01" placeholder="4.50"></div>
+            <div class="fg-field"><label>Freight ($)</label><input id="lc-freight" type="number" step="0.01" placeholder="0.80"></div>
+            <div class="fg-field"><label>Duty Rate (%)</label><input id="lc-duty" type="number" step="0.1" placeholder="5"></div>
+            <div class="fg-field"><label>Insurance ($)</label><input id="lc-ins" type="number" step="0.01" placeholder="0.20"></div>
+            <div class="fg-field"><label>Last Mile ($)</label><input id="lc-lastmile" type="number" step="0.01" placeholder="0.30"></div>
+            <div class="fg-field"><label>Handling ($)</label><input id="lc-handling" type="number" step="0.01" placeholder="0.15"></div>
+            <div class="fg-field"><label>Selling Price ($)</label><input id="lc-sell" type="number" step="0.01" placeholder="12.00"></div>
+          </div>
+          <button class="tp-btn accent" style="margin-top:8px" onclick="saveLandedItem()">Add to Calculator</button>
+        </div>
+      </div>
+
+      <!-- OEE TRACKER PANEL -->
+      <div class="tool-panel" id="panel-oee">
+        <div class="tp-header">
+          <div><div class="tp-title">Production Capacity &amp; OEE Tracker</div><div class="tp-subtitle">Overall Equipment Effectiveness — Availability × Performance × Quality</div></div>
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addOEELine()">+ Add Line</button></div>
+        </div>
+        <div class="kpi-row" id="oee-kpis"></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Line / Machine</th><th>Planned Hrs</th><th>Downtime Hrs</th><th>Planned Units</th><th>Actual Units</th><th>Defects</th><th>Availability</th><th>Performance</th><th>Quality</th><th>OEE</th><th></th></tr></thead><tbody id="oee-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">OEE % by Production Line</div><div class="bar-chart" id="oee-chart"></div></div>
+        <div class="data-table-wrap" style="margin-top:16px"><div style="padding:12px 16px;font-size:12px;font-weight:700;background:var(--navy);color:white;border-radius:10px 10px 0 0">Downtime Log</div><table class="data-table"><thead><tr><th>Line</th><th>Date</th><th>Duration (hrs)</th><th>Category</th><th>Notes</th></tr></thead><tbody id="downtime-tbody"></tbody></table></div>
+      </div>
+
+      <!-- RISK SCORECARD PANEL -->
+      <div class="tool-panel" id="panel-risk">
+        <div class="tp-header">
+          <div><div class="tp-title">Supply Chain Risk Scorecard</div><div class="tp-subtitle">Probability × Impact matrix with mitigation tracking and resilience index</div></div>
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addRisk()">+ Add Risk</button></div>
+        </div>
+        <div class="kpi-row" id="risk-kpis"></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Risk ID</th><th>Category</th><th>Description</th><th>Probability</th><th>Impact</th><th>Score</th><th>Level</th><th>Mitigation</th><th>Owner</th><th>Status</th><th></th></tr></thead><tbody id="risk-tbody"></tbody></table></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+          <div class="chart-wrap" style="margin:0"><div class="chart-title">Risks by Category</div><div id="risk-category-chart"></div></div>
+          <div class="chart-wrap" style="margin:0"><div class="chart-title">Resilience Index</div><div id="risk-resilience"></div></div>
+        </div>
+      </div>
+
 <!-- AUTH MODAL -->
 <div class="modal-overlay" id="authOverlay" onclick="overlayClick(event,'authOverlay')">
   <div class="modal">
@@ -793,7 +1072,7 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <div class="step-line"></div><div class="step-dot pending">2</div>
       </div>
       <div class="modal-title">Create your account</div>
-      <div class="modal-subtitle">7-day free trial. No card needed right now — cancel anytime.</div>
+      <div class="modal-subtitle">Pick a plan, then add your card — 7-day trial, cancel before day 7 for free.</div>
       <div class="plan-selector" id="signupPlanSelector">
         <div class="plan-opt" onclick="selectSignupPlan('starter',this)"><div class="plan-opt-name">Starter</div><div class="plan-opt-price" id="sop-starter">$9<sub>/mo</sub></div><div class="plan-opt-note">6 templates</div></div>
         <div class="plan-opt selected" onclick="selectSignupPlan('pro',this)"><div class="plan-opt-name">&#11088; Pro</div><div class="plan-opt-price" id="sop-pro">$19<sub>/mo</sub></div><div class="plan-opt-note">All 12</div></div>
@@ -809,7 +1088,7 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
         <div class="pw-label" id="pwLabel">Enter a password</div>
         <div class="field-error" id="suPwErr">At least 8 characters.</div>
       </div>
-      <button class="btn-form accent" onclick="doSignupStep1()">Create account &#8594;</button>
+      <button class="btn-form accent" onclick="doSignupStep1()">Create account &amp; continue &#8594;</button>
       <div class="modal-switch">Already have an account? <a onclick="switchAuth('login')">Log in</a></div>
     </div>
     <!-- Step 2: Payment -->
@@ -838,27 +1117,21 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 </div>
 
 <script>
+
 const SUPABASE_URL='https://jjnjjtxayyafejgfbhqs.supabase.co';
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqbmpqdHhheXlhZmVqZ2ZiaHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNTI0MjYsImV4cCI6MjA5NzkyODQyNn0.S3925uixfDf8EiFO995vlQrECyvjoV6326FwTPHOWJE';
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 
-/* Restore session on page load */
-(async()=>{
-  const {data:{session}}=await sb.auth.getSession();
-  if(session){
-    const {data:sub}=await sb.from('subscriptions').select('plan').eq('user_id',session.user.id).single();
-    currentUser={name:session.user.user_metadata?.name||session.user.email,email:session.user.email,plan:sub?.plan||'starter',id:session.user.id};
-    localStorage.setItem('cs_session',JSON.stringify(currentUser));
-  }
-})();
+
+
 
 const DB={users:JSON.parse(localStorage.getItem('cs_users')||'{}'),save(){localStorage.setItem('cs_users',JSON.stringify(this.users))}};
 let currentUser=JSON.parse(localStorage.getItem('cs_session')||'null');
 let pendingPlan=null,isAnnual=false,selectedSignupPlan='pro';
 const PLANS={starter:{name:'Starter',monthly:9,annual:7},pro:{name:'Pro',monthly:19,annual:15},team:{name:'Team',monthly:39,annual:32}};
 const PLAN_BENEFITS={
-  starter:['6 core Excel templates (.xlsx)','Inventory & KPI web modules','Email support (48h)','Monthly new templates'],
-  pro:['All 12 Excel templates (.xlsx)','Full workspace — all 5 modules','Priority support (24h)','Custom formula help','Monthly new templates'],
+  starter:['6 core Excel templates (.xlsx)','Inventory & KPI web modules','Email support (48h)'],
+  pro:['All 12 Excel templates (.xlsx)','Full workspace — all 5 modules','Priority support (24h)','Custom formula help'],
   team:['Everything in Pro','5 team seats','OEE & Risk Scorecard templates','Same-day support','Custom branding','Onboarding call']
 };
 const DEFAULT_INV=[
@@ -876,10 +1149,10 @@ const DEFAULT_PO=[
   {po:'PO-004',vendor:'FilterPro',item:'Filter Set FS-10 x200',qty:200,price:6.20,eta:'2025-02-14',status:'Received'}
 ];
 const DEFAULT_FREIGHT=[
-  {id:'SH-001',dir:'Inbound',route:'Shanghai \\u2192 Chicago',carrier:'Maersk',ship:'2025-01-03',eta:'2025-01-28',kg:5800,cost:3200,status:'Delivered'},
-  {id:'SH-002',dir:'Outbound',route:'Chicago \\u2192 Toronto',carrier:'FedEx',ship:'2025-01-08',eta:'2025-01-12',kg:980,cost:420,status:'Delivered'},
-  {id:'SH-003',dir:'Inbound',route:'Hamburg \\u2192 New York',carrier:'MSC',ship:'2025-01-10',eta:'2025-02-05',kg:4200,cost:2100,status:'In Transit'},
-  {id:'SH-004',dir:'Outbound',route:'Chicago \\u2192 Dallas',carrier:'UPS',ship:'2025-01-15',eta:'2025-01-18',kg:650,cost:310,status:'Booked'}
+  {id:'SH-001',dir:'Inbound',route:'Shanghai ࢐ Chicago',carrier:'Maersk',ship:'2025-01-03',eta:'2025-01-28',kg:5800,cost:3200,status:'Delivered'},
+  {id:'SH-002',dir:'Outbound',route:'Chicago ࢐ Toronto',carrier:'FedEx',ship:'2025-01-08',eta:'2025-01-12',kg:980,cost:420,status:'Delivered'},
+  {id:'SH-003',dir:'Inbound',route:'Hamburg ࢐ New York',carrier:'MSC',ship:'2025-01-10',eta:'2025-02-05',kg:4200,cost:2100,status:'In Transit'},
+  {id:'SH-004',dir:'Outbound',route:'Chicago ࢐ Dallas',carrier:'UPS',ship:'2025-01-15',eta:'2025-01-18',kg:650,cost:310,status:'Booked'}
 ];
 const FCST=[1200,1350,1180,1420,1390,1480,1510,1460,1550,1620,1590,1640];
 const MOS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -896,6 +1169,74 @@ const F={
   spend(pos){return pos.reduce((s,p)=>s+p.qty*p.price,0)},
   cpkg(sh){const t=sh.reduce((s,f)=>({c:s.c+f.cost,k:s.k+f.kg}),{c:0,k:0});return t.k?t.c/t.k:0}
 };
+
+const DEFAULT_BOM = [
+  {level:1,parent:'PUMP-ASSY-001',sku:'SC-003',name:'Motor 3-Phase 2kW',qty:1,cost:210.00,lead:14,uom:'EA'},
+  {level:1,parent:'PUMP-ASSY-001',sku:'SC-006',name:'Pump Head PH-3',qty:1,cost:95.00,lead:10,uom:'EA'},
+  {level:1,parent:'PUMP-ASSY-001',sku:'SC-002',name:'Valve Kit VK-20',qty:2,cost:18.75,lead:7,uom:'EA'},
+  {level:1,parent:'PUMP-ASSY-001',sku:'SC-005',name:'Seal Ring SR-5',qty:4,cost:1.80,lead:3,uom:'EA'},
+  {level:2,parent:'SC-003',sku:'SC-010',name:'Relay Module RM-5',qty:1,cost:8.90,lead:5,uom:'EA'},
+  {level:2,parent:'SC-006',sku:'SC-001',name:'Bearing Type A4',qty:2,cost:4.50,lead:2,uom:'EA'},
+];
+
+const DEFAULT_WAREHOUSE = [
+  {sku:'SC-001',name:'Bearing Type A4',whA:300,whB:200,whC:180,whD:160,cost:4.50},
+  {sku:'SC-002',name:'Valve Kit VK-20',whA:20,whB:10,whC:8,whD:4,cost:18.75},
+  {sku:'SC-003',name:'Motor 3-Phase 2kW',whA:120,whB:80,whC:70,whD:47,cost:210.00},
+  {sku:'SC-004',name:'Filter Set FS-10',whA:8,whB:5,whC:3,whD:2,cost:6.20},
+  {sku:'SC-005',name:'Seal Ring SR-5',whA:400,whB:320,whC:280,whD:240,cost:1.80},
+];
+
+const DEFAULT_RFQ = [
+  {id:'RFQ-001',item:'Bearing Type A4',supplier:'AcmeParts Co.',price:4.50,lead:7,quality:4.5,freight:0.40,reliability:4.0},
+  {id:'RFQ-001',item:'Bearing Type A4',supplier:'GlobalBear Ltd',price:3.90,lead:14,quality:3.8,freight:0.80,reliability:3.5},
+  {id:'RFQ-001',item:'Bearing Type A4',supplier:'PrecisionParts Inc',price:5.10,lead:5,quality:5.0,freight:0.30,reliability:4.8},
+  {id:'RFQ-002',item:'Valve Kit VK-20',supplier:'HydroSupply Ltd',price:18.75,lead:14,quality:4.0,freight:1.20,reliability:3.8},
+  {id:'RFQ-002',item:'Valve Kit VK-20',supplier:'ValvePro',price:17.50,lead:21,quality:3.5,freight:1.80,reliability:3.2},
+];
+
+const DEFAULT_SOP = [
+  {month:'Jan',demand:1200,supply:1200,openingStock:500,capacity:85},
+  {month:'Feb',demand:1350,supply:1300,openingStock:500,capacity:90},
+  {month:'Mar',demand:1180,supply:1250,openingStock:450,capacity:82},
+  {month:'Apr',demand:1420,supply:1400,openingStock:520,capacity:95},
+  {month:'May',demand:1390,supply:1390,openingStock:500,capacity:93},
+  {month:'Jun',demand:1480,supply:1450,openingStock:500,capacity:97},
+  {month:'Jul',demand:1510,supply:1500,openingStock:470,capacity:100},
+  {month:'Aug',demand:1460,supply:1480,openingStock:460,capacity:98},
+  {month:'Sep',demand:1550,supply:1520,openingStock:480,capacity:100},
+  {month:'Oct',demand:1620,supply:1600,openingStock:450,capacity:107},
+  {month:'Nov',demand:1590,supply:1600,openingStock:430,capacity:105},
+  {month:'Dec',demand:1640,supply:1650,openingStock:440,capacity:108},
+];
+
+const DEFAULT_LANDED = [
+  {sku:'SC-001',name:'Bearing Type A4',fob:3.20,freight:0.40,duty:5,insurance:0.10,lastmile:0.20,handling:0.10,sell:12.00},
+  {sku:'SC-002',name:'Valve Kit VK-20',fob:14.00,freight:1.20,duty:8,insurance:0.30,lastmile:0.60,handling:0.25,sell:52.00},
+  {sku:'SC-003',name:'Motor 3-Phase 2kW',fob:160.00,freight:12.00,duty:10,insurance:1.80,lastmile:4.00,handling:2.00,sell:480.00},
+];
+
+const DEFAULT_OEE = [
+  {line:'Line A - Assembly',planned:8,downtime:0.8,plannedUnits:240,actual:220,defects:5},
+  {line:'Line B - Machining',planned:8,downtime:1.2,plannedUnits:180,actual:155,defects:8},
+  {line:'Line C - Packaging',planned:8,downtime:0.3,plannedUnits:600,actual:580,defects:12},
+  {line:'Line D - Quality',planned:8,downtime:0.5,plannedUnits:300,actual:285,defects:3},
+];
+
+const DEFAULT_DOWNTIME = [
+  {line:'Line A - Assembly',date:'2025-01-10',duration:0.5,category:'Breakdown',notes:'Motor fault - replaced'},
+  {line:'Line B - Machining',date:'2025-01-11',duration:1.2,category:'Scheduled',notes:'Planned maintenance'},
+  {line:'Line C - Packaging',date:'2025-01-12',duration:0.3,category:'Quality',notes:'Rework - label error'},
+];
+
+const DEFAULT_RISK = [
+  {id:'R-001',category:'Supplier',desc:'Single-source dependency for Bearing Type A4',prob:3,impact:5,mitigation:'Qualify secondary supplier GlobalBear Ltd',owner:'Procurement',status:'In Progress'},
+  {id:'R-002',category:'Logistics',desc:'Port congestion causing 2-3 week delays',prob:4,impact:4,mitigation:'Pre-position 6-week safety stock for A-class items',owner:'Supply Chain',status:'Active'},
+  {id:'R-003',category:'Demand',desc:'Seasonal demand spike exceeds capacity in Q4',prob:4,impact:3,mitigation:'Build inventory buffer from Q2, hire temp staff Q3',owner:'Operations',status:'Planned'},
+  {id:'R-004',category:'Geopolitical',desc:'Import duty increase on electrical components',prob:2,impact:4,mitigation:'Explore local sourcing alternatives',owner:'Procurement',status:'Monitoring'},
+  {id:'R-005',category:'Quality',desc:'Supplier quality rejections above 5%',prob:2,impact:3,mitigation:'Implement incoming inspection for critical parts',owner:'Quality',status:'Active'},
+];
+
 function getUD(){const k=currentUser?'cs_d_'+currentUser.email:'cs_d_guest';const d=JSON.parse(localStorage.getItem(k)||'null');if(!d)return{inventory:DEFAULT_INV.map(i=>({...i})),po:DEFAULT_PO.map(p=>({...p})),freight:DEFAULT_FREIGHT.map(f=>({...f}))};return d}
 function saveUD(d){
   const k=currentUser?'cs_d_'+currentUser.email:'cs_d_guest';
@@ -915,15 +1256,51 @@ async function loadInventoryFromSupabase(){
 }
 let UD=getUD();
 /* BILLING */
-function toggleBilling(){isAnnual=!isAnnual;document.getElementById('billingToggle').classList.toggle('on',isAnnual);document.getElementById('lblMonthly').classList.toggle('active',!isAnnual);document.getElementById('lblAnnual').classList.toggle('active',isAnnual);document.getElementById('savePill').style.display=isAnnual?'none':'';updateAllPrices()}
-function updateAllPrices(){for(const[k,p]of Object.entries(PLANS)){const v=isAnnual?p.annual:p.monthly;const el=document.getElementById('p-'+k);if(el)el.textContent=v;const n=document.getElementById('n-'+k);if(n)n.textContent=isAnnual?`Billed $${v*12}/yr \\u2014 save $${(p.monthly-p.annual)*12}`:'';const cp=document.getElementById('cp-'+k+'-price');if(cp)cp.textContent=v;const cn=document.getElementById('cp-'+k+'-note');if(cn)cn.textContent=isAnnual?`Billed $${v*12}/yr \\u2014 save $${(p.monthly-p.annual)*12}`:'';} ['starter','pro','team'].forEach(k=>{const e=document.getElementById('sop-'+k);if(e)e.innerHTML=`$${isAnnual?PLANS[k].annual:PLANS[k].monthly}<sub>/mo</sub>`})}
+function toggleBilling(){
+  isAnnual=!isAnnual;
+  var t=document.getElementById('billingToggle');
+  if(t)t.classList.toggle('on',isAnnual);
+  var lm=document.getElementById('lblMonthly');
+  if(lm)lm.classList.toggle('active',!isAnnual);
+  var la=document.getElementById('lblAnnual');
+  if(la)la.classList.toggle('active',isAnnual);
+  var sp=document.getElementById('savePill');
+  if(sp)sp.style.display=isAnnual?'none':'';
+  updateAllPrices();
+}
+function updateAllPrices(){for(const[k,p]of Object.entries(PLANS)){const v=isAnnual?p.annual:p.monthly;const el=document.getElementById('p-'+k);if(el)el.textContent=v;const n=document.getElementById('n-'+k);if(n)n.textContent=isAnnual?`Billed $${v*12}/yr ߞ save $${(p.monthly-p.annual)*12}`:'';const cp=document.getElementById('cp-'+k+'-price');if(cp)cp.textContent=v;const cn=document.getElementById('cp-'+k+'-note');if(cn)cn.textContent=isAnnual?`Billed $${v*12}/yr ߞ save $${(p.monthly-p.annual)*12}`:'';} ['starter','pro','team'].forEach(k=>{const e=document.getElementById('sop-'+k);if(e)e.innerHTML=`$${isAnnual?PLANS[k].annual:PLANS[k].monthly}<sub>/mo</sub>`})}
 /* COMPARE */
-function switchComparePlan(plan,tab){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.compare-pane').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById('cp-'+plan).classList.add('active')}
+function switchComparePlan(plan,tab){
+  /* Remove active from all tabs */
+  ['starter','pro','team'].forEach(p=>{
+    const t=document.getElementById('ctab-'+p);
+    if(t)t.classList.remove('active');
+    const pane=document.getElementById('cp-'+p);
+    if(pane)pane.classList.remove('active');
+  });
+  /* Add active to selected */
+  if(tab)tab.classList.add('active');
+  const pane=document.getElementById('cp-'+plan);
+  if(pane)pane.classList.add('active');
+  /* Update prices in the card */
+  updateAllPrices();
+}
 /* FILTER */
 function filterTemplates(cat,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.tcard').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'})}
 /* FAQ */
 function toggleFaq(btn){const a=btn.nextElementSibling,open=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(e=>e.classList.remove('open'));document.querySelectorAll('.faq-btn').forEach(b=>b.classList.remove('open'));if(!open){a.classList.add('open');btn.classList.add('open')}}
 /* NAV */
+
+/* Restore session on page load */
+(async()=>{
+  const {data:{session}}=await sb.auth.getSession();
+  if(session){
+    const {data:sub}=await sb.from('subscriptions').select('plan').eq('user_id',session.user.id).single();
+    currentUser={name:session.user.user_metadata?.name||session.user.email,email:session.user.email,plan:sub?.plan||'starter',id:session.user.id};
+    localStorage.setItem('cs_session',JSON.stringify(currentUser));
+  }
+})();
+
 function renderNav(){const area=document.getElementById('navUserArea');if(currentUser){const init=currentUser.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);const plan=currentUser.plan||'starter';area.innerHTML=`<span class="nav-greeting">Hi, ${currentUser.name.split(' ')[0]}</span><span class="plan-badge ${plan}" style="margin:0 4px">${PLANS[plan]?.name||plan}</span><div class="nav-avatar">${init}</div><button style="background:var(--accent);border:none;color:var(--navy);padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--sans)" onclick="openTool()">Workspace</button><button class="nav-logout-btn" onclick="doLogout()">Log out</button>`}else{area.innerHTML=`<button class="nav-login-btn" onclick="openAuthModal('login')">Log in</button><button class="nav-signup-btn" onclick="openAuthModal('signup')">Start free trial</button>`}}
 renderNav();
 /* MODALS */
@@ -953,39 +1330,48 @@ async function doSignupStep1(){
   const btn=document.querySelector('#su-step1 .btn-form');
   if(btn){btn.disabled=true;btn.textContent='Creating account...';}
   const plan=selectedSignupPlan||'pro';
+
+  /* Create Supabase account */
   const {data,error}=await sb.auth.signUp({email,password:pw,options:{data:{name}}});
+  let uid=null;
   if(error){
     if(error.message.toLowerCase().includes('already')){
+      /* Already exists — log in */
       const {data:ld,error:le}=await sb.auth.signInWithPassword({email,password:pw});
-      if(le){showBE('signupError','Account exists — use Log in instead.');if(btn){btn.disabled=false;btn.textContent='Create account';}return;}
-      const {data:sub}=await sb.from('subscriptions').select('plan').eq('user_id',ld.user.id).single();
-      setSession({name,email,plan:sub?.plan||plan,id:ld.user.id});
-      closeModal('authOverlay');
-      if(btn){btn.disabled=false;btn.textContent='Create account';}
+      if(le){showBE('signupError','Account exists — use the Log in link instead.');if(btn){btn.disabled=false;btn.textContent='Continue to payment';}return;}
+      uid=ld.user.id;
+      const {data:existSub}=await sb.from('subscriptions').select('plan,status').eq('user_id',uid).single();
+      if(existSub&&existSub.status==='active'){
+        setSession({name,email,plan:existSub.plan,id:uid});
+        closeModal('authOverlay');
+        if(btn){btn.disabled=false;btn.textContent='Continue to payment';}
+        return;
+      }
+    } else {
+      showBE('signupError',error.message);
+      if(btn){btn.disabled=false;btn.textContent='Continue to payment';}
       return;
     }
-    showBE('signupError',error.message);
-    if(btn){btn.disabled=false;btn.textContent='Create account';}
-    return;
+  } else {
+    uid=data.user.id;
   }
-  const uid=data.user.id;
+
+  /* Save to DB */
   await sb.from('users').upsert({id:uid,name,email},{onConflict:'id',ignoreDuplicates:true});
-  const trialEnd=new Date();trialEnd.setDate(trialEnd.getDate()+7);
   await sb.from('subscriptions').upsert({
-    user_id:uid,plan,billing_cycle:'monthly',status:'trialing',
-    card_last4:'none',trial_ends_at:trialEnd.toISOString(),
+    user_id:uid,plan,billing_cycle:isAnnual?'annual':'monthly',
+    status:'pending_payment',card_last4:'ls',
     current_period_end:new Date(Date.now()+37*24*60*60*1000).toISOString()
-  },{onConflict:'user_id',ignoreDuplicates:true});
+  },{onConflict:'user_id',ignoreDuplicates:false});
   setSession({name,email,plan,id:uid});
-  document.getElementById('su-success-date').textContent=trialEnd.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-  document.getElementById('su-benefit-title').textContent='Your '+PLANS[plan].name+' Plan includes:';
-  document.getElementById('su-benefit-list').innerHTML=PLAN_BENEFITS[plan].map(b=>'<li>'+b+'</li>').join('');
-  document.getElementById('su-step1').style.display='none';
-  document.getElementById('suSuccessView').style.display='';
-  if(btn){btn.disabled=false;btn.textContent='Create account';}
+
+  /* Close modal and open Lemon Squeezy checkout */
+  closeModal('authOverlay');
+  if(btn){btn.disabled=false;btn.textContent='Continue to payment';}
+  setTimeout(()=>openCheckout(plan), 300);
 }
 /* SIGNUP STEP 2 */
-function doSignupStep2(){clearErrors();const card=document.getElementById('su-card').value.replace(/\\s/g,'');const exp=document.getElementById('su-exp').value.replace(/\\s/g,'');const cvc=document.getElementById('su-cvc').value.trim();const holder=document.getElementById('su-holder').value.trim();let ok=true;if(card.length!==16){showFE('su-card','su-cardErr');ok=false}if(exp.replace('/','').length<4){showFE('su-exp','su-expErr');ok=false}if(cvc.length<3){showFE('su-cvc','su-cvcErr');ok=false}if(!holder){showFE('su-holder','su-holderErr');ok=false}if(!ok)return;const btn=document.getElementById('su2Btn');btn.disabled=true;btn.textContent='Activating...';setTimeout(()=>{const name=document.getElementById('suName').value.trim();const email=document.getElementById('suEmail').value.trim().toLowerCase();const pw=document.getElementById('suPw').value;const plan=selectedSignupPlan;DB.users[email]={name,email,pw,plan,trialStart:Date.now()};DB.save();setSession({name,email,plan});const d=new Date();d.setDate(d.getDate()+7);document.getElementById('su-success-date').textContent=d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});document.getElementById('su-benefit-title').textContent=`Your ${PLANS[plan].name} Plan includes:`;document.getElementById('su-benefit-list').innerHTML=PLAN_BENEFITS[plan].map(b=>`<li>${b}</li>`).join('');document.getElementById('su-step2').style.display='none';document.getElementById('suSuccessView').style.display='';btn.disabled=false;btn.textContent='Start free trial \\u2192'},1800)}
+function doSignupStep2(){clearErrors();const card=document.getElementById('su-card').value.replace(/\\s/g,'');const exp=document.getElementById('su-exp').value.replace(/\\s/g,'');const cvc=document.getElementById('su-cvc').value.trim();const holder=document.getElementById('su-holder').value.trim();let ok=true;if(card.length!==16){showFE('su-card','su-cardErr');ok=false}if(exp.replace('/','').length<4){showFE('su-exp','su-expErr');ok=false}if(cvc.length<3){showFE('su-cvc','su-cvcErr');ok=false}if(!holder){showFE('su-holder','su-holderErr');ok=false}if(!ok)return;const btn=document.getElementById('su2Btn');btn.disabled=true;btn.textContent='Activating...';setTimeout(()=>{const name=document.getElementById('suName').value.trim();const email=document.getElementById('suEmail').value.trim().toLowerCase();const pw=document.getElementById('suPw').value;const plan=selectedSignupPlan;DB.users[email]={name,email,pw,plan,trialStart:Date.now()};DB.save();setSession({name,email,plan});const d=new Date();d.setDate(d.getDate()+7);document.getElementById('su-success-date').textContent=d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});document.getElementById('su-benefit-title').textContent=`Your ${PLANS[plan].name} Plan includes:`;document.getElementById('su-benefit-list').innerHTML=PLAN_BENEFITS[plan].map(b=>`<li>${b}</li>`).join('');document.getElementById('su-step2').style.display='none';document.getElementById('suSuccessView').style.display='';btn.disabled=false;btn.textContent='Start free trial ࢐'},1800)}
 /* LOGIN */
 async function doLogin(){
   clearErrors();
@@ -998,26 +1384,48 @@ async function doLogin(){
   const btn=document.querySelector('#loginView .btn-form');
   if(btn){btn.disabled=true;btn.textContent='Logging in...';}
   const {data,error}=await sb.auth.signInWithPassword({email,password:pw});
-  if(error){showBE('loginError','Incorrect email or password.');if(btn){btn.disabled=false;btn.textContent='Log in';}return;}
-  const {data:sub}=await sb.from('subscriptions').select('plan').eq('user_id',data.user.id).single();
+  if(error){
+    showBE('loginError','Incorrect email or password.');
+    if(btn){btn.disabled=false;btn.textContent='Log in';}
+    return;
+  }
+  const {data:sub}=await sb.from('subscriptions').select('plan,status').eq('user_id',data.user.id).single();
   const name=data.user.user_metadata?.name||email;
-  setSession({name,email,plan:sub?.plan||'starter',id:data.user.id});
+  const plan=sub?.plan||'starter';
+  setSession({name,email,plan,id:data.user.id});
   closeModal('authOverlay');
   if(btn){btn.disabled=false;btn.textContent='Log in';}
-  if(pendingPlan)openTool(pendingPlan);
+  /* If they never completed payment, send them to checkout */
+  if(sub&&sub.status==='pending_payment'){
+    setTimeout(()=>openCheckout(plan), 400);
+  } else if(pendingPlan){
+    openCheckout(pendingPlan);
+    pendingPlan=null;
+  }
 }
 function setSession(u){currentUser=u;localStorage.setItem('cs_session',JSON.stringify(u));UD=getUD();renderNav()}
 async function doLogout(){
   await sb.auth.signOut();
-  currentUser=null;
-  localStorage.removeItem('cs_session');
-  renderNav();
+  currentUser=null;localStorage.removeItem('cs_session');renderNav();
 }
 /* SUBSCRIBE */
-function handleSubscribe(plan){pendingPlan=plan;if(!currentUser){openAuthModal('signup');const idx=['starter','pro','team'].indexOf(plan);const opts=document.querySelectorAll('.plan-opt');if(opts[idx])selectSignupPlan(plan,opts[idx]);return}currentUser.plan=plan;if(DB.users[currentUser.email]){DB.users[currentUser.email].plan=plan;DB.save()}localStorage.setItem('cs_session',JSON.stringify(currentUser));renderNav();openTool(plan);pendingPlan=null}
+function handleSubscribe(plan){
+  pendingPlan=plan;
+  if(!currentUser){
+    /* Not logged in — open signup */
+    openAuthModal('signup');
+    const idx=['starter','pro','team'].indexOf(plan);
+    const opts=document.querySelectorAll('.plan-opt');
+    if(opts[idx])selectSignupPlan(plan,opts[idx]);
+    return;
+  }
+  /* Already logged in — open Lemon Squeezy checkout */
+  openCheckout(plan);
+  pendingPlan=null;
+}
 /* TOOL */
 function launchTool(panel){if(!currentUser){openAuthModal('signup');pendingPlan='pro';return}openTool(panel)}
-async function openTool(panel){UD=getUD();const _ci=await loadInventoryFromSupabase();if(_ci&&_ci.length>0){UD.inventory=_ci;const _k=currentUser?"cs_d_"+currentUser.email:"cs_d_guest";localStorage.setItem(_k,JSON.stringify(UD));}document.getElementById('toolOverlay').classList.add('open');document.body.style.overflow='hidden';const plan=currentUser?.plan||'starter';const badge=document.getElementById('toolPlanBadge');if(badge){badge.textContent=PLANS[plan]?.name||plan;badge.className='plan-badge '+plan}switchToolPanel(panel||'inventory')}
+async function openTool(panel){UD=getUD();const _ci=await loadInventoryFromSupabase();if(_ci&&_ci.length>0){UD.inventory=_ci;}document.getElementById('toolOverlay').classList.add('open');document.body.style.overflow='hidden';const plan=currentUser?.plan||'starter';const badge=document.getElementById('toolPlanBadge');if(badge){badge.textContent=PLANS[plan]?.name||plan;badge.className='plan-badge '+plan}switchToolPanel(panel||'inventory')}
 function closeTool(){document.getElementById('toolOverlay').classList.remove('open');document.body.style.overflow=''}
 function switchToolPanel(panel){document.querySelectorAll('.tool-nav-item').forEach(n=>n.classList.remove('active'));document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));const ni=document.getElementById('tnav-'+panel);if(ni)ni.classList.add('active');const pa=document.getElementById('panel-'+panel);if(pa)pa.classList.add('active');const names={inventory:'Inventory Manager',procurement:'Purchase Orders',forecast:'Demand Forecasting',kpi:'KPI Dashboard',freight:'Logistics & Freight'};const tn=document.getElementById('toolName');if(tn)tn.textContent=names[panel]||panel;const plan=currentUser?.plan||'starter';['forecast','freight'].forEach(mod=>{const lock=document.getElementById(mod+'-lock');if(lock)lock.style.display=(mod===panel&&plan==='starter')?'flex':'none'});renderToolPanel(panel)}
 function renderToolPanel(p){if(p==='inventory')renderInventory();else if(p==='procurement')renderProcurement();else if(p==='forecast')renderForecast();else if(p==='kpi')renderKPIs();else if(p==='freight')renderFreight()}
@@ -1038,7 +1446,615 @@ function renderForecast(){const data=FCST;let esF=data[0];const esF2=data.map((a
 function renderKPIs(){const inv=UD.inventory;const pos=UD.po;const tv=inv.reduce((s,i)=>s+F.val(i.qty,i.cost),0);const otif=F.otif(inv);const poOT=F.poOT(pos);const spend=F.spend(pos);const turns=spend>0?spend/(tv||1):0;const crit=inv.filter(i=>F.status(i.qty,i.rop).l==='CRITICAL').length;document.getElementById('kpi-main').innerHTML=`<div class="kpi-tile ${otif>=.95?'ok':otif>=.8?'warn':'crit'}"><div class="kpi-label">Stock Health</div><div class="kpi-value">${(otif*100).toFixed(0)}%</div><div class="kpi-meta">SKUs at OK status</div></div><div class="kpi-tile ok"><div class="kpi-label">Inventory Value</div><div class="kpi-value">$${(tv/1000).toFixed(1)}k</div><div class="kpi-meta">At unit cost</div></div><div class="kpi-tile ${crit>0?'crit':'ok'}"><div class="kpi-label">Critical SKUs</div><div class="kpi-value">${crit}</div><div class="kpi-meta">Immediate action</div></div><div class="kpi-tile ${poOT>=.9?'ok':poOT>=.7?'warn':'crit'}"><div class="kpi-label">PO On-Time</div><div class="kpi-value">${(poOT*100).toFixed(0)}%</div><div class="kpi-meta">Of received POs</div></div><div class="kpi-tile ok"><div class="kpi-label">PO Spend</div><div class="kpi-value">$${(spend/1000).toFixed(1)}k</div><div class="kpi-meta">Committed</div></div><div class="kpi-tile ok"><div class="kpi-label">Inv. Turns</div><div class="kpi-value">${turns.toFixed(1)}x</div><div class="kpi-meta">COGS/Avg Inventory</div></div><div class="kpi-tile ok"><div class="kpi-label">Active SKUs</div><div class="kpi-value">${inv.length}</div></div><div class="kpi-tile ok"><div class="kpi-label">Open POs</div><div class="kpi-value">${pos.filter(p=>p.status==='In Transit'||p.status==='Pending').length}</div></div>`;const maxF=Math.max(...FCST);document.getElementById('kpi-chart').innerHTML=MOS.map((m,i)=>{const pct=Math.max(10,Math.round(FCST[i]/maxF*100));const fill=.90+Math.random()*.08;return`<div class="bar-col"><div class="bar-val">${(fill*100).toFixed(0)}%</div><div class="bar" style="height:${pct}%;background:${fill>=.95?'var(--accent)':fill>=.9?'var(--amber)':'var(--danger)'}"></div><div class="bar-label">${m.slice(0,1)}</div></div>`}).join('')}
 /* FREIGHT */
 function renderFreight(){const sh=UD.freight;const tc=sh.reduce((s,f)=>s+f.cost,0);const tk=sh.reduce((s,f)=>s+f.kg,0);const del=sh.filter(f=>f.status==='Delivered').length;const cpkg=F.cpkg(sh);document.getElementById('freight-kpis').innerHTML=`<div class="kpi-tile ok"><div class="kpi-label">Shipments</div><div class="kpi-value">${sh.length}</div></div><div class="kpi-tile ok"><div class="kpi-label">Total Cost</div><div class="kpi-value">$${tc.toLocaleString()}</div></div><div class="kpi-tile ok"><div class="kpi-label">Total Weight</div><div class="kpi-value">${(tk/1000).toFixed(1)}t</div></div><div class="kpi-tile ok"><div class="kpi-label">Cost/kg</div><div class="kpi-value">$${cpkg.toFixed(2)}</div></div><div class="kpi-tile ok"><div class="kpi-label">Delivered</div><div class="kpi-value">${sh.length>0?(del/sh.length*100).toFixed(0):0}%</div></div>`;const scMap={Delivered:'pill-ok','In Transit':'pill-transit',Booked:'pill-pending',Exception:'pill-crit'};document.getElementById('freight-tbody').innerHTML=sh.map(s=>`<tr><td><strong style="font-family:var(--mono);font-size:10px">${s.id}</strong></td><td style="font-size:11px;color:${s.dir==='Inbound'?'var(--accent)':'var(--amber)'}">${s.dir}</td><td style="font-size:11px">${s.route}</td><td style="font-size:11px">${s.carrier}</td><td style="font-size:11px;color:var(--muted)">${s.ship}</td><td style="font-size:11px;color:var(--muted)">${s.eta}</td><td>${s.kg.toLocaleString()}</td><td style="font-weight:700;color:var(--accent)">$${s.cost.toLocaleString()}</td><td><span class="status-pill ${scMap[s.status]||'pill-pending'}">${s.status}</span></td></tr>`).join('')}
-function addFreightRow(){const sh=UD.freight;sh.push({id:'SH-'+String(sh.length+1).padStart(3,'0'),dir:'Inbound',route:'Origin \\u2192 Destination',carrier:'New Carrier',ship:new Date().toISOString().slice(0,10),eta:'TBD',kg:1000,cost:800,status:'Booked'});saveUD(UD);renderFreight()}
+function addFreightRow(){const sh=UD.freight;sh.push({id:'SH-'+String(sh.length+1).padStart(3,'0'),dir:'Inbound',route:'Origin ࢐ Destination',carrier:'New Carrier',ship:new Date().toISOString().slice(0,10),eta:'TBD',kg:1000,cost:800,status:'Booked'});saveUD(UD);renderFreight()}
+
+
+
+
+
+
+
+
+
+
+
+function handleSubscribe(plan){
+  pendingPlan=plan;
+  if(!currentUser){
+    openAuthModal('signup');
+    const idx=['starter','pro','team'].indexOf(plan);
+    const opts=document.querySelectorAll('.plan-opt');
+    if(opts[idx])selectSignupPlan(plan,opts[idx]);
+    return;
+  }
+  openCheckout(plan);
+  pendingPlan=null;
+}
+
+
+/* ═══════════════════════════════
+   LEMON SQUEEZY CHECKOUT LINKS
+═══════════════════════════════ */
+const LS_LINKS = {
+  starter_monthly: 'https://chainsheet.lemonsqueezy.com/checkout/buy/06827df4-adef-4c38-b649-24aee4052a7c',
+  starter_annual:  'https://chainsheet.lemonsqueezy.com/checkout/buy/6617431f-1e39-468f-b1a0-ef97a9062594',
+  pro_monthly:     'https://chainsheet.lemonsqueezy.com/checkout/buy/a995c008-a05f-41c5-8a79-9a07346d25db',
+  pro_annual:      'https://chainsheet.lemonsqueezy.com/checkout/buy/849e1455-56fb-4c8d-8a09-d85525e8eb78',
+  team_monthly:    'https://chainsheet.lemonsqueezy.com/checkout/buy/a87510f4-a817-4a01-bd9a-5a5462fe5d6c',
+  team_annual:     'https://chainsheet.lemonsqueezy.com/checkout/buy/254a9e6e-3bf1-47de-a58c-81e86a249797',
+};
+
+function getLSLink(plan) {
+  const billing = isAnnual ? 'annual' : 'monthly';
+  return LS_LINKS[plan + '_' + billing] || LS_LINKS[plan + '_monthly'];
+}
+
+function openCheckout(plan) {
+  const url = getLSLink(plan);
+  /* Pre-fill email if user is logged in */
+  const email = currentUser ? currentUser.email : '';
+  const finalUrl = email ? url + '?checkout[email]=' + encodeURIComponent(email) : url;
+  window.open(finalUrl, '_blank');
+  /* Save intent to Supabase if logged in */
+  if (currentUser && currentUser.id) {
+    sb.from('subscriptions').upsert({
+      user_id: currentUser.id,
+      plan: plan,
+      billing_cycle: isAnnual ? 'annual' : 'monthly',
+      status: 'pending_payment',
+      card_last4: 'ls',
+      current_period_end: new Date(Date.now() + 37*24*60*60*1000).toISOString()
+    }, {onConflict: 'user_id', ignoreDuplicates: false});
+  }
+}
+
+function handleSubscribe(plan) {
+  if (!currentUser) {
+    /* Not logged in — sign up first, then redirect to checkout */
+    pendingPlan = plan;
+    openAuthModal('signup');
+    const idx = ['starter','pro','team'].indexOf(plan);
+    const opts = document.querySelectorAll('.plan-opt');
+    if (opts[idx]) selectSignupPlan(plan, opts[idx]);
+    return;
+  }
+  openCheckout(plan);
+}
+
+
+function toggleMobileMenu(){
+  const m=document.getElementById('mobileMenu');
+  if(m.style.display==='none'||!m.style.display){
+    m.style.display='flex';document.body.style.overflow='hidden';
+  } else {
+    m.style.display='none';document.body.style.overflow='';
+  }
+}
+
+
+/* ═══════════════════════════════
+   BOM + MRP PLANNER
+═══════════════════════════════ */
+function getBOM(){const k=currentUser?'cs_bom_'+currentUser.email:'cs_bom_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_BOM.map(i=>({...i}));}
+function saveBOM(d){const k=currentUser?'cs_bom_'+currentUser.email:'cs_bom_guest';localStorage.setItem(k,JSON.stringify(d));}
+let BOM_DATA=[];
+function resetBOM(){BOM_DATA=DEFAULT_BOM.map(i=>({...i}));saveBOM(BOM_DATA);renderBOM();}
+function showBOMForm(){document.getElementById('bom-add-form').style.display='';}
+function saveBOMRow(){
+  const row={level:+document.getElementById('fb-level').value||1,parent:document.getElementById('fb-parent').value.trim(),sku:document.getElementById('fb-sku').value.trim(),name:document.getElementById('fb-name').value.trim(),qty:+document.getElementById('fb-qty').value||1,cost:+document.getElementById('fb-cost').value||0,lead:+document.getElementById('fb-lead').value||0,uom:document.getElementById('fb-uom').value.trim()||'EA'};
+  if(!row.sku||!row.name)return;
+  BOM_DATA.push(row);saveBOM(BOM_DATA);
+  document.getElementById('bom-add-form').style.display='none';
+  ['fb-level','fb-parent','fb-sku','fb-name','fb-qty','fb-cost','fb-lead','fb-uom'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  renderBOM();
+}
+function renderBOM(){
+  if(!BOM_DATA||BOM_DATA.length===0){BOM_DATA=getBOM();}
+  const totalMat=BOM_DATA.filter(r=>r.level===1).reduce((s,r)=>s+r.qty*r.cost,0);
+  const totalParts=BOM_DATA.length;
+  const lvl1=BOM_DATA.filter(r=>r.level===1).length;
+  document.getElementById('bom-kpis').innerHTML=`
+    <div class="kpi-tile ok"><div class="kpi-label">Total Components</div><div class="kpi-value">${totalParts}</div><div class="kpi-meta">Across all BOM levels</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Direct Components</div><div class="kpi-value">${lvl1}</div><div class="kpi-meta">Level 1 items</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Material Cost/Unit</div><div class="kpi-value">$${totalMat.toFixed(2)}</div><div class="kpi-meta">Level 1 rollup</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Max BOM Depth</div><div class="kpi-value">${Math.max(...BOM_DATA.map(r=>r.level))} levels</div><div class="kpi-meta">Hierarchy depth</div></div>
+  `;
+  document.getElementById('bom-tbody').innerHTML=BOM_DATA.map((r,i)=>{
+    const ext=r.qty*r.cost;
+    const indent='&nbsp;&nbsp;&nbsp;&nbsp;'.repeat(r.level-1);
+    return `<tr>
+      <td><span style="background:${['','var(--accent)','var(--amber)','#8B5CF6','#EC4899'][r.level]||'var(--border)'};color:white;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700">${r.level}</span></td>
+      <td style="font-size:11px;color:var(--muted)">${r.parent}</td>
+      <td><strong style="font-family:var(--mono);font-size:11px">${r.sku}</strong></td>
+      <td>${indent}${r.name}</td>
+      <td style="text-align:center">${r.qty}</td>
+      <td style="text-align:center;color:var(--muted);font-size:11px">${r.uom}</td>
+      <td>$${r.cost.toFixed(2)}</td>
+      <td style="font-weight:700;color:var(--accent)">$${ext.toFixed(2)}</td>
+      <td style="text-align:center">${r.lead}d</td>
+      <td><button onclick="deleteBOMRow(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer">&#215;</button></td>
+    </tr>`;
+  }).join('');
+  // MRP
+  const target=+document.getElementById('mrp-target')?.value||10;
+  document.getElementById('mrp-tbody').innerHTML=BOM_DATA.map(r=>{
+    const weeklyNeed=r.qty*target;
+    const weeks=Array(12).fill(weeklyNeed);
+    const total=weeklyNeed*12;
+    return `<tr>
+      <td style="font-size:11px">${r.sku} - ${r.name.substring(0,20)}</td>
+      ${weeks.map(w=>`<td style="text-align:center;font-size:11px;color:var(--accent);font-weight:600">${w}</td>`).join('')}
+      <td style="text-align:center;font-weight:700;color:var(--navy)">${total}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════
+   MULTI-WAREHOUSE
+═══════════════════════════════ */
+function getWH(){const k=currentUser?'cs_wh_'+currentUser.email:'cs_wh_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_WAREHOUSE.map(i=>({...i}));}
+function saveWH(d){const k=currentUser?'cs_wh_'+currentUser.email:'cs_wh_guest';localStorage.setItem(k,JSON.stringify(d));}
+let WH_DATA=[];
+function addWarehouseItem(){
+  const sku=prompt('Enter SKU:');if(!sku)return;
+  const name=prompt('Item name:');if(!name)return;
+  const cost=parseFloat(prompt('Unit cost ($):')||0);
+  WH_DATA.push({sku,name,whA:0,whB:0,whC:0,whD:0,cost});
+  saveWH(WH_DATA);renderWarehouse();
+}
+function renderWarehouse(){
+  if(!WH_DATA||WH_DATA.length===0)WH_DATA=getWH();
+  const whNames=['WH-A','WH-B','WH-C','WH-D'];
+  const totals=whNames.map((_,i)=>WH_DATA.reduce((s,r)=>s+[r.whA,r.whB,r.whC,r.whD][i],0));
+  const grandTotal=totals.reduce((a,b)=>a+b,0);
+  const totalValue=WH_DATA.reduce((s,r)=>s+(r.whA+r.whB+r.whC+r.whD)*r.cost,0);
+  document.getElementById('wh-kpis').innerHTML=`
+    <div class="kpi-tile ok"><div class="kpi-label">Total SKUs</div><div class="kpi-value">${WH_DATA.length}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Units</div><div class="kpi-value">${grandTotal.toLocaleString()}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Value</div><div class="kpi-value">$${(totalValue/1000).toFixed(1)}k</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Active Warehouses</div><div class="kpi-value">4</div></div>
+  `;
+  document.getElementById('wh-locations').innerHTML=whNames.map((name,i)=>`
+    <div style="background:var(--warm);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center">
+      <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px">${name}</div>
+      <div style="font-size:20px;font-weight:700;color:var(--accent)">${totals[i].toLocaleString()}</div>
+      <div style="font-size:10px;color:var(--muted)">units</div>
+    </div>`).join('');
+  document.getElementById('wh-tbody').innerHTML=WH_DATA.map((r,idx)=>{
+    const total=r.whA+r.whB+r.whC+r.whD;
+    const val=total*r.cost;
+    const st=total<10?{l:'CRITICAL',c:'pill-crit'}:total<50?{l:'LOW',c:'pill-low'}:{l:'OK',c:'pill-ok'};
+    return `<tr>
+      <td><strong style="font-family:var(--mono);font-size:11px">${r.sku}</strong></td>
+      <td>${r.name}</td>
+      <td style="text-align:center">${r.whA}</td>
+      <td style="text-align:center">${r.whB}</td>
+      <td style="text-align:center">${r.whC}</td>
+      <td style="text-align:center">${r.whD}</td>
+      <td style="font-weight:700;text-align:center">${total.toLocaleString()}</td>
+      <td>$${r.cost.toFixed(2)}</td>
+      <td style="color:var(--accent);font-weight:700">$${val.toLocaleString('en-US',{maximumFractionDigits:0})}</td>
+      <td><span class="status-pill ${st.c}">${st.l}</span></td>
+    </tr>`;
+  }).join('');
+  const maxT=Math.max(...WH_DATA.map(r=>r.whA+r.whB+r.whC+r.whD),1);
+  document.getElementById('wh-chart').innerHTML=WH_DATA.map(r=>{
+    const total=r.whA+r.whB+r.whC+r.whD;
+    const h=Math.max(8,Math.round(total/maxT*100));
+    return `<div class="bar-col"><div class="bar-val">${total}</div><div class="bar" style="height:${h}%;background:var(--accent)"></div><div class="bar-label">${r.sku.replace('SC-','')}</div></div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════
+   RFQ TRACKER
+═══════════════════════════════ */
+function getRFQ(){const k=currentUser?'cs_rfq_'+currentUser.email:'cs_rfq_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_RFQ.map(i=>({...i}));}
+function saveRFQ(d){const k=currentUser?'cs_rfq_'+currentUser.email:'cs_rfq_guest';localStorage.setItem(k,JSON.stringify(d));}
+let RFQ_DATA=[];
+function addRFQ(){
+  const item=prompt('Item name:');if(!item)return;
+  const id='RFQ-'+String(new Set(RFQ_DATA.map(r=>r.id)).size+1).padStart(3,'0');
+  const supplier=prompt('Supplier name:');if(!supplier)return;
+  const price=parseFloat(prompt('Unit price ($):')||0);
+  const lead=parseInt(prompt('Lead time (days):')||7);
+  const quality=parseFloat(prompt('Quality score (1-5):')||3);
+  const freight=parseFloat(prompt('Freight cost per unit ($):')||0);
+  RFQ_DATA.push({id,item,supplier,price,lead,quality,freight,reliability:3.5});
+  saveRFQ(RFQ_DATA);renderRFQ();
+}
+function calcWeightedScore(r,wP,wL,wQ,wR){
+  const maxPrice=Math.max(...RFQ_DATA.filter(x=>x.id===r.id).map(x=>x.price),r.price);
+  const minLead=Math.min(...RFQ_DATA.filter(x=>x.id===r.id).map(x=>x.lead),r.lead);
+  const priceScore=(1-r.price/maxPrice)*5;
+  const leadScore=(minLead/r.lead)*5;
+  const qualScore=r.quality;
+  const relScore=r.reliability;
+  return ((priceScore*wP)+(leadScore*wL)+(qualScore*wQ)+(relScore*wR))/100;
+}
+function renderRFQ(){
+  if(!RFQ_DATA||RFQ_DATA.length===0)RFQ_DATA=getRFQ();
+  const wP=+document.getElementById('w-price')?.value||40;
+  const wL=+document.getElementById('w-lead')?.value||25;
+  const wQ=+document.getElementById('w-quality')?.value||25;
+  const wR=+document.getElementById('w-rel')?.value||10;
+  const rfqIds=[...new Set(RFQ_DATA.map(r=>r.id))];
+  document.getElementById('rfq-kpis').innerHTML=`
+    <div class="kpi-tile ok"><div class="kpi-label">Active RFQs</div><div class="kpi-value">${rfqIds.length}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Bids</div><div class="kpi-value">${RFQ_DATA.length}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Avg Bids/RFQ</div><div class="kpi-value">${(RFQ_DATA.length/Math.max(1,rfqIds.length)).toFixed(1)}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Weight Total</div><div class="kpi-value ${wP+wL+wQ+wR===100?'':'crit'}">${wP+wL+wQ+wR}%</div><div class="kpi-meta">${wP+wL+wQ+wR===100?'Balanced':'Must equal 100%'}</div></div>
+  `;
+  const scored=RFQ_DATA.map(r=>{
+    const tco=r.price+r.freight+(r.price*(0.05));
+    const ws=calcWeightedScore(r,wP,wL,wQ,wR);
+    return {...r,tco,ws};
+  });
+  const bestByRFQ={};
+  rfqIds.forEach(id=>{
+    const bids=scored.filter(r=>r.id===id);
+    const best=bids.reduce((a,b)=>a.ws>b.ws?a:b);
+    bestByRFQ[id+'_'+best.supplier]=true;
+  });
+  document.getElementById('rfq-tbody').innerHTML=scored.map((r,i)=>{
+    const isBest=bestByRFQ[r.id+'_'+r.supplier];
+    return `<tr style="${isBest?'background:var(--accent-light)':''}">
+      <td><strong style="font-family:var(--mono);font-size:11px">${r.id}</strong></td>
+      <td>${r.item}</td>
+      <td>${r.supplier}${isBest?' <span style="color:var(--accent);font-weight:700;font-size:10px">★ BEST</span>':''}</td>
+      <td>$${r.price.toFixed(2)}</td>
+      <td style="text-align:center">${r.lead}d</td>
+      <td style="text-align:center">${r.quality.toFixed(1)}/5</td>
+      <td>$${r.freight.toFixed(2)}</td>
+      <td style="font-weight:700">$${r.tco.toFixed(2)}</td>
+      <td style="font-weight:700;color:${r.ws>=3.5?'var(--accent)':'var(--amber)'}">${r.ws.toFixed(2)}</td>
+      <td><span class="status-pill ${isBest?'pill-ok':'pill-pending'}">${isBest?'Recommend':'Consider'}</span></td>
+    </tr>`;
+  }).join('');
+  const maxWS=Math.max(...scored.map(r=>r.ws),1);
+  document.getElementById('rfq-chart').innerHTML=scored.map(r=>{
+    const h=Math.max(8,Math.round(r.ws/maxWS*100));
+    const isBest=bestByRFQ[r.id+'_'+r.supplier];
+    return `<div class="bar-col"><div class="bar-val">${r.ws.toFixed(1)}</div><div class="bar" style="height:${h}%;background:${isBest?'var(--accent)':'var(--border)'}"></div><div class="bar-label" style="font-size:8px;max-width:48px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.supplier.split(' ')[0]}</div></div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════
+   S&OP PLANNER
+═══════════════════════════════ */
+function getSOP(){const k=currentUser?'cs_sop_'+currentUser.email:'cs_sop_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_SOP.map(i=>({...i}));}
+function saveSOP_data(d){const k=currentUser?'cs_sop_'+currentUser.email:'cs_sop_guest';localStorage.setItem(k,JSON.stringify(d));}
+let SOP_DATA=[];
+function resetSOP(){SOP_DATA=DEFAULT_SOP.map(i=>({...i}));saveSOP_data(SOP_DATA);renderSOP();}
+function saveSOP(){saveSOP_data(SOP_DATA);alert('S&OP plan saved!');}
+function renderSOP(){
+  if(!SOP_DATA||SOP_DATA.length===0)SOP_DATA=getSOP();
+  const upside=+document.getElementById('sop-upside')?.value||15;
+  const downside=+document.getElementById('sop-downside')?.value||10;
+  let runStock=SOP_DATA[0]?.openingStock||500;
+  const rows=SOP_DATA.map((r,i)=>{
+    const open=i===0?r.openingStock:runStock;
+    const close=open+r.supply-r.demand;
+    const gap=r.supply-r.demand;
+    runStock=close;
+    const overCap=r.capacity>100;
+    const stockOut=close<0;
+    const status=stockOut?'⚠ Stockout risk':overCap?'⚡ Over capacity':'✅ Balanced';
+    const sc=stockOut?'pill-crit':overCap?'pill-low':'pill-ok';
+    return {r,open,close,gap,status,sc};
+  });
+  document.getElementById('sop-kpis').innerHTML=`
+    <div class="kpi-tile ok"><div class="kpi-label">Avg Demand</div><div class="kpi-value">${Math.round(SOP_DATA.reduce((s,r)=>s+r.demand,0)/SOP_DATA.length).toLocaleString()}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Avg Supply</div><div class="kpi-value">${Math.round(SOP_DATA.reduce((s,r)=>s+r.supply,0)/SOP_DATA.length).toLocaleString()}</div></div>
+    <div class="kpi-tile ${rows.some(r=>r.close<0)?'crit':'ok'}"><div class="kpi-label">Stockout Months</div><div class="kpi-value">${rows.filter(r=>r.close<0).length}</div></div>
+    <div class="kpi-tile ${SOP_DATA.some(r=>r.capacity>100)?'warn':'ok'}"><div class="kpi-label">Over-Capacity Months</div><div class="kpi-value">${SOP_DATA.filter(r=>r.capacity>100).length}</div></div>
+  `;
+  document.getElementById('sop-tbody').innerHTML=rows.map(({r,open,close,gap,status,sc},i)=>`
+    <tr>
+      <td><strong>${r.month}</strong></td>
+      <td><input type="number" value="${r.demand}" style="width:80px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:var(--sans)" oninput="SOP_DATA[${i}].demand=+this.value;renderSOP()"></td>
+      <td><input type="number" value="${r.supply}" style="width:80px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:var(--sans)" oninput="SOP_DATA[${i}].supply=+this.value;renderSOP()"></td>
+      <td style="text-align:center">${open.toLocaleString()}</td>
+      <td style="font-weight:700;color:${close<0?'var(--danger)':'var(--accent)'}">${close.toLocaleString()}</td>
+      <td style="font-weight:700;color:${gap<0?'var(--danger)':gap>0?'var(--accent)':'var(--muted)'}">${gap>0?'+':''}${gap.toLocaleString()}</td>
+      <td style="text-align:center;color:${r.capacity>100?'var(--danger)':r.capacity>90?'var(--amber)':'var(--accent)'}"><strong>${r.capacity}%</strong></td>
+      <td><span class="status-pill ${sc}">${status}</span></td>
+    </tr>`).join('');
+  const totalDemand=SOP_DATA.reduce((s,r)=>s+r.demand,0);
+  const totalSupply=SOP_DATA.reduce((s,r)=>s+r.supply,0);
+  document.getElementById('sop-scenarios').innerHTML=`
+    <div class="fc-row"><span>Base Demand (YTD)</span><span class="fc-val">${totalDemand.toLocaleString()}</span></div>
+    <div class="fc-row"><span>Upside (+${upside}%)</span><span style="color:var(--accent);font-weight:600">${Math.round(totalDemand*(1+upside/100)).toLocaleString()}</span></div>
+    <div class="fc-row"><span>Downside (-${downside}%)</span><span style="color:var(--amber);font-weight:600">${Math.round(totalDemand*(1-downside/100)).toLocaleString()}</span></div>
+    <div class="fc-row"><span>Total Supply Plan</span><span class="fc-val">${totalSupply.toLocaleString()}</span></div>
+  `;
+  document.getElementById('sop-exec-summary').innerHTML=`
+    <div class="fc-row"><span>Total Demand</span><span class="fc-val">${totalDemand.toLocaleString()}</span></div>
+    <div class="fc-row"><span>Total Supply</span><span class="fc-val">${totalSupply.toLocaleString()}</span></div>
+    <div class="fc-row"><span>Net Gap</span><span style="font-weight:700;color:${totalSupply>=totalDemand?'var(--accent)':'var(--danger)'}">${totalSupply>=totalDemand?'+':''}${(totalSupply-totalDemand).toLocaleString()}</span></div>
+    <div class="fc-row"><span>Avg Capacity</span><span style="font-weight:700;color:${SOP_DATA.reduce((s,r)=>s+r.capacity,0)/SOP_DATA.length>100?'var(--danger)':'var(--accent)'}">${(SOP_DATA.reduce((s,r)=>s+r.capacity,0)/SOP_DATA.length).toFixed(0)}%</span></div>
+    <div class="fc-row"><span>Stockout Risk</span><span style="font-weight:700;color:${rows.some(r=>r.close<0)?'var(--danger)':'var(--accent)'};">${rows.some(r=>r.close<0)?'YES — action needed':'None detected'}</span></div>
+  `;
+}
+
+/* ═══════════════════════════════
+   LANDED COST CALCULATOR
+═══════════════════════════════ */
+function getLC(){const k=currentUser?'cs_lc_'+currentUser.email:'cs_lc_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_LANDED.map(i=>({...i}));}
+function saveLC(d){const k=currentUser?'cs_lc_'+currentUser.email:'cs_lc_guest';localStorage.setItem(k,JSON.stringify(d));}
+let LC_DATA=[];
+function calcLanded(r){const duties=r.fob*(r.duty/100);return r.fob+r.freight+duties+r.insurance+r.lastmile+r.handling;}
+function addLandedItem(){const row={sku:document.getElementById('lc-sku').value.trim(),name:document.getElementById('lc-name').value.trim(),fob:+document.getElementById('lc-fob').value||0,freight:+document.getElementById('lc-freight').value||0,duty:+document.getElementById('lc-duty').value||0,insurance:+document.getElementById('lc-ins').value||0,lastmile:+document.getElementById('lc-lastmile').value||0,handling:+document.getElementById('lc-handling').value||0,sell:+document.getElementById('lc-sell').value||0};if(!row.sku||!row.name)return;LC_DATA.push(row);saveLC(LC_DATA);renderLanded();}
+function renderLanded(){
+  if(!LC_DATA||LC_DATA.length===0)LC_DATA=getLC();
+  const avgMargin=LC_DATA.reduce((s,r)=>{const lc=calcLanded(r);return s+(lc>0&&r.sell>0?(r.sell-lc)/r.sell:0);},0)/Math.max(1,LC_DATA.length);
+  const totalValue=LC_DATA.reduce((s,r)=>s+calcLanded(r),0);
+  document.getElementById('lc-kpis').innerHTML=`
+    <div class="kpi-tile ok"><div class="kpi-label">SKUs Tracked</div><div class="kpi-value">${LC_DATA.length}</div></div>
+    <div class="kpi-tile ${avgMargin<0.2?'warn':'ok'}"><div class="kpi-label">Avg Gross Margin</div><div class="kpi-value">${(avgMargin*100).toFixed(1)}%</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Avg Landed Cost</div><div class="kpi-value">$${(totalValue/Math.max(1,LC_DATA.length)).toFixed(2)}</div></div>
+    <div class="kpi-tile ${LC_DATA.some(r=>(r.sell-calcLanded(r))/r.sell<0.15)?'crit':'ok'}"><div class="kpi-label">Low Margin SKUs</div><div class="kpi-value">${LC_DATA.filter(r=>r.sell>0&&(r.sell-calcLanded(r))/r.sell<0.15).length}</div><div class="kpi-meta">Below 15% margin</div></div>
+  `;
+  document.getElementById('lc-tbody').innerHTML=LC_DATA.map((r,i)=>{
+    const lc=calcLanded(r);
+    const margin=r.sell>0?(r.sell-lc)/r.sell:0;
+    return `<tr>
+      <td><strong style="font-family:var(--mono);font-size:11px">${r.sku}</strong></td>
+      <td>${r.name}</td>
+      <td>$${r.fob.toFixed(2)}</td>
+      <td>$${r.freight.toFixed(2)}</td>
+      <td style="text-align:center">${r.duty}%</td>
+      <td>$${r.insurance.toFixed(2)}</td>
+      <td>$${r.lastmile.toFixed(2)}</td>
+      <td>$${r.handling.toFixed(2)}</td>
+      <td style="font-weight:700;color:var(--navy)">$${lc.toFixed(2)}</td>
+      <td>$${r.sell.toFixed(2)}</td>
+      <td style="font-weight:700;color:${margin<0.15?'var(--danger)':margin<0.25?'var(--amber)':'var(--accent)'}">${(margin*100).toFixed(1)}%</td>
+    </tr>`;
+  }).join('');
+  const maxLC=Math.max(...LC_DATA.map(r=>calcLanded(r)),1);
+  document.getElementById('lc-chart').innerHTML=LC_DATA.map(r=>{
+    const lc=calcLanded(r);
+    const fobH=Math.round(r.fob/lc*100);
+    const frH=Math.round(r.freight/lc*100);
+    const dutyH=Math.round((r.fob*r.duty/100)/lc*100);
+    const otherH=100-fobH-frH-dutyH;
+    const h=Math.max(8,Math.round(lc/maxLC*100));
+    return `<div class="bar-col">
+      <div class="bar-val">$${lc.toFixed(2)}</div>
+      <div style="height:${h}%;display:flex;flex-direction:column;justify-content:flex-end">
+        <div style="background:#8B5CF6;height:${otherH}%;min-height:2px;border-radius:2px 2px 0 0"></div>
+        <div style="background:var(--amber);height:${dutyH}%;min-height:2px"></div>
+        <div style="background:var(--accent);height:${frH}%;min-height:2px"></div>
+        <div style="background:var(--navy);height:${fobH}%;min-height:2px"></div>
+      </div>
+      <div class="bar-label">${r.sku.replace('SC-','')}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════
+   OEE TRACKER
+═══════════════════════════════ */
+function getOEE(){const k=currentUser?'cs_oee_'+currentUser.email:'cs_oee_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d?d:{lines:DEFAULT_OEE.map(i=>({...i})),downtime:DEFAULT_DOWNTIME.map(i=>({...i}))};} 
+function saveOEE(d){const k=currentUser?'cs_oee_'+currentUser.email:'cs_oee_guest';localStorage.setItem(k,JSON.stringify(d));}
+let OEE_DATA={lines:[],downtime:[]};
+function addOEELine(){
+  const line=prompt('Line/Machine name:');if(!line)return;
+  const planned=parseFloat(prompt('Planned hours per shift:')||8);
+  const downtime=parseFloat(prompt('Downtime hours:')||0);
+  const plannedU=parseInt(prompt('Planned units:')||0);
+  const actual=parseInt(prompt('Actual units produced:')||0);
+  const defects=parseInt(prompt('Defect count:')||0);
+  OEE_DATA.lines.push({line,planned,downtime,plannedUnits:plannedU,actual,defects});
+  saveOEE(OEE_DATA);renderOEE();
+}
+function calcOEE(r){
+  const avail=(r.planned-r.downtime)/Math.max(r.planned,0.01);
+  const perf=r.actual/Math.max(r.plannedUnits,1);
+  const qual=(r.actual-r.defects)/Math.max(r.actual,1);
+  return {avail,perf,qual,oee:avail*perf*qual};
+}
+function renderOEE(){
+  if(!OEE_DATA.lines||OEE_DATA.lines.length===0)OEE_DATA=getOEE();
+  const oees=OEE_DATA.lines.map(r=>calcOEE(r).oee);
+  const avgOEE=oees.reduce((a,b)=>a+b,0)/Math.max(1,oees.length);
+  const totalUnits=OEE_DATA.lines.reduce((s,r)=>s+r.actual,0);
+  const totalDefects=OEE_DATA.lines.reduce((s,r)=>s+r.defects,0);
+  document.getElementById('oee-kpis').innerHTML=`
+    <div class="kpi-tile ${avgOEE>=0.85?'ok':avgOEE>=0.7?'warn':'crit'}"><div class="kpi-label">Avg OEE</div><div class="kpi-value">${(avgOEE*100).toFixed(1)}%</div><div class="kpi-meta">World class: 85%+</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Lines</div><div class="kpi-value">${OEE_DATA.lines.length}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Units Produced</div><div class="kpi-value">${totalUnits.toLocaleString()}</div></div>
+    <div class="kpi-tile ${totalDefects/Math.max(totalUnits,1)>0.02?'warn':'ok'}"><div class="kpi-label">Defect Rate</div><div class="kpi-value">${((totalDefects/Math.max(totalUnits,1))*100).toFixed(2)}%</div></div>
+  `;
+  document.getElementById('oee-tbody').innerHTML=OEE_DATA.lines.map((r,i)=>{
+    const {avail,perf,qual,oee}=calcOEE(r);
+    const oeeClass=oee>=0.85?'pill-ok':oee>=0.7?'pill-low':'pill-crit';
+    return `<tr>
+      <td><strong>${r.line}</strong></td>
+      <td style="text-align:center">${r.planned}h</td>
+      <td style="text-align:center;color:${r.downtime>1?'var(--danger)':'var(--muted)'}">${r.downtime}h</td>
+      <td style="text-align:center">${r.plannedUnits}</td>
+      <td style="text-align:center;font-weight:700">${r.actual}</td>
+      <td style="text-align:center;color:${r.defects>5?'var(--danger)':'var(--muted)'}">${r.defects}</td>
+      <td style="text-align:center;color:var(--accent);font-weight:700">${(avail*100).toFixed(1)}%</td>
+      <td style="text-align:center;color:var(--amber);font-weight:700">${(perf*100).toFixed(1)}%</td>
+      <td style="text-align:center;color:#8B5CF6;font-weight:700">${(qual*100).toFixed(1)}%</td>
+      <td><span class="status-pill ${oeeClass}">${(oee*100).toFixed(1)}%</span></td>
+      <td><button onclick="OEE_DATA.lines.splice(${i},1);saveOEE(OEE_DATA);renderOEE()" style="background:none;border:none;color:var(--muted);cursor:pointer">&#215;</button></td>
+    </tr>`;
+  }).join('');
+  const maxOEE=Math.max(...oees,0.01);
+  document.getElementById('oee-chart').innerHTML=OEE_DATA.lines.map((r,i)=>{
+    const {oee}=calcOEE(r);
+    const h=Math.max(8,Math.round(oee/maxOEE*100));
+    const col=oee>=0.85?'var(--accent)':oee>=0.7?'var(--amber)':'var(--danger)';
+    return `<div class="bar-col"><div class="bar-val">${(oee*100).toFixed(0)}%</div><div class="bar" style="height:${h}%;background:${col}"></div><div class="bar-label" style="font-size:8px;max-width:50px;overflow:hidden;text-overflow:ellipsis">${r.line.split(' ')[0]}</div></div>`;
+  }).join('');
+  document.getElementById('downtime-tbody').innerHTML=OEE_DATA.downtime.map((d,i)=>`
+    <tr><td>${d.line}</td><td>${d.date}</td><td style="text-align:center;color:var(--danger);font-weight:700">${d.duration}h</td>
+    <td><span class="status-pill ${d.category==='Breakdown'?'pill-crit':d.category==='Scheduled'?'pill-transit':'pill-low'}">${d.category}</span></td>
+    <td style="font-size:12px;color:var(--muted)">${d.notes}</td>
+    </tr>`).join('');
+}
+
+/* ═══════════════════════════════
+   RISK SCORECARD
+═══════════════════════════════ */
+function getRisk(){const k=currentUser?'cs_risk_'+currentUser.email:'cs_risk_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_RISK.map(i=>({...i}));}
+function saveRisk(d){const k=currentUser?'cs_risk_'+currentUser.email:'cs_risk_guest';localStorage.setItem(k,JSON.stringify(d));}
+let RISK_DATA=[];
+function addRisk(){
+  const category=prompt('Category (Supplier/Logistics/Demand/Geopolitical/Quality):');if(!category)return;
+  const desc=prompt('Risk description:');if(!desc)return;
+  const prob=parseInt(prompt('Probability (1-5):')||3);
+  const impact=parseInt(prompt('Impact (1-5):')||3);
+  const mitigation=prompt('Mitigation action:');
+  const owner=prompt('Risk owner:');
+  const n=RISK_DATA.length+1;
+  RISK_DATA.push({id:'R-'+String(n).padStart(3,'0'),category,desc,prob,impact,mitigation:mitigation||'TBD',owner:owner||'TBD',status:'Monitoring'});
+  saveRisk(RISK_DATA);renderRisk();
+}
+function renderRisk(){
+  if(!RISK_DATA||RISK_DATA.length===0)RISK_DATA=getRisk();
+  const scores=RISK_DATA.map(r=>r.prob*r.impact);
+  const highRisks=RISK_DATA.filter(r=>r.prob*r.impact>=15).length;
+  const medRisks=RISK_DATA.filter(r=>r.prob*r.impact>=8&&r.prob*r.impact<15).length;
+  const avgScore=scores.reduce((a,b)=>a+b,0)/Math.max(1,scores.length);
+  const resilienceIndex=Math.max(0,100-avgScore*4);
+  document.getElementById('risk-kpis').innerHTML=`
+    <div class="kpi-tile ${highRisks>0?'crit':'ok'}"><div class="kpi-label">High Risks</div><div class="kpi-value">${highRisks}</div><div class="kpi-meta">Score 15+</div></div>
+    <div class="kpi-tile ${medRisks>2?'warn':'ok'}"><div class="kpi-label">Medium Risks</div><div class="kpi-value">${medRisks}</div><div class="kpi-meta">Score 8-14</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Risks</div><div class="kpi-value">${RISK_DATA.length}</div></div>
+    <div class="kpi-tile ${resilienceIndex<60?'crit':resilienceIndex<80?'warn':'ok'}"><div class="kpi-label">Resilience Index</div><div class="kpi-value">${resilienceIndex.toFixed(0)}</div><div class="kpi-meta">0-100 (higher=better)</div></div>
+  `;
+  document.getElementById('risk-tbody').innerHTML=RISK_DATA.map((r,i)=>{
+    const score=r.prob*r.impact;
+    const level=score>=15?{l:'HIGH',c:'pill-crit'}:score>=8?{l:'MEDIUM',c:'pill-low'}:{l:'LOW',c:'pill-ok'};
+    return `<tr>
+      <td><strong style="font-family:var(--mono);font-size:11px">${r.id}</strong></td>
+      <td><span style="background:var(--tag-bg);color:var(--tag-txt);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">${r.category}</span></td>
+      <td style="font-size:12px;max-width:200px">${r.desc}</td>
+      <td style="text-align:center;font-weight:700;color:${r.prob>=4?'var(--danger)':r.prob>=3?'var(--amber)':'var(--accent)'}">${r.prob}</td>
+      <td style="text-align:center;font-weight:700;color:${r.impact>=4?'var(--danger)':r.impact>=3?'var(--amber)':'var(--accent)'}">${r.impact}</td>
+      <td style="text-align:center"><strong style="font-size:16px;color:${score>=15?'var(--danger)':score>=8?'var(--amber)':'var(--accent)'}">${score}</strong></td>
+      <td><span class="status-pill ${level.c}">${level.l}</span></td>
+      <td style="font-size:11px;color:var(--muted);max-width:180px">${r.mitigation}</td>
+      <td style="font-size:11px">${r.owner}</td>
+      <td><span class="status-pill pill-transit">${r.status}</span></td>
+      <td><button onclick="RISK_DATA.splice(${i},1);saveRisk(RISK_DATA);renderRisk()" style="background:none;border:none;color:var(--muted);cursor:pointer">&#215;</button></td>
+    </tr>`;
+  }).join('');
+  const cats=['Supplier','Logistics','Demand','Geopolitical','Quality'];
+  document.getElementById('risk-category-chart').innerHTML='<div style="display:flex;flex-direction:column;gap:6px">'+cats.map(cat=>{
+    const catRisks=RISK_DATA.filter(r=>r.category===cat);
+    const avgS=catRisks.reduce((s,r)=>s+r.prob*r.impact,0)/Math.max(1,catRisks.length);
+    const w=Math.round(avgS/25*100);
+    return `<div style="display:flex;align-items:center;gap:8px;font-size:12px">
+      <span style="width:90px;color:var(--muted);flex-shrink:0">${cat}</span>
+      <div style="flex:1;background:var(--border);border-radius:4px;height:18px;position:relative">
+        <div style="height:100%;width:${w}%;background:${avgS>=15?'var(--danger)':avgS>=8?'var(--amber)':'var(--accent)'};border-radius:4px;transition:width .4s"></div>
+      </div>
+      <span style="width:30px;font-weight:700;color:var(--ink)">${catRisks.length}</span>
+    </div>`;
+  }).join('')+'</div>';
+  document.getElementById('risk-resilience').innerHTML=`
+    <div style="text-align:center;padding:20px">
+      <div style="font-size:56px;font-weight:700;color:${resilienceIndex>=80?'var(--accent)':resilienceIndex>=60?'var(--amber)':'var(--danger)'}">
+        ${resilienceIndex.toFixed(0)}
+      </div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px">out of 100</div>
+      <div style="font-size:12px;font-weight:700;color:${resilienceIndex>=80?'var(--accent)':resilienceIndex>=60?'var(--amber)':'var(--danger)'};margin-top:8px">
+        ${resilienceIndex>=80?'Strong Resilience':resilienceIndex>=60?'Moderate Risk Exposure':'High Risk — Action Required'}
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px;max-width:220px;margin:8px auto 0">
+        Based on ${RISK_DATA.length} risks with avg score ${avgScore.toFixed(1)}/25
+      </div>
+    </div>
+  `;
+}
+
+/* ═══════════════════════════════
+   PATCH switchToolPanel + renderToolPanel
+═══════════════════════════════ */
+const _origRenderToolPanel = renderToolPanel;
+function renderToolPanel(p){
+  if(p==='bom')renderBOM();
+  else if(p==='warehouse')renderWarehouse();
+  else if(p==='rfq')renderRFQ();
+  else if(p==='sop')renderSOP();
+  else if(p==='landed')renderLanded();
+  else if(p==='oee')renderOEE();
+  else if(p==='risk')renderRisk();
+  else _origRenderToolPanel(p);
+}
+
+const _origSwitchToolPanel = switchToolPanel;
+function switchToolPanel(panel){
+  document.querySelectorAll('.tool-nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  const ni=document.getElementById('tnav-'+panel);
+  if(ni)ni.classList.add('active');
+  const pa=document.getElementById('panel-'+panel);
+  if(pa)pa.classList.add('active');
+  const names={inventory:'Inventory Manager',procurement:'Purchase Orders',forecast:'Demand Forecasting',kpi:'KPI Dashboard',freight:'Logistics & Freight',bom:'BOM + MRP Planner',warehouse:'Multi-Warehouse Planner',rfq:'RFQ & Negotiation Tracker',sop:'S&OP Planner',landed:'Landed Cost Calculator',oee:'OEE Tracker',risk:'Risk Scorecard'};
+  const tn=document.getElementById('toolName');
+  if(tn)tn.textContent=names[panel]||panel;
+  const plan=currentUser?.plan||'starter';
+  const proOnly=['sop','warehouse','rfq','landed'];
+  const teamOnly=['oee','risk'];
+  ['forecast','freight'].forEach(mod=>{const lock=document.getElementById(mod+'-lock');if(lock)lock.style.display=(mod===panel&&plan==='starter')?'flex':'none';});
+  if(proOnly.includes(panel)&&plan==='starter'){
+    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Pro Plan Required</div><div class="plo-desc">Upgrade to Pro to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe('pro')">Upgrade to Pro</button></div>';}
+    return;
+  }
+  if(teamOnly.includes(panel)&&(plan==='starter'||plan==='pro')){
+    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Team Plan Required</div><div class="plo-desc">Upgrade to Team to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe('team')">Upgrade to Team</button></div>';}
+    return;
+  }
+  renderToolPanel(panel);
+}
+
+
+/* ═══════════════════════════════
+   COMPARE PLAN SWITCHER
+   Simple, reliable, no dependencies
+═══════════════════════════════ */
+function showPlan(plan){
+  var all=['starter','pro','team'];
+  for(var i=0;i<all.length;i++){
+    var t=document.getElementById('ctab-'+all[i]);
+    var p=document.getElementById('cp-'+all[i]);
+    if(t)t.classList.remove('active');
+    if(p)p.style.display='none';
+  }
+  var at=document.getElementById('ctab-'+plan);
+  var ap=document.getElementById('cp-'+plan);
+  if(at)at.classList.add('active');
+  if(ap)ap.style.display='block';
+}
+
+/* Run on load to ensure correct state */
+document.addEventListener('DOMContentLoaded', function() {
+  showPlan('starter');
+});
+
 </script>
+
+
+
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" style="display:none;position:fixed;inset:0;background:var(--navy);z-index:300;flex-direction:column;padding:80px 5% 40px">
+  <button onclick="toggleMobileMenu()" style="position:absolute;top:18px;right:20px;background:none;border:none;color:white;font-size:26px;cursor:pointer">&#215;</button>
+  <a href="#pricing"     onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">Pricing</a>
+  <a href="#templates"   onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">Templates</a>
+  <a href="#compare"     onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">Compare</a>
+  <a href="#about"       onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">About</a>
+  <a href="#faq"         onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">FAQ</a>
+  <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
+    <button onclick="toggleMobileMenu();openAuthModal('login')"  style="background:transparent;border:1px solid rgba(255,255,255,.4);color:white;padding:14px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;font-family:var(--sans)">Log in</button>
+    <button onclick="toggleMobileMenu();openAuthModal('signup')" style="background:var(--accent);border:none;color:var(--navy);padding:14px;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans)">Start free trial</button>
+  </div>
+
 </body>
 </html>
