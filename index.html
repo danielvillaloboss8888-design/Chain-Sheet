@@ -873,9 +873,32 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       </div>
       <!-- FORECAST -->
       <div class="tool-panel" id="panel-forecast">
-        <div class="tp-header"><div><div class="tp-title">Demand Forecasting</div><div class="tp-subtitle">Moving average &amp; exponential smoothing — MAPE scored automatically</div></div></div>
+        <div class="tp-header"><div><div class="tp-title">Demand Forecasting</div><div class="tp-subtitle">Moving average &amp; exponential smoothing — MAPE scored automatically</div></div><div class="tp-actions"><button class="tp-btn ghost" onclick="clearForecastData()">Reset</button><button class="tp-btn accent" onclick="addForecastItem()">+ Add SKU</button></div></div>
         <div style="position:relative">
-          <div class="forecast-grid" id="forecast-grid"></div>
+          <div class="add-row-form" id="fcst-add-form" style="display:none">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add SKU Forecast — Enter 12 months of actual demand</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>SKU</label><input id="fcst-sku" placeholder="SKU-002"></div>
+            <div class="fg-field"><label>Item Name</label><input id="fcst-name" placeholder="Product Name"></div>
+            <div class="fg-field"><label>January</label><input id="fcst-jan" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>February</label><input id="fcst-feb" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>March</label><input id="fcst-mar" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>April</label><input id="fcst-apr" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>May</label><input id="fcst-may" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>June</label><input id="fcst-jun" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>July</label><input id="fcst-jul" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>August</label><input id="fcst-aug" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>September</label><input id="fcst-sep" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>October</label><input id="fcst-oct" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>November</label><input id="fcst-nov" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>December</label><input id="fcst-dec" type="number" placeholder="0"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="tp-btn accent" onclick="saveForecastItem()">Save SKU Forecast</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('fcst-add-form').style.display='none'">Cancel</button>
+          </div>
+        </div>
+        <div class="forecast-grid" id="forecast-grid"></div>
           <div class="plan-lock-overlay" id="forecast-lock" style="display:none">
             <div class="plo-icon">&#128274;</div>
             <div class="plo-title">Pro Plan Required</div>
@@ -894,25 +917,40 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
         <div class="chart-wrap"><div class="chart-title">Monthly Fulfillment Rate (simulated)</div><div class="bar-chart" id="kpi-chart"></div></div>
       </div>
       <!-- FREIGHT -->
-      <div class="tool-panel" id="panel-freight">
+      <div class="tool-panel" <div class="tool-panel" id="panel-freight">
         <div class="tp-header">
           <div><div class="tp-title">Logistics &amp; Freight</div><div class="tp-subtitle">Shipment tracking with carrier performance analysis</div></div>
-          <div class="tp-actions"><button class="tp-btn accent" onclick="addFreightRow()">+ Add Shipment</button></div>
-        </div>
-        <div class="kpi-row" id="freight-kpis"></div>
-        <div style="position:relative">
-          <div class="data-table-wrap"><table class="data-table"><thead><tr><th>ID</th><th>Direction</th><th>Route</th><th>Carrier</th><th>Ship Date</th><th>ETA</th><th>Weight (kg)</th><th>Cost</th><th>Status</th></tr></thead><tbody id="freight-tbody"></tbody></table></div>
-          <div class="plan-lock-overlay" id="freight-lock" style="display:none">
-            <div class="plo-icon">&#128274;</div>
-            <div class="plo-title">Pro Plan Required</div>
-            <div class="plo-desc">Upgrade to Pro to unlock Logistics</div>
-            <button class="plo-btn" onclick="closeTool();handleSubscribe('pro')">Upgrade to Pro</button>
+          <div class="tp-actions">
+            <button class="tp-btn accent" onclick="addFreightRow()">+ Add Shipment</button>
           </div>
         </div>
+        <div class="kpi-row" id="freight-kpis"></div>
+        <div class="add-row-form" id="freight-add-form" style="display:none" data-edit-idx="">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Shipment Details</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>Shipment ID</label><input id="ff-id" placeholder="SHP-001"></div>
+            <div class="fg-field"><label>Direction</label><select id="ff-dir" style="width:100%;padding:9px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans)"><option>Inbound</option><option>Outbound</option></select></div>
+            <div class="fg-field"><label>Route</label><input id="ff-route" placeholder="Origin to Destination"></div>
+            <div class="fg-field"><label>Carrier</label><input id="ff-carrier" placeholder="DHL, FedEx, etc."></div>
+            <div class="fg-field"><label>Ship Date</label><input id="ff-ship" type="date"></div>
+            <div class="fg-field"><label>ETA</label><input id="ff-eta" placeholder="TBD or date"></div>
+            <div class="fg-field"><label>Weight (kg)</label><input id="ff-kg" type="number" placeholder="500"></div>
+            <div class="fg-field"><label>Total Cost ($)</label><input id="ff-cost" type="number" placeholder="400"></div>
+            <div class="fg-field"><label>Status</label><select id="ff-status" style="width:100%;padding:9px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans)"><option>Booked</option><option>In Transit</option><option>Delivered</option><option>Exception</option></select></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="tp-btn accent" onclick="saveFreightRow()">Save Shipment</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('freight-add-form').style.display='none';resetFreightForm()">Cancel</button>
+          </div>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th>ID</th><th>Direction</th><th>Route</th><th>Carrier</th><th>Ship Date</th><th>ETA</th><th>Weight (kg)</th><th>Cost</th><th>Cost/kg</th><th>Status</th><th></th></tr></thead>
+            <tbody id="freight-tbody"></tbody>
+          </table>
+        </div>
+        <div class="chart-wrap"><div class="chart-title">Cost per KG by Shipment</div><div class="bar-chart" id="freight-chart"></div></div>
       </div>
-    </div>
-  </div>
-</div>
 
       <!-- BOM + MRP PANEL -->
       <div class="tool-panel" id="panel-bom">
@@ -957,6 +995,22 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
           <div><div class="tp-title">Multi-Warehouse Inventory Planner</div><div class="tp-subtitle">Track stock across up to 4 warehouse locations with FIFO costing</div></div>
           <div class="tp-actions"><button class="tp-btn accent" onclick="addWarehouseItem()">+ Add Item</button></div>
         </div>
+        <div class="add-row-form" id="wh-add-form" style="display:none" data-edit-idx="">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit Item</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>SKU</label><input id="wf-sku" placeholder="SKU-001"></div>
+            <div class="fg-field"><label>Item Name</label><input id="wf-name" placeholder="Product Name"></div>
+            <div class="fg-field"><label>WH-A Stock</label><input id="wf-wha" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>WH-B Stock</label><input id="wf-whb" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>WH-C Stock</label><input id="wf-whc" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>WH-D Stock</label><input id="wf-whd" type="number" placeholder="0"></div>
+            <div class="fg-field"><label>Unit Cost ($)</label><input id="wf-cost" type="number" step="0.01" placeholder="10.00"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="tp-btn accent" onclick="saveWarehouseItem()">Save Item</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('wh-add-form').style.display='none'">Cancel</button>
+          </div>
+        </div>
         <div class="kpi-row" id="wh-kpis"></div>
         <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
           <div style="font-size:11px;font-weight:700;margin-bottom:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Warehouse Locations</div>
@@ -971,6 +1025,23 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
         <div class="tp-header">
           <div><div class="tp-title">Supplier RFQ &amp; Negotiation Tracker</div><div class="tp-subtitle">Compare supplier bids with weighted scoring and TCO calculation</div></div>
           <div class="tp-actions"><button class="tp-btn accent" onclick="addRFQ()">+ New RFQ Bid</button></div>
+        </div>
+        <div class="add-row-form" id="rfq-add-form" style="display:none" data-edit-idx="">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit RFQ Bid</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>RFQ #</label><input id="rf-id" placeholder="RFQ-001"></div>
+            <div class="fg-field"><label>Item</label><input id="rf-item" placeholder="Bearing Type A4"></div>
+            <div class="fg-field"><label>Supplier</label><input id="rf-supplier" placeholder="AcmeParts Co."></div>
+            <div class="fg-field"><label>Unit Price ($)</label><input id="rf-price" type="number" step="0.01" placeholder="10.00"></div>
+            <div class="fg-field"><label>Lead Time (days)</label><input id="rf-lead" type="number" placeholder="7"></div>
+            <div class="fg-field"><label>Quality Score (1-5)</label><input id="rf-quality" type="number" step="0.1" min="1" max="5" placeholder="4.0"></div>
+            <div class="fg-field"><label>Freight/unit ($)</label><input id="rf-freight" type="number" step="0.01" placeholder="0.50"></div>
+            <div class="fg-field"><label>Reliability (1-5)</label><input id="rf-rel" type="number" step="0.1" min="1" max="5" placeholder="4.0"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="tp-btn accent" onclick="saveRFQRow()">Save Bid</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('rfq-add-form').style.display='none'">Cancel</button>
+          </div>
         </div>
         <div class="kpi-row" id="rfq-kpis"></div>
         <div class="data-table-wrap"><table class="data-table"><thead><tr><th>RFQ #</th><th>Item</th><th>Supplier</th><th>Unit Price</th><th>Lead Time</th><th>Quality Score</th><th>Freight Est.</th><th>TCO/Unit</th><th>Weighted Score</th><th>Recommendation</th></tr></thead><tbody id="rfq-tbody"></tbody></table></div>
@@ -1017,22 +1088,25 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
           <div class="tp-actions"><button class="tp-btn accent" onclick="addLandedItem()">+ Add SKU</button></div>
         </div>
         <div class="kpi-row" id="lc-kpis"></div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>FOB</th><th>Freight</th><th>Duties %</th><th>Insurance</th><th>Last Mile</th><th>Handling</th><th>Landed Cost</th><th>Sell Price</th><th>Gross Margin</th></tr></thead><tbody id="lc-tbody"></tbody></table></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>FOB</th><th>Freight</th><th>Duties %</th><th>Insurance</th><th>Last Mile</th><th>Handling</th><th>Landed Cost</th><th>Sell Price</th><th>Gross Margin</th><th></th></tr></thead><tbody id="lc-tbody"></tbody></table></div>
         <div class="chart-wrap"><div class="chart-title">Cost Breakdown by SKU (FOB / Freight / Duties / Other)</div><div class="bar-chart" id="lc-chart"></div></div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px">
+        <div id="lc-add-form" style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px;display:none">
           <div style="font-size:13px;font-weight:700;margin-bottom:12px">Add New SKU</div>
           <div class="form-grid">
-            <div class="fg-field"><label>SKU</label><input id="lc-sku" placeholder="SC-001"></div>
-            <div class="fg-field"><label>Item Name</label><input id="lc-name" placeholder="Bearing Type A4"></div>
-            <div class="fg-field"><label>FOB Price ($)</label><input id="lc-fob" type="number" step="0.01" placeholder="4.50"></div>
+            <div class="fg-field"><label>SKU</label><input id="lc-sku" placeholder="SKU-001"></div>
+            <div class="fg-field"><label>Item Name</label><input id="lc-name" placeholder="Product Name"></div>
+            <div class="fg-field"><label>FOB Price ($)</label><input id="lc-fob" type="number" step="0.01" placeholder="8.00"></div>
             <div class="fg-field"><label>Freight ($)</label><input id="lc-freight" type="number" step="0.01" placeholder="0.80"></div>
             <div class="fg-field"><label>Duty Rate (%)</label><input id="lc-duty" type="number" step="0.1" placeholder="5"></div>
             <div class="fg-field"><label>Insurance ($)</label><input id="lc-ins" type="number" step="0.01" placeholder="0.20"></div>
             <div class="fg-field"><label>Last Mile ($)</label><input id="lc-lastmile" type="number" step="0.01" placeholder="0.30"></div>
             <div class="fg-field"><label>Handling ($)</label><input id="lc-handling" type="number" step="0.01" placeholder="0.15"></div>
-            <div class="fg-field"><label>Selling Price ($)</label><input id="lc-sell" type="number" step="0.01" placeholder="12.00"></div>
+            <div class="fg-field"><label>Selling Price ($)</label><input id="lc-sell" type="number" step="0.01" placeholder="25.00"></div>
           </div>
-          <button class="tp-btn accent" style="margin-top:8px" onclick="saveLandedItem()">Add to Calculator</button>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="tp-btn accent" onclick="saveLandedItem()">Save SKU</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('lc-add-form').style.display='none'">Cancel</button>
+          </div>
         </div>
       </div>
 
@@ -1041,6 +1115,21 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
         <div class="tp-header">
           <div><div class="tp-title">Production Capacity &amp; OEE Tracker</div><div class="tp-subtitle">Overall Equipment Effectiveness — Availability × Performance × Quality</div></div>
           <div class="tp-actions"><button class="tp-btn accent" onclick="addOEELine()">+ Add Line</button></div>
+        </div>
+        <div class="add-row-form" id="oee-add-form" style="display:none" data-edit-idx="">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit Production Line</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>Line / Machine Name</label><input id="of-line" placeholder="Line A - Assembly"></div>
+            <div class="fg-field"><label>Planned Hours/Shift</label><input id="of-planned" type="number" step="0.5" placeholder="8"></div>
+            <div class="fg-field"><label>Downtime Hours</label><input id="of-downtime" type="number" step="0.1" placeholder="0.5"></div>
+            <div class="fg-field"><label>Planned Units</label><input id="of-punits" type="number" placeholder="200"></div>
+            <div class="fg-field"><label>Actual Units Produced</label><input id="of-actual" type="number" placeholder="185"></div>
+            <div class="fg-field"><label>Defect Count</label><input id="of-defects" type="number" placeholder="3"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="tp-btn accent" onclick="saveOEELine()">Save Line</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('oee-add-form').style.display='none'">Cancel</button>
+          </div>
         </div>
         <div class="kpi-row" id="oee-kpis"></div>
         <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Line / Machine</th><th>Planned Hrs</th><th>Downtime Hrs</th><th>Planned Units</th><th>Actual Units</th><th>Defects</th><th>Availability</th><th>Performance</th><th>Quality</th><th>OEE</th><th></th></tr></thead><tbody id="oee-tbody"></tbody></table></div>
@@ -1053,6 +1142,23 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
         <div class="tp-header">
           <div><div class="tp-title">Supply Chain Risk Scorecard</div><div class="tp-subtitle">Probability × Impact matrix with mitigation tracking and resilience index</div></div>
           <div class="tp-actions"><button class="tp-btn accent" onclick="addRisk()">+ Add Risk</button></div>
+        </div>
+        <div class="add-row-form" id="risk-add-form" style="display:none" data-edit-idx="">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit Risk</div>
+          <div class="form-grid">
+            <div class="fg-field"><label>Risk ID</label><input id="rk-id" placeholder="R-001"></div>
+            <div class="fg-field"><label>Category</label><select id="rk-cat" style="width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans)"><option>Supplier</option><option>Logistics</option><option>Demand</option><option>Geopolitical</option><option>Quality</option><option>Financial</option><option>Other</option></select></div>
+            <div class="fg-field" style="grid-column:span 2"><label>Risk Description</label><input id="rk-desc" placeholder="Describe the risk"></div>
+            <div class="fg-field"><label>Probability (1-5)</label><input id="rk-prob" type="number" min="1" max="5" placeholder="3"></div>
+            <div class="fg-field"><label>Impact (1-5)</label><input id="rk-impact" type="number" min="1" max="5" placeholder="4"></div>
+            <div class="fg-field" style="grid-column:span 2"><label>Mitigation Action</label><input id="rk-mit" placeholder="Action to reduce risk"></div>
+            <div class="fg-field"><label>Risk Owner</label><input id="rk-owner" placeholder="Procurement"></div>
+            <div class="fg-field"><label>Status</label><select id="rk-status" style="width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans)"><option>Monitoring</option><option>In Progress</option><option>Active</option><option>Planned</option><option>Resolved</option></select></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="tp-btn accent" onclick="saveRiskRow()">Save Risk</button>
+            <button class="tp-btn ghost" onclick="document.getElementById('risk-add-form').style.display='none'">Cancel</button>
+          </div>
         </div>
         <div class="kpi-row" id="risk-kpis"></div>
         <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Risk ID</th><th>Category</th><th>Description</th><th>Probability</th><th>Impact</th><th>Score</th><th>Level</th><th>Mitigation</th><th>Owner</th><th>Status</th><th></th></tr></thead><tbody id="risk-tbody"></tbody></table></div>
@@ -1076,48 +1182,23 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <div class="plan-selector" id="signupPlanSelector">
         <div class="plan-opt" onclick="selectSignupPlan('starter',this)"><div class="plan-opt-name">Starter</div><div class="plan-opt-price" id="sop-starter">$9<sub>/mo</sub></div><div class="plan-opt-note">6 templates</div></div>
         <div class="plan-opt selected" onclick="selectSignupPlan('pro',this)"><div class="plan-opt-name">&#11088; Pro</div><div class="plan-opt-price" id="sop-pro">$19<sub>/mo</sub></div><div class="plan-opt-note">All 12</div></div>
-        <div class="plan-opt" onclick="selectSignupPlan('team',this)"><div class="plan-opt-name">Team</div><div class="plan-opt-price" id="sop-team">$39<sub>/mo</sub></div><div class="plan-opt-note">5 seats</div></div>
+        <div class="plan-opt" onclick="selectSignupPlan('team',this)"><div class="plan-opt-name">Team</div>
+
+</div>
       </div>
-      <div class="form-error-banner" id="signupError"></div>
-      <div class="field"><label>Full name</label><input type="text" id="suName" placeholder="Alex Johnson" autocomplete="name"><div class="field-error" id="suNameErr">Please enter your name.</div></div>
-      <div class="field"><label>Work email</label><input type="email" id="suEmail" placeholder="alex@company.com" autocomplete="email"><div class="field-error" id="suEmailErr">Enter a valid email.</div></div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" id="suPw" placeholder="At least 8 characters" oninput="checkPwStrength(this.value)">
-        <div class="pw-bars"><div class="pw-bar" id="pwb1"></div><div class="pw-bar" id="pwb2"></div><div class="pw-bar" id="pwb3"></div><div class="pw-bar" id="pwb4"></div></div>
-        <div class="pw-label" id="pwLabel">Enter a password</div>
-        <div class="field-error" id="suPwErr">At least 8 characters.</div>
-      </div>
-      <button class="btn-form accent" onclick="doSignupStep1()">Create account &amp; continue &#8594;</button>
-      <div class="modal-switch">Already have an account? <a onclick="switchAuth('login')">Log in</a></div>
-    </div>
-    <!-- Step 2: Payment -->
-    <!-- Login -->
-    <div id="loginView" style="display:none">
-      <div class="modal-title">Welcome back</div>
-      <div class="modal-subtitle">Log in to access your templates and workspace.</div>
-      <div class="form-error-banner" id="loginError"></div>
-      <div class="field"><label>Email</label><input type="email" id="liEmail" placeholder="alex@company.com" autocomplete="email"><div class="field-error" id="liEmailErr">Enter a valid email.</div></div>
-      <div class="field"><label>Password</label><input type="password" id="liPw" placeholder="Your password" autocomplete="current-password"><div class="field-error" id="liPwErr">Please enter your password.</div></div>
-      <button class="btn-form" onclick="doLogin()">Log in</button>
-      <div class="modal-switch">No account? <a onclick="switchAuth('signup')">Start free trial</a></div>
-    </div>
-    <!-- Success -->
-    <div id="suSuccessView" style="display:none">
-      <div class="modal-success">
-        <div class="success-icon">&#127881;</div>
-        <div class="success-title">Trial started!</div>
-        <div class="success-desc">Your 7-day free trial is live. You won't be charged until <strong id="su-success-date"></strong>.</div>
-        <div class="plan-benefit-box"><h4 id="su-benefit-title">Your plan includes:</h4><ul id="su-benefit-list"></ul></div>
-        <button class="btn-form accent" onclick="closeModal('authOverlay');openTool()">Open my workspace &#8594;</button>
-        <button class="btn-form" style="margin-top:8px;background:transparent;color:var(--ink);border:1px solid var(--border)" onclick="closeModal('authOverlay')">Browse templates</button>
+      <!-- Success View -->
+      <div id="suSuccessView" style="display:none">
+        <div class="modal-success">
+          <div class="success-icon">&#127881;</div>
+          <div class="success-title">Account created!</div>
+          <div class="success-desc">Welcome to ChainSheet. You will be redirected to checkout to activate your plan.</div>
+          <div class="plan-benefit-box"><h4 id="su-benefit-title">Your plan includes:<</h4>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-
 const SUPABASE_URL='https://jjnjjtxayyafejgfbhqs.supabase.co';
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqbmpqdHhheXlhZmVqZ2ZiaHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNTI0MjYsImV4cCI6MjA5NzkyODQyNn0.S3925uixfDf8EiFO995vlQrECyvjoV6326FwTPHOWJE';
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
@@ -1135,109 +1216,121 @@ const PLAN_BENEFITS={
   team:['Everything in Pro','5 team seats','OEE & Risk Scorecard templates','Same-day support','Custom branding','Onboarding call']
 };
 const DEFAULT_INV=[
-  {sku:'SC-001',name:'Bearing Type A4',cat:'Mechanical',qty:840,cost:4.50,rop:200,roq:500,daily:8},
-  {sku:'SC-002',name:'Valve Kit VK-20',cat:'Hydraulics',qty:42,cost:18.75,rop:150,roq:300,daily:6},
-  {sku:'SC-003',name:'Motor 3-Phase 2kW',cat:'Electrical',qty:317,cost:210.00,rop:100,roq:200,daily:4},
-  {sku:'SC-004',name:'Filter Set FS-10',cat:'Filtration',qty:18,cost:6.20,rop:80,roq:200,daily:5},
-  {sku:'SC-005',name:'Seal Ring SR-5',cat:'Sealing',qty:1240,cost:1.80,rop:300,roq:800,daily:12},
-  {sku:'SC-006',name:'Pump Head PH-3',cat:'Hydraulics',qty:5,cost:95.00,rop:25,roq:50,daily:2}
+  {sku:'SKU-001',name:'Example Product',cat:'General',qty:100,cost:10.00,rop:20,roq:50,daily:5}
 ];
 const DEFAULT_PO=[
-  {po:'PO-001',vendor:'AcmeParts Co.',item:'Bearing Type A4 x500',qty:500,price:4.50,eta:'2025-02-10',status:'Received'},
-  {po:'PO-002',vendor:'HydroSupply Ltd',item:'Valve Kit VK-20 x300',qty:300,price:18.75,eta:'2025-02-18',status:'In Transit'},
-  {po:'PO-003',vendor:'PowerElec Inc',item:'Motor 3-Phase x50',qty:50,price:210.00,eta:'2025-02-25',status:'Pending'},
-  {po:'PO-004',vendor:'FilterPro',item:'Filter Set FS-10 x200',qty:200,price:6.20,eta:'2025-02-14',status:'Received'}
+  {id:'PO-001',vendor:'Example Supplier',item:'Example Product',qty:50,price:10.00,status:'Pending',ordered:new Date().toISOString().slice(0,10),eta:'TBD',received:0}
 ];
 const DEFAULT_FREIGHT=[
-  {id:'SH-001',dir:'Inbound',route:'Shanghai ࢐ Chicago',carrier:'Maersk',ship:'2025-01-03',eta:'2025-01-28',kg:5800,cost:3200,status:'Delivered'},
-  {id:'SH-002',dir:'Outbound',route:'Chicago ࢐ Toronto',carrier:'FedEx',ship:'2025-01-08',eta:'2025-01-12',kg:980,cost:420,status:'Delivered'},
-  {id:'SH-003',dir:'Inbound',route:'Hamburg ࢐ New York',carrier:'MSC',ship:'2025-01-10',eta:'2025-02-05',kg:4200,cost:2100,status:'In Transit'},
-  {id:'SH-004',dir:'Outbound',route:'Chicago ࢐ Dallas',carrier:'UPS',ship:'2025-01-15',eta:'2025-01-18',kg:650,cost:310,status:'Booked'}
+  {id:'SHP-001',type:'Inbound',dir:'Inbound',route:'Origin → Destination',carrier:'Example Carrier',ship:new Date().toISOString().slice(0,10),eta:'TBD',kg:500,cost:400,status:'Booked'}
 ];
-const FCST=[1200,1350,1180,1420,1390,1480,1510,1460,1550,1620,1590,1640];
+const DEFAULT_BOM=[
+  {level:1,parent:'PRODUCT-001',sku:'COMP-001',name:'Example Component',qty:2,cost:5.00,lead:7,uom:'EA'}
+];
+const DEFAULT_WAREHOUSE=[
+  {sku:'SKU-001',name:'Example Product',whA:50,whB:30,whC:20,whD:0,cost:10.00}
+];
+const DEFAULT_RFQ=[
+  {id:'RFQ-001',item:'Example Item',supplier:'Example Supplier',price:10.00,lead:7,quality:4.0,freight:0.50,reliability:4.0}
+];
+const DEFAULT_SOP=[
+  {month:'Jan',demand:1000,supply:1000,openingStock:200,capacity:80},
+  {month:'Feb',demand:1100,supply:1100,openingStock:200,capacity:85},
+  {month:'Mar',demand:1050,supply:1100,openingStock:200,capacity:82},
+  {month:'Apr',demand:1200,supply:1200,openingStock:250,capacity:90},
+  {month:'May',demand:1150,supply:1150,openingStock:250,capacity:88},
+  {month:'Jun',demand:1300,supply:1300,openingStock:250,capacity:95},
+  {month:'Jul',demand:1250,supply:1250,openingStock:250,capacity:92},
+  {month:'Aug',demand:1400,supply:1400,openingStock:250,capacity:98},
+  {month:'Sep',demand:1350,supply:1350,openingStock:250,capacity:95},
+  {month:'Oct',demand:1500,supply:1500,openingStock:300,capacity:100},
+  {month:'Nov',demand:1450,supply:1450,openingStock:300,capacity:98},
+  {month:'Dec',demand:1600,supply:1600,openingStock:300,capacity:105}
+];
+const DEFAULT_LANDED=[
+  {sku:'SKU-001',name:'Example Product',fob:8.00,freight:0.80,duty:5,insurance:0.20,lastmile:0.30,handling:0.15,sell:25.00}
+];
+const DEFAULT_OEE=[
+  {line:'Line A - Example',planned:8,downtime:0.5,plannedUnits:200,actual:185,defects:3}
+];
+const DEFAULT_DOWNTIME=[
+  {line:'Line A - Example',date:new Date().toISOString().slice(0,10),duration:0.5,category:'Scheduled',notes:'Planned maintenance'}
+];
+const DEFAULT_RISK=[
+  {id:'R-001',category:'Supplier',desc:'Example: Single-source dependency for key component',prob:3,impact:4,mitigation:'Qualify a secondary supplier',owner:'Procurement',status:'In Progress'}
+];
+
+
+
+/* ═══════════════════════════════
+   F — SUPPLY CHAIN FORMULA LIBRARY
+   All calculations in one place
+═══════════════════════════════ */
 const MOS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-/* Formula engine — logic stays here, only data in storage */
-const F={
-  eoq(d,c){const a=d*365,oc=50,h=c*.2;return Math.round(Math.sqrt(2*a*oc/h))},
-  dos(q,d){return d>0?Math.round(q/d):0},
-  val(q,c){return q*c},
-  status(q,rop){if(q<=rop*.3)return{l:'CRITICAL',c:'pill-crit'};if(q<=rop)return{l:'LOW',c:'pill-low'};return{l:'OK',c:'pill-ok'}},
-  ma3(d){return Math.round(d.slice(-3).reduce((a,b)=>a+b,0)/3)},
-  es(d,a=.3){let f=d[0];for(let i=1;i<d.length;i++)f=a*d[i]+(1-a)*f;return Math.round(f)},
-  otif(inv){return inv.filter(i=>F.status(i.qty,i.rop).l==='OK').length/Math.max(1,inv.length)},
-  poOT(pos){const r=pos.filter(p=>p.status==='Received');return r.length/Math.max(1,pos.length)},
-  spend(pos){return pos.reduce((s,p)=>s+p.qty*p.price,0)},
-  cpkg(sh){const t=sh.reduce((s,f)=>({c:s.c+f.cost,k:s.k+f.kg}),{c:0,k:0});return t.k?t.c/t.k:0}
+let FCST_DATA={items:[{sku:'SKU-001',name:'Example Product',data:[980,1020,960,1100,1150,1080,1200,1180,1250,1300,1280,1350]}]};
+function getFCST(){const k=currentUser?'cs_fcst_'+currentUser.email:'cs_fcst_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||JSON.parse(JSON.stringify(FCST_DATA));}
+function saveFCST(d){const k=currentUser?'cs_fcst_'+currentUser.email:'cs_fcst_guest';localStorage.setItem(k,JSON.stringify(d));}
+
+const F = {
+  /* Inventory value */
+  val: (qty, cost) => qty * cost,
+
+  /* Days of stock remaining */
+  dos: (qty, daily) => daily > 0 ? Math.round(qty / daily) : 999,
+
+  /* Economic Order Quantity */
+  eoq: (daily, cost) => {
+    const annualDemand = daily * 365;
+    const orderCost = 50;   // $ per order
+    const holdRate = 0.20;  // 20% holding rate
+    if (cost <= 0 || daily <= 0) return 0;
+    return Math.round(Math.sqrt((2 * annualDemand * orderCost) / (cost * holdRate)));
+  },
+
+  /* Stock status */
+  status: (qty, rop) => {
+    if (qty <= rop * 0.3) return {l:'CRITICAL', c:'pill-crit'};
+    if (qty <= rop)       return {l:'LOW',      c:'pill-low'};
+    return                       {l:'OK',        c:'pill-ok'};
+  },
+
+  /* On-time in-full rate */
+  otif: (inv) => {
+    const ok = inv.filter(i => F.status(i.qty, i.rop).l === 'OK').length;
+    return inv.length > 0 ? ok / inv.length : 1;
+  },
+
+  /* PO on-time rate */
+  poOT: (pos) => {
+    const received = pos.filter(p => p.status === 'Received' || p.status === 'received');
+    if (received.length === 0) return 1;
+    const onTime = received.filter(p => !p.late).length;
+    return onTime / received.length;
+  },
+
+  /* Total PO spend */
+  spend: (pos) => pos.reduce((s, p) => s + (p.qty || 0) * (p.price || 0), 0),
+
+  /* Moving average (3-period) */
+  ma3: (data, i) => {
+    if (i < 2) return data[i] || 0;
+    return Math.round((data[i-2] + data[i-1] + data[i]) / 3);
+  },
+
+  /* Exponential smoothing */
+  es: (prev, actual, alpha) => Math.round(alpha * actual + (1 - alpha) * prev),
+
+  /* Cost per kg (freight) */
+  cpkg: (cost, kg) => kg > 0 ? (cost / kg).toFixed(2) : '0.00',
 };
 
-const DEFAULT_BOM = [
-  {level:1,parent:'PUMP-ASSY-001',sku:'SC-003',name:'Motor 3-Phase 2kW',qty:1,cost:210.00,lead:14,uom:'EA'},
-  {level:1,parent:'PUMP-ASSY-001',sku:'SC-006',name:'Pump Head PH-3',qty:1,cost:95.00,lead:10,uom:'EA'},
-  {level:1,parent:'PUMP-ASSY-001',sku:'SC-002',name:'Valve Kit VK-20',qty:2,cost:18.75,lead:7,uom:'EA'},
-  {level:1,parent:'PUMP-ASSY-001',sku:'SC-005',name:'Seal Ring SR-5',qty:4,cost:1.80,lead:3,uom:'EA'},
-  {level:2,parent:'SC-003',sku:'SC-010',name:'Relay Module RM-5',qty:1,cost:8.90,lead:5,uom:'EA'},
-  {level:2,parent:'SC-006',sku:'SC-001',name:'Bearing Type A4',qty:2,cost:4.50,lead:2,uom:'EA'},
-];
-
-const DEFAULT_WAREHOUSE = [
-  {sku:'SC-001',name:'Bearing Type A4',whA:300,whB:200,whC:180,whD:160,cost:4.50},
-  {sku:'SC-002',name:'Valve Kit VK-20',whA:20,whB:10,whC:8,whD:4,cost:18.75},
-  {sku:'SC-003',name:'Motor 3-Phase 2kW',whA:120,whB:80,whC:70,whD:47,cost:210.00},
-  {sku:'SC-004',name:'Filter Set FS-10',whA:8,whB:5,whC:3,whD:2,cost:6.20},
-  {sku:'SC-005',name:'Seal Ring SR-5',whA:400,whB:320,whC:280,whD:240,cost:1.80},
-];
-
-const DEFAULT_RFQ = [
-  {id:'RFQ-001',item:'Bearing Type A4',supplier:'AcmeParts Co.',price:4.50,lead:7,quality:4.5,freight:0.40,reliability:4.0},
-  {id:'RFQ-001',item:'Bearing Type A4',supplier:'GlobalBear Ltd',price:3.90,lead:14,quality:3.8,freight:0.80,reliability:3.5},
-  {id:'RFQ-001',item:'Bearing Type A4',supplier:'PrecisionParts Inc',price:5.10,lead:5,quality:5.0,freight:0.30,reliability:4.8},
-  {id:'RFQ-002',item:'Valve Kit VK-20',supplier:'HydroSupply Ltd',price:18.75,lead:14,quality:4.0,freight:1.20,reliability:3.8},
-  {id:'RFQ-002',item:'Valve Kit VK-20',supplier:'ValvePro',price:17.50,lead:21,quality:3.5,freight:1.80,reliability:3.2},
-];
-
-const DEFAULT_SOP = [
-  {month:'Jan',demand:1200,supply:1200,openingStock:500,capacity:85},
-  {month:'Feb',demand:1350,supply:1300,openingStock:500,capacity:90},
-  {month:'Mar',demand:1180,supply:1250,openingStock:450,capacity:82},
-  {month:'Apr',demand:1420,supply:1400,openingStock:520,capacity:95},
-  {month:'May',demand:1390,supply:1390,openingStock:500,capacity:93},
-  {month:'Jun',demand:1480,supply:1450,openingStock:500,capacity:97},
-  {month:'Jul',demand:1510,supply:1500,openingStock:470,capacity:100},
-  {month:'Aug',demand:1460,supply:1480,openingStock:460,capacity:98},
-  {month:'Sep',demand:1550,supply:1520,openingStock:480,capacity:100},
-  {month:'Oct',demand:1620,supply:1600,openingStock:450,capacity:107},
-  {month:'Nov',demand:1590,supply:1600,openingStock:430,capacity:105},
-  {month:'Dec',demand:1640,supply:1650,openingStock:440,capacity:108},
-];
-
-const DEFAULT_LANDED = [
-  {sku:'SC-001',name:'Bearing Type A4',fob:3.20,freight:0.40,duty:5,insurance:0.10,lastmile:0.20,handling:0.10,sell:12.00},
-  {sku:'SC-002',name:'Valve Kit VK-20',fob:14.00,freight:1.20,duty:8,insurance:0.30,lastmile:0.60,handling:0.25,sell:52.00},
-  {sku:'SC-003',name:'Motor 3-Phase 2kW',fob:160.00,freight:12.00,duty:10,insurance:1.80,lastmile:4.00,handling:2.00,sell:480.00},
-];
-
-const DEFAULT_OEE = [
-  {line:'Line A - Assembly',planned:8,downtime:0.8,plannedUnits:240,actual:220,defects:5},
-  {line:'Line B - Machining',planned:8,downtime:1.2,plannedUnits:180,actual:155,defects:8},
-  {line:'Line C - Packaging',planned:8,downtime:0.3,plannedUnits:600,actual:580,defects:12},
-  {line:'Line D - Quality',planned:8,downtime:0.5,plannedUnits:300,actual:285,defects:3},
-];
-
-const DEFAULT_DOWNTIME = [
-  {line:'Line A - Assembly',date:'2025-01-10',duration:0.5,category:'Breakdown',notes:'Motor fault - replaced'},
-  {line:'Line B - Machining',date:'2025-01-11',duration:1.2,category:'Scheduled',notes:'Planned maintenance'},
-  {line:'Line C - Packaging',date:'2025-01-12',duration:0.3,category:'Quality',notes:'Rework - label error'},
-];
-
-const DEFAULT_RISK = [
-  {id:'R-001',category:'Supplier',desc:'Single-source dependency for Bearing Type A4',prob:3,impact:5,mitigation:'Qualify secondary supplier GlobalBear Ltd',owner:'Procurement',status:'In Progress'},
-  {id:'R-002',category:'Logistics',desc:'Port congestion causing 2-3 week delays',prob:4,impact:4,mitigation:'Pre-position 6-week safety stock for A-class items',owner:'Supply Chain',status:'Active'},
-  {id:'R-003',category:'Demand',desc:'Seasonal demand spike exceeds capacity in Q4',prob:4,impact:3,mitigation:'Build inventory buffer from Q2, hire temp staff Q3',owner:'Operations',status:'Planned'},
-  {id:'R-004',category:'Geopolitical',desc:'Import duty increase on electrical components',prob:2,impact:4,mitigation:'Explore local sourcing alternatives',owner:'Procurement',status:'Monitoring'},
-  {id:'R-005',category:'Quality',desc:'Supplier quality rejections above 5%',prob:2,impact:3,mitigation:'Implement incoming inspection for critical parts',owner:'Quality',status:'Active'},
-];
-
-function getUD(){const k=currentUser?'cs_d_'+currentUser.email:'cs_d_guest';const d=JSON.parse(localStorage.getItem(k)||'null');if(!d)return{inventory:DEFAULT_INV.map(i=>({...i})),po:DEFAULT_PO.map(p=>({...p})),freight:DEFAULT_FREIGHT.map(f=>({...f}))};return d}
+function getUD(){
+  const k=currentUser?'cs_d_'+currentUser.email:'cs_d_guest';
+  const d=JSON.parse(localStorage.getItem(k)||'null');
+  if(!d)return{inventory:DEFAULT_INV.map(i=>({...i})),po:DEFAULT_PO.map(p=>({...p})),freight:DEFAULT_FREIGHT.map(f=>({...f}))};
+  if(!d.freight||d.freight.length===0)d.freight=DEFAULT_FREIGHT.map(f=>({...f}));
+  return d;
+}
 function saveUD(d){
   const k=currentUser?'cs_d_'+currentUser.email:'cs_d_guest';
   localStorage.setItem(k,JSON.stringify(d));
@@ -1325,37 +1418,40 @@ async function doSignupStep1(){
   let ok=true;
   if(!name){showFE('suName','suNameErr');ok=false;}
   if(!email||!email.includes('@')){showFE('suEmail','suEmailErr');ok=false;}
-  if(pw.length<8){showFE('suPw','suPwErr');ok=false;}
+  if(pw.length<6){showFE('suPw','suPwErr');ok=false;}
   if(!ok)return;
   const btn=document.querySelector('#su-step1 .btn-form');
   if(btn){btn.disabled=true;btn.textContent='Creating account...';}
   const plan=selectedSignupPlan||'pro';
 
-  /* Create Supabase account */
+  /* Try to sign up */
   const {data,error}=await sb.auth.signUp({email,password:pw,options:{data:{name}}});
-  let uid=null;
+
   if(error){
-    if(error.message.toLowerCase().includes('already')){
-      /* Already exists — log in */
+    /* Account already exists — log them in instead */
+    if(error.message.toLowerCase().includes('already registered')||
+       error.message.toLowerCase().includes('already been registered')||
+       error.message.toLowerCase().includes('user already')){
       const {data:ld,error:le}=await sb.auth.signInWithPassword({email,password:pw});
-      if(le){showBE('signupError','Account exists — use the Log in link instead.');if(btn){btn.disabled=false;btn.textContent='Continue to payment';}return;}
-      uid=ld.user.id;
-      const {data:existSub}=await sb.from('subscriptions').select('plan,status').eq('user_id',uid).single();
-      if(existSub&&existSub.status==='active'){
-        setSession({name,email,plan:existSub.plan,id:uid});
-        closeModal('authOverlay');
-        if(btn){btn.disabled=false;btn.textContent='Continue to payment';}
+      if(le){
+        showBE('signupError','This email is already registered. Please use the Log in link below.');
+        if(btn){btn.disabled=false;btn.textContent='Create account & continue';}
         return;
       }
-    } else {
-      showBE('signupError',error.message);
-      if(btn){btn.disabled=false;btn.textContent='Continue to payment';}
+      const {data:existSub}=await sb.from('subscriptions').select('plan,status').eq('user_id',ld.user.id).single();
+      setSession({name:ld.user.user_metadata?.name||name,email,plan:existSub?.plan||plan,id:ld.user.id});
+      closeModal('authOverlay');
+      if(btn){btn.disabled=false;btn.textContent='Create account & continue';}
+      setTimeout(()=>openCheckout(plan),300);
       return;
     }
-  } else {
-    uid=data.user.id;
+    /* Network or other error */
+    showBE('signupError','Connection error: '+error.message+'. Please try again.');
+    if(btn){btn.disabled=false;btn.textContent='Create account & continue';}
+    return;
   }
 
+  const uid=data.user.id;
   /* Save to DB */
   await sb.from('users').upsert({id:uid,name,email},{onConflict:'id',ignoreDuplicates:true});
   await sb.from('subscriptions').upsert({
@@ -1363,12 +1459,11 @@ async function doSignupStep1(){
     status:'pending_payment',card_last4:'ls',
     current_period_end:new Date(Date.now()+37*24*60*60*1000).toISOString()
   },{onConflict:'user_id',ignoreDuplicates:false});
-  setSession({name,email,plan,id:uid});
 
-  /* Close modal and open Lemon Squeezy checkout */
+  setSession({name,email,plan,id:uid});
   closeModal('authOverlay');
-  if(btn){btn.disabled=false;btn.textContent='Continue to payment';}
-  setTimeout(()=>openCheckout(plan), 300);
+  if(btn){btn.disabled=false;btn.textContent='Create account & continue';}
+  setTimeout(()=>openCheckout(plan),300);
 }
 /* SIGNUP STEP 2 */
 function doSignupStep2(){clearErrors();const card=document.getElementById('su-card').value.replace(/\\s/g,'');const exp=document.getElementById('su-exp').value.replace(/\\s/g,'');const cvc=document.getElementById('su-cvc').value.trim();const holder=document.getElementById('su-holder').value.trim();let ok=true;if(card.length!==16){showFE('su-card','su-cardErr');ok=false}if(exp.replace('/','').length<4){showFE('su-exp','su-expErr');ok=false}if(cvc.length<3){showFE('su-cvc','su-cvcErr');ok=false}if(!holder){showFE('su-holder','su-holderErr');ok=false}if(!ok)return;const btn=document.getElementById('su2Btn');btn.disabled=true;btn.textContent='Activating...';setTimeout(()=>{const name=document.getElementById('suName').value.trim();const email=document.getElementById('suEmail').value.trim().toLowerCase();const pw=document.getElementById('suPw').value;const plan=selectedSignupPlan;DB.users[email]={name,email,pw,plan,trialStart:Date.now()};DB.save();setSession({name,email,plan});const d=new Date();d.setDate(d.getDate()+7);document.getElementById('su-success-date').textContent=d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});document.getElementById('su-benefit-title').textContent=`Your ${PLANS[plan].name} Plan includes:`;document.getElementById('su-benefit-list').innerHTML=PLAN_BENEFITS[plan].map(b=>`<li>${b}</li>`).join('');document.getElementById('su-step2').style.display='none';document.getElementById('suSuccessView').style.display='';btn.disabled=false;btn.textContent='Start free trial ࢐'},1800)}
@@ -1425,7 +1520,17 @@ function handleSubscribe(plan){
 }
 /* TOOL */
 function launchTool(panel){if(!currentUser){openAuthModal('signup');pendingPlan='pro';return}openTool(panel)}
-async function openTool(panel){UD=getUD();const _ci=await loadInventoryFromSupabase();if(_ci&&_ci.length>0){UD.inventory=_ci;}document.getElementById('toolOverlay').classList.add('open');document.body.style.overflow='hidden';const plan=currentUser?.plan||'starter';const badge=document.getElementById('toolPlanBadge');if(badge){badge.textContent=PLANS[plan]?.name||plan;badge.className='plan-badge '+plan}switchToolPanel(panel||'inventory')}
+async function openTool(panel){
+  UD=getUD();
+  /* Load inventory from Supabase if logged in */
+  const _ci=await loadInventoryFromSupabase();
+  if(_ci&&_ci.length>0){UD.inventory=_ci;}
+  document.getElementById('toolOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  /* Switch to requested panel or default to inventory */
+  const startPanel=panel||'inventory';
+  switchToolPanel(startPanel);
+}
 function closeTool(){document.getElementById('toolOverlay').classList.remove('open');document.body.style.overflow=''}
 function switchToolPanel(panel){document.querySelectorAll('.tool-nav-item').forEach(n=>n.classList.remove('active'));document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));const ni=document.getElementById('tnav-'+panel);if(ni)ni.classList.add('active');const pa=document.getElementById('panel-'+panel);if(pa)pa.classList.add('active');const names={inventory:'Inventory Manager',procurement:'Purchase Orders',forecast:'Demand Forecasting',kpi:'KPI Dashboard',freight:'Logistics & Freight'};const tn=document.getElementById('toolName');if(tn)tn.textContent=names[panel]||panel;const plan=currentUser?.plan||'starter';['forecast','freight'].forEach(mod=>{const lock=document.getElementById(mod+'-lock');if(lock)lock.style.display=(mod===panel&&plan==='starter')?'flex':'none'});renderToolPanel(panel)}
 function renderToolPanel(p){if(p==='inventory')renderInventory();else if(p==='procurement')renderProcurement();else if(p==='forecast')renderForecast();else if(p==='kpi')renderKPIs();else if(p==='freight')renderFreight()}
@@ -1441,12 +1546,204 @@ function showPOForm(){document.getElementById('po-add-form').style.display=''}
 function savePORow(){const vendor=document.getElementById('fp-vendor').value.trim();const item=document.getElementById('fp-item').value.trim();if(!vendor||!item)return;const n=UD.po.length+1;UD.po.push({po:'PO-'+String(n).padStart(3,'0'),vendor,item,qty:+document.getElementById('fp-qty').value||1,price:+document.getElementById('fp-price').value||0,eta:document.getElementById('fp-eta').value||'TBD',status:document.getElementById('fp-status').value});saveUD(UD);document.getElementById('po-add-form').style.display='none';renderProcurement()}
 function delPO(idx){UD.po.splice(idx,1);saveUD(UD);renderProcurement()}
 /* FORECAST */
-function renderForecast(){const data=FCST;let esF=data[0];const esF2=data.map((a,i)=>{if(i===0)return a;const f=Math.round(.3*data[i-1]+.7*esF);esF=f;return f});const maF=data.map((_,i)=>i<3?null:Math.round(data.slice(i-3,i).reduce((a,b)=>a+b)/3));const nextMA=F.ma3(data);const nextES=F.es(data);const maMAPE=data.slice(3).reduce((s,a,i)=>s+Math.abs(a-maF[i+3])/a,0)/(data.length-3)*100;const esMAPE=data.slice(1).reduce((s,a,i)=>s+Math.abs(a-esF2[i])/a,0)/(data.length-1)*100;const maxD=Math.max(...data);document.getElementById('forecast-grid').innerHTML=`<div class="forecast-card"><div class="fc-title">3-Month Moving Average</div>${MOS.slice(-6).map((m,i)=>{const idx=6+i;return`<div class="fc-row"><span>${m}</span><span>Actual: ${data[idx].toLocaleString()}</span><span class="fc-val">${maF[idx]?maF[idx].toLocaleString():'-'}</span></div>`}).join('')}<div class="fc-row"><span><strong>Next Month</strong></span><span></span><span class="fc-val" style="font-size:15px">${nextMA.toLocaleString()}</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px">MAPE: <strong style="color:${maMAPE<10?'var(--accent)':'var(--amber)'}">${maMAPE.toFixed(1)}%</strong></div></div><div class="forecast-card"><div class="fc-title">Exponential Smoothing (&alpha;=0.3)</div>${MOS.slice(-6).map((m,i)=>{const idx=6+i;return`<div class="fc-row"><span>${m}</span><span>Actual: ${data[idx].toLocaleString()}</span><span class="fc-val">${esF2[idx]?esF2[idx].toLocaleString():'-'}</span></div>`}).join('')}<div class="fc-row"><span><strong>Next Month</strong></span><span></span><span class="fc-val" style="font-size:15px">${nextES.toLocaleString()}</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px">MAPE: <strong style="color:${esMAPE<10?'var(--accent)':'var(--amber)'}">${esMAPE.toFixed(1)}%</strong></div></div><div class="forecast-card" style="grid-column:1/-1"><div class="fc-title">Historical Demand vs MA Forecast</div><div class="bar-chart" style="height:90px;margin-top:8px">${MOS.map((m,i)=>{const h=Math.round(data[i]/maxD*100);const fh=maF[i]?Math.round(maF[i]/maxD*100):0;return`<div class="bar-col"><div style="display:flex;gap:2px;align-items:flex-end;height:80px"><div class="bar" style="height:${h}%;background:var(--navy);width:9px"></div>${fh?`<div class="bar" style="height:${fh}%;background:var(--accent);opacity:.7;width:7px"></div>`:''}</div><div class="bar-label">${m.slice(0,1)}</div></div>`}).join('')}</div><div style="display:flex;gap:14px;margin-top:6px;font-size:11px;color:var(--muted)"><span style="color:var(--navy)">&#9632; Actual</span><span style="color:var(--accent)">&#9632; MA Forecast</span></div></div>`}
+function renderForecast(){
+  const fcstStore=getFCST();
+  const items=fcstStore.items||[];
+  if(!items.length){
+    const g=document.getElementById('forecast-grid');
+    if(g)g.innerHTML='<div style="padding:40px;text-align:center;color:var(--muted)"><div style="font-size:48px;margin-bottom:12px">📈</div><div style="font-size:16px;font-weight:700;margin-bottom:8px">No forecast data yet</div><div style="font-size:13px">Click <strong>+ Add SKU</strong> to create your first demand forecast.</div></div>';
+    return;
+  }
+  let html='';
+  items.forEach(function(item){
+    const data=item.data;
+    const alpha=0.3;
+    const maF=data.map(function(_,i){return i<2?null:Math.round((data[i-2]+data[i-1]+data[i])/3);});
+    const nextMA=Math.round((data[data.length-3]+data[data.length-2]+data[data.length-1])/3);
+    let esVal=data[0];
+    const esF=data.map(function(a,i){if(i===0)return a;const f=Math.round(alpha*data[i-1]+(1-alpha)*esVal);esVal=f;return f;});
+    const nextES=Math.round(alpha*data[data.length-1]+(1-alpha)*esVal);
+    const validMA=data.slice(3).length;
+    const maMAPE=validMA>0?data.slice(3).reduce(function(s,a,i){return s+Math.abs(a-(maF[i+3]||a))/Math.max(a,1);},0)/validMA*100:0;
+    const esMAPE=data.slice(1).reduce(function(s,a,i){return s+Math.abs(a-esF[i])/Math.max(a,1);},0)/(data.length-1)*100;
+    const maxD=Math.max.apply(null,data.concat([1]));
+    html+='<div style="margin-bottom:32px">';
+    html+='<div style="display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:16px;padding:10px 14px;background:var(--warm);border-radius:8px"><span>'+item.sku+' — '+item.name+'</span><button onclick="deleteForecastItem('+items.indexOf(item)+')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px">&times;</button></div>';
+    html+='<div class="forecast-grid">';
+    // MA card
+    html+='<div class="forecast-card"><div class="fc-title">3-Month Moving Average</div>';
+    var last6=MOS.slice(-6);
+    for(var i=0;i<6;i++){
+      var di=6+i;
+      html+='<div class="fc-row"><span>'+last6[i]+'</span>';
+      html+='<span style="color:var(--muted);font-size:11px">Actual: '+(data[di]||0).toLocaleString()+'</span>';
+      html+='<span class="fc-val">'+(maF[di]?maF[di].toLocaleString():'-')+'</span></div>';
+    }
+    html+='<div class="fc-row"><span><strong>Next Month</strong></span><span></span><span class="fc-val" style="font-size:15px;color:var(--accent)">'+nextMA.toLocaleString()+'</span></div>';
+    html+='<div style="font-size:11px;color:var(--muted);margin-top:8px">MAPE: <strong style="color:'+(maMAPE<10?'var(--accent)':'var(--amber)')+'">'+maMAPE.toFixed(1)+'%</strong></div></div>';
+    // ES card
+    html+='<div class="forecast-card"><div class="fc-title">Exponential Smoothing (α=0.3)</div>';
+    for(var i=0;i<6;i++){
+      var di=6+i;
+      html+='<div class="fc-row"><span>'+last6[i]+'</span>';
+      html+='<span style="color:var(--muted);font-size:11px">Actual: '+(data[di]||0).toLocaleString()+'</span>';
+      html+='<span class="fc-val">'+(esF[di]?esF[di].toLocaleString():'-')+'</span></div>';
+    }
+    html+='<div class="fc-row"><span><strong>Next Month</strong></span><span></span><span class="fc-val" style="font-size:15px;color:var(--accent)">'+nextES.toLocaleString()+'</span></div>';
+    html+='<div style="font-size:11px;color:var(--muted);margin-top:8px">MAPE: <strong style="color:'+(esMAPE<10?'var(--accent)':'var(--amber)')+'">'+esMAPE.toFixed(1)+'%</strong></div></div>';
+    // Chart card
+    html+='<div class="forecast-card" style="grid-column:1/-1"><div class="fc-title">12-Month Demand vs Forecast</div>';
+    html+='<div class="bar-chart" style="height:100px;margin-top:8px">';
+    for(var i=0;i<12;i++){
+      var h=Math.round(data[i]/maxD*90);
+      var fh=maF[i]?Math.round(maF[i]/maxD*90):0;
+      html+='<div class="bar-col"><div style="display:flex;gap:2px;align-items:flex-end;height:90px">';
+      html+='<div class="bar" style="height:'+h+'%;background:var(--navy);width:10px"></div>';
+      if(fh)html+='<div class="bar" style="height:'+fh+'%;background:var(--accent);opacity:.8;width:8px"></div>';
+      html+='</div><div class="bar-label">'+MOS[i].slice(0,1)+'</div></div>';
+    }
+    html+='</div><div style="display:flex;gap:16px;margin-top:8px;font-size:11px;color:var(--muted)">';
+    html+='<span><span style="color:var(--navy)">■</span> Actual</span>';
+    html+='<span><span style="color:var(--accent)">■</span> MA Forecast</span></div></div>';
+    html+='</div></div>';
+  });
+  var g=document.getElementById('forecast-grid');
+  if(g)g.innerHTML=html;
+}
+function addForecastItem(){
+  document.getElementById('fcst-add-form').style.display='';
+}
+function saveForecastItem(){
+  var sku=document.getElementById('fcst-sku').value.trim();
+  var name=document.getElementById('fcst-name').value.trim();
+  if(!sku||!name){alert('SKU and Name required.');return;}
+  var ids=['fcst-jan','fcst-feb','fcst-mar','fcst-apr','fcst-may','fcst-jun','fcst-jul','fcst-aug','fcst-sep','fcst-oct','fcst-nov','fcst-dec'];
+  var data=ids.map(function(id){var e=document.getElementById(id);return e?parseInt(e.value)||0:0;});
+  var fcst=getFCST();
+  fcst.items.push({sku:sku,name:name,data:data});
+  saveFCST(fcst);
+  document.getElementById('fcst-add-form').style.display='none';
+  document.getElementById('fcst-sku').value='';
+  document.getElementById('fcst-name').value='';
+  ids.forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+  renderForecast();
+}
+function clearForecastData(){
+  if(!confirm('Reset forecast data to example? This cannot be undone.'))return;
+  var fcst={items:[{sku:'SKU-001',name:'Example Product',data:[980,1020,960,1100,1150,1080,1200,1180,1250,1300,1280,1350]}]};
+  saveFCST(fcst);
+  renderForecast();
+}
+function deleteForecastItem(idx){
+  var fcst=getFCST();
+  fcst.items.splice(idx,1);
+  saveFCST(fcst);
+  renderForecast();
+}
 /* KPI */
-function renderKPIs(){const inv=UD.inventory;const pos=UD.po;const tv=inv.reduce((s,i)=>s+F.val(i.qty,i.cost),0);const otif=F.otif(inv);const poOT=F.poOT(pos);const spend=F.spend(pos);const turns=spend>0?spend/(tv||1):0;const crit=inv.filter(i=>F.status(i.qty,i.rop).l==='CRITICAL').length;document.getElementById('kpi-main').innerHTML=`<div class="kpi-tile ${otif>=.95?'ok':otif>=.8?'warn':'crit'}"><div class="kpi-label">Stock Health</div><div class="kpi-value">${(otif*100).toFixed(0)}%</div><div class="kpi-meta">SKUs at OK status</div></div><div class="kpi-tile ok"><div class="kpi-label">Inventory Value</div><div class="kpi-value">$${(tv/1000).toFixed(1)}k</div><div class="kpi-meta">At unit cost</div></div><div class="kpi-tile ${crit>0?'crit':'ok'}"><div class="kpi-label">Critical SKUs</div><div class="kpi-value">${crit}</div><div class="kpi-meta">Immediate action</div></div><div class="kpi-tile ${poOT>=.9?'ok':poOT>=.7?'warn':'crit'}"><div class="kpi-label">PO On-Time</div><div class="kpi-value">${(poOT*100).toFixed(0)}%</div><div class="kpi-meta">Of received POs</div></div><div class="kpi-tile ok"><div class="kpi-label">PO Spend</div><div class="kpi-value">$${(spend/1000).toFixed(1)}k</div><div class="kpi-meta">Committed</div></div><div class="kpi-tile ok"><div class="kpi-label">Inv. Turns</div><div class="kpi-value">${turns.toFixed(1)}x</div><div class="kpi-meta">COGS/Avg Inventory</div></div><div class="kpi-tile ok"><div class="kpi-label">Active SKUs</div><div class="kpi-value">${inv.length}</div></div><div class="kpi-tile ok"><div class="kpi-label">Open POs</div><div class="kpi-value">${pos.filter(p=>p.status==='In Transit'||p.status==='Pending').length}</div></div>`;const maxF=Math.max(...FCST);document.getElementById('kpi-chart').innerHTML=MOS.map((m,i)=>{const pct=Math.max(10,Math.round(FCST[i]/maxF*100));const fill=.90+Math.random()*.08;return`<div class="bar-col"><div class="bar-val">${(fill*100).toFixed(0)}%</div><div class="bar" style="height:${pct}%;background:${fill>=.95?'var(--accent)':fill>=.9?'var(--amber)':'var(--danger)'}"></div><div class="bar-label">${m.slice(0,1)}</div></div>`}).join('')}
+function renderKPIs(){var FCST=getFCST().items[0]?.data||[1000,1050,980,1100,1150,1080,1200,1180,1250,1300,1280,1350];const inv=UD.inventory;const pos=UD.po;const tv=inv.reduce((s,i)=>s+F.val(i.qty,i.cost),0);const otif=F.otif(inv);const poOT=F.poOT(pos);const spend=F.spend(pos);const turns=spend>0?spend/(tv||1):0;const crit=inv.filter(i=>F.status(i.qty,i.rop).l==='CRITICAL').length;document.getElementById('kpi-main').innerHTML=`<div class="kpi-tile ${otif>=.95?'ok':otif>=.8?'warn':'crit'}"><div class="kpi-label">Stock Health</div><div class="kpi-value">${(otif*100).toFixed(0)}%</div><div class="kpi-meta">SKUs at OK status</div></div><div class="kpi-tile ok"><div class="kpi-label">Inventory Value</div><div class="kpi-value">$${(tv/1000).toFixed(1)}k</div><div class="kpi-meta">At unit cost</div></div><div class="kpi-tile ${crit>0?'crit':'ok'}"><div class="kpi-label">Critical SKUs</div><div class="kpi-value">${crit}</div><div class="kpi-meta">Immediate action</div></div><div class="kpi-tile ${poOT>=.9?'ok':poOT>=.7?'warn':'crit'}"><div class="kpi-label">PO On-Time</div><div class="kpi-value">${(poOT*100).toFixed(0)}%</div><div class="kpi-meta">Of received POs</div></div><div class="kpi-tile ok"><div class="kpi-label">PO Spend</div><div class="kpi-value">$${(spend/1000).toFixed(1)}k</div><div class="kpi-meta">Committed</div></div><div class="kpi-tile ok"><div class="kpi-label">Inv. Turns</div><div class="kpi-value">${turns.toFixed(1)}x</div><div class="kpi-meta">COGS/Avg Inventory</div></div><div class="kpi-tile ok"><div class="kpi-label">Active SKUs</div><div class="kpi-value">${inv.length}</div></div><div class="kpi-tile ok"><div class="kpi-label">Open POs</div><div class="kpi-value">${pos.filter(p=>p.status==='In Transit'||p.status==='Pending').length}</div></div>`;const maxF=Math.max(...FCST);document.getElementById('kpi-chart').innerHTML=MOS.map((m,i)=>{const pct=Math.max(10,Math.round(FCST[i]/maxF*100));const fill=.90+Math.random()*.08;return`<div class="bar-col"><div class="bar-val">${(fill*100).toFixed(0)}%</div><div class="bar" style="height:${pct}%;background:${fill>=.95?'var(--accent)':fill>=.9?'var(--amber)':'var(--danger)'}"></div><div class="bar-label">${m.slice(0,1)}</div></div>`}).join('')}
 /* FREIGHT */
-function renderFreight(){const sh=UD.freight;const tc=sh.reduce((s,f)=>s+f.cost,0);const tk=sh.reduce((s,f)=>s+f.kg,0);const del=sh.filter(f=>f.status==='Delivered').length;const cpkg=F.cpkg(sh);document.getElementById('freight-kpis').innerHTML=`<div class="kpi-tile ok"><div class="kpi-label">Shipments</div><div class="kpi-value">${sh.length}</div></div><div class="kpi-tile ok"><div class="kpi-label">Total Cost</div><div class="kpi-value">$${tc.toLocaleString()}</div></div><div class="kpi-tile ok"><div class="kpi-label">Total Weight</div><div class="kpi-value">${(tk/1000).toFixed(1)}t</div></div><div class="kpi-tile ok"><div class="kpi-label">Cost/kg</div><div class="kpi-value">$${cpkg.toFixed(2)}</div></div><div class="kpi-tile ok"><div class="kpi-label">Delivered</div><div class="kpi-value">${sh.length>0?(del/sh.length*100).toFixed(0):0}%</div></div>`;const scMap={Delivered:'pill-ok','In Transit':'pill-transit',Booked:'pill-pending',Exception:'pill-crit'};document.getElementById('freight-tbody').innerHTML=sh.map(s=>`<tr><td><strong style="font-family:var(--mono);font-size:10px">${s.id}</strong></td><td style="font-size:11px;color:${s.dir==='Inbound'?'var(--accent)':'var(--amber)'}">${s.dir}</td><td style="font-size:11px">${s.route}</td><td style="font-size:11px">${s.carrier}</td><td style="font-size:11px;color:var(--muted)">${s.ship}</td><td style="font-size:11px;color:var(--muted)">${s.eta}</td><td>${s.kg.toLocaleString()}</td><td style="font-weight:700;color:var(--accent)">$${s.cost.toLocaleString()}</td><td><span class="status-pill ${scMap[s.status]||'pill-pending'}">${s.status}</span></td></tr>`).join('')}
-function addFreightRow(){const sh=UD.freight;sh.push({id:'SH-'+String(sh.length+1).padStart(3,'0'),dir:'Inbound',route:'Origin ࢐ Destination',carrier:'New Carrier',ship:new Date().toISOString().slice(0,10),eta:'TBD',kg:1000,cost:800,status:'Booked'});saveUD(UD);renderFreight()}
+function renderFreight(){
+  const sh=UD.freight;
+  const tc=sh.reduce((s,f)=>s+(f.cost||0),0);
+  const tk=sh.reduce((s,f)=>s+(f.kg||0),0);
+  const del=sh.filter(f=>f.status==='Delivered').length;
+  const cpkg=tk>0?(tc/tk).toFixed(2):'0.00';
+  const kpiEl=document.getElementById('freight-kpis');
+  if(kpiEl)kpiEl.innerHTML=`
+    <div class="kpi-tile ok"><div class="kpi-label">Shipments</div><div class="kpi-value">${sh.length}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Cost</div><div class="kpi-value">$${tc.toLocaleString()}</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Total Weight</div><div class="kpi-value">${(tk/1000).toFixed(1)}t</div></div>
+    <div class="kpi-tile ok"><div class="kpi-label">Avg Cost/kg</div><div class="kpi-value">$${cpkg}</div></div>
+    <div class="kpi-tile ${del===0&&sh.length>0?'warn':'ok'}"><div class="kpi-label">Delivered</div><div class="kpi-value">${sh.length>0?(del/sh.length*100).toFixed(0):0}%</div></div>
+  `;
+  const scMap={Delivered:'pill-ok','In Transit':'pill-transit',Booked:'pill-pending',Exception:'pill-crit'};
+  const tbody=document.getElementById('freight-tbody');
+  if(tbody)tbody.innerHTML=sh.map((s,i)=>`<tr>
+    <td><strong style="font-family:var(--mono);font-size:11px">${s.id||'SHP-???'}</strong></td>
+    <td style="font-size:11px;color:${(s.dir||s.type)==='Inbound'?'var(--accent)':'var(--amber)'}">${s.dir||s.type||'Inbound'}</td>
+    <td style="font-size:11px">${s.route||'-'}</td>
+    <td style="font-size:11px">${s.carrier||'-'}</td>
+    <td style="font-size:11px;color:var(--muted)">${s.ship||'-'}</td>
+    <td style="font-size:11px;color:var(--muted)">${s.eta||'TBD'}</td>
+    <td style="text-align:center">${(s.kg||0).toLocaleString()}</td>
+    <td style="font-weight:700;color:var(--accent)">$${(s.cost||0).toLocaleString()}</td>
+    <td style="font-size:11px;font-weight:600">$${s.kg>0?((s.cost||0)/(s.kg||1)).toFixed(2):'0.00'}/kg</td>
+    <td><span class="status-pill ${scMap[s.status]||'pill-pending'}">${s.status||'Booked'}</span></td>
+    <td style="white-space:nowrap">
+      <button onclick="editFreightRow(${i})" style="background:none;border:1px solid var(--border);color:var(--muted);cursor:pointer;padding:3px 8px;border-radius:4px;font-size:10px;margin-right:4px">Edit</button>
+      <button onclick="deleteFreightRow(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px">&times;</button>
+    </td>
+  </tr>`).join('');
+  const chart=document.getElementById('freight-chart');
+  if(chart&&sh.length>0){
+    const maxC=Math.max(...sh.map(s=>(s.cost||0)/Math.max(s.kg||1,1)),0.01);
+    chart.innerHTML=sh.map((s,i)=>{
+      const cpkg2=(s.cost||0)/Math.max(s.kg||1,1);
+      const h=Math.max(8,Math.round(cpkg2/maxC*100));
+      return `<div class="bar-col"><div class="bar-val">$${cpkg2.toFixed(1)}</div><div class="bar" style="height:${h}%;background:var(--accent)"></div><div class="bar-label" style="font-size:9px">${(s.carrier||'').split(' ')[0]}</div></div>`;
+    }).join('');
+  }
+}
+function addFreightRow(){
+  document.getElementById('freight-add-form').style.display='';
+  document.getElementById('ff-id').value='SHP-'+String(UD.freight.length+1).padStart(3,'0');
+  document.getElementById('ff-ship').value=new Date().toISOString().slice(0,10);
+}
+function saveFreightRow(){
+  const row={
+    id:document.getElementById('ff-id').value.trim()||'SHP-001',
+    type:document.getElementById('ff-dir').value,
+    dir:document.getElementById('ff-dir').value,
+    route:document.getElementById('ff-route').value.trim()||'Origin → Destination',
+    carrier:document.getElementById('ff-carrier').value.trim()||'Carrier',
+    ship:document.getElementById('ff-ship').value,
+    eta:document.getElementById('ff-eta').value||'TBD',
+    kg:parseFloat(document.getElementById('ff-kg').value)||0,
+    cost:parseFloat(document.getElementById('ff-cost').value)||0,
+    status:document.getElementById('ff-status').value
+  };
+  if(!row.carrier){alert('Please enter a carrier name.');return;}
+  const editIdx=document.getElementById('freight-add-form').dataset.editIdx;
+  if(editIdx!==undefined&&editIdx!==''){
+    UD.freight[parseInt(editIdx)]=row;
+    document.getElementById('freight-add-form').dataset.editIdx='';
+  } else {
+    UD.freight.push(row);
+  }
+  saveUD(UD);
+  document.getElementById('freight-add-form').style.display='none';
+  resetFreightForm();
+  renderFreight();
+}
+function editFreightRow(idx){
+  const r=UD.freight[idx];
+  document.getElementById('ff-id').value=r.id||'';
+  document.getElementById('ff-dir').value=r.dir||r.type||'Inbound';
+  document.getElementById('ff-route').value=r.route||'';
+  document.getElementById('ff-carrier').value=r.carrier||'';
+  document.getElementById('ff-ship').value=r.ship||'';
+  document.getElementById('ff-eta').value=r.eta||'';
+  document.getElementById('ff-kg').value=r.kg||0;
+  document.getElementById('ff-cost').value=r.cost||0;
+  document.getElementById('ff-status').value=r.status||'Booked';
+  document.getElementById('freight-add-form').dataset.editIdx=idx;
+  document.getElementById('freight-add-form').style.display='';
+  document.getElementById('freight-add-form').scrollIntoView({behavior:'smooth'});
+}
+function deleteFreightRow(idx){
+  if(!confirm('Delete this shipment?'))return;
+  UD.freight.splice(idx,1);
+  saveUD(UD);
+  renderFreight();
+}
+function resetFreightForm(){
+  ['ff-id','ff-route','ff-carrier','ff-ship','ff-eta','ff-kg','ff-cost'].forEach(id=>{
+    const e=document.getElementById(id);if(e)e.value='';
+  });
+  document.getElementById('ff-dir').value='Inbound';
+  document.getElementById('ff-status').value='Booked';
+}
 
 
 
@@ -1538,15 +1835,20 @@ function toggleMobileMenu(){
 function getBOM(){const k=currentUser?'cs_bom_'+currentUser.email:'cs_bom_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_BOM.map(i=>({...i}));}
 function saveBOM(d){const k=currentUser?'cs_bom_'+currentUser.email:'cs_bom_guest';localStorage.setItem(k,JSON.stringify(d));}
 let BOM_DATA=[];
-function resetBOM(){BOM_DATA=DEFAULT_BOM.map(i=>({...i}));saveBOM(BOM_DATA);renderBOM();}
-function showBOMForm(){document.getElementById('bom-add-form').style.display='';}
+function resetBOM(){
+  if(!confirm('Reset BOM to example?'))return;
+  var k=currentUser?'cs_bom_'+currentUser.email:'cs_bom_guest';
+  localStorage.removeItem(k);BOM_DATA=getBOM();renderBOM();
+}
+function showBOMForm(){document.getElementById("bom-add-form").style.display="";}
 function saveBOMRow(){
-  const row={level:+document.getElementById('fb-level').value||1,parent:document.getElementById('fb-parent').value.trim(),sku:document.getElementById('fb-sku').value.trim(),name:document.getElementById('fb-name').value.trim(),qty:+document.getElementById('fb-qty').value||1,cost:+document.getElementById('fb-cost').value||0,lead:+document.getElementById('fb-lead').value||0,uom:document.getElementById('fb-uom').value.trim()||'EA'};
-  if(!row.sku||!row.name)return;
-  BOM_DATA.push(row);saveBOM(BOM_DATA);
-  document.getElementById('bom-add-form').style.display='none';
-  ['fb-level','fb-parent','fb-sku','fb-name','fb-qty','fb-cost','fb-lead','fb-uom'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
-  renderBOM();
+  var sku=document.getElementById('fb-sku').value.trim();
+  var name=document.getElementById('fb-name').value.trim();
+  if(!sku||!name){alert('SKU and Name are required.');return;}
+  var row={level:parseInt(document.getElementById('fb-level').value)||1,parent:document.getElementById('fb-parent').value.trim()||'PRODUCT-001',sku:sku,name:name,qty:parseFloat(document.getElementById('fb-qty').value)||1,cost:parseFloat(document.getElementById('fb-cost').value)||0,lead:parseInt(document.getElementById('fb-lead').value)||0,uom:document.getElementById('fb-uom').value.trim()||'EA'};
+  var editIdx=document.getElementById('bom-add-form').dataset.editIdx;
+  if(editIdx!==undefined&&editIdx!==''){BOM_DATA[parseInt(editIdx)]=row;}else{BOM_DATA.push(row);}
+  saveBOM(BOM_DATA);document.getElementById('bom-add-form').style.display='none';document.getElementById('bom-add-form').dataset.editIdx='';renderBOM();
 }
 function renderBOM(){
   if(!BOM_DATA||BOM_DATA.length===0){BOM_DATA=getBOM();}
@@ -1596,11 +1898,7 @@ function getWH(){const k=currentUser?'cs_wh_'+currentUser.email:'cs_wh_guest';co
 function saveWH(d){const k=currentUser?'cs_wh_'+currentUser.email:'cs_wh_guest';localStorage.setItem(k,JSON.stringify(d));}
 let WH_DATA=[];
 function addWarehouseItem(){
-  const sku=prompt('Enter SKU:');if(!sku)return;
-  const name=prompt('Item name:');if(!name)return;
-  const cost=parseFloat(prompt('Unit cost ($):')||0);
-  WH_DATA.push({sku,name,whA:0,whB:0,whC:0,whD:0,cost});
-  saveWH(WH_DATA);renderWarehouse();
+  document.getElementById('wh-add-form').style.display='';
 }
 function renderWarehouse(){
   if(!WH_DATA||WH_DATA.length===0)WH_DATA=getWH();
@@ -1652,15 +1950,8 @@ function getRFQ(){const k=currentUser?'cs_rfq_'+currentUser.email:'cs_rfq_guest'
 function saveRFQ(d){const k=currentUser?'cs_rfq_'+currentUser.email:'cs_rfq_guest';localStorage.setItem(k,JSON.stringify(d));}
 let RFQ_DATA=[];
 function addRFQ(){
-  const item=prompt('Item name:');if(!item)return;
-  const id='RFQ-'+String(new Set(RFQ_DATA.map(r=>r.id)).size+1).padStart(3,'0');
-  const supplier=prompt('Supplier name:');if(!supplier)return;
-  const price=parseFloat(prompt('Unit price ($):')||0);
-  const lead=parseInt(prompt('Lead time (days):')||7);
-  const quality=parseFloat(prompt('Quality score (1-5):')||3);
-  const freight=parseFloat(prompt('Freight cost per unit ($):')||0);
-  RFQ_DATA.push({id,item,supplier,price,lead,quality,freight,reliability:3.5});
-  saveRFQ(RFQ_DATA);renderRFQ();
+  document.getElementById('rfq-add-form').style.display='';
+  document.getElementById('rf-id').value='RFQ-'+String(new Set(RFQ_DATA.map(function(r){return r.id;})).size+1).padStart(3,'0');
 }
 function calcWeightedScore(r,wP,wL,wQ,wR){
   const maxPrice=Math.max(...RFQ_DATA.filter(x=>x.id===r.id).map(x=>x.price),r.price);
@@ -1751,8 +2042,8 @@ function renderSOP(){
   document.getElementById('sop-tbody').innerHTML=rows.map(({r,open,close,gap,status,sc},i)=>`
     <tr>
       <td><strong>${r.month}</strong></td>
-      <td><input type="number" value="${r.demand}" style="width:80px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:var(--sans)" oninput="SOP_DATA[${i}].demand=+this.value;renderSOP()"></td>
-      <td><input type="number" value="${r.supply}" style="width:80px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:var(--sans)" oninput="SOP_DATA[${i}].supply=+this.value;renderSOP()"></td>
+      <td><input type="number" value="${r.demand}" style="width:80px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:var(--sans)" onchange="SOP_DATA[${i}].demand=+this.value;renderSOP()"></td>
+      <td><input type="number" value="${r.supply}" style="width:80px;padding:4px;border:1px solid var(--border);border-radius:4px;font-size:12px;font-family:var(--sans)" onchange="SOP_DATA[${i}].supply=+this.value;renderSOP()"></td>
       <td style="text-align:center">${open.toLocaleString()}</td>
       <td style="font-weight:700;color:${close<0?'var(--danger)':'var(--accent)'}">${close.toLocaleString()}</td>
       <td style="font-weight:700;color:${gap<0?'var(--danger)':gap>0?'var(--accent)':'var(--muted)'}">${gap>0?'+':''}${gap.toLocaleString()}</td>
@@ -1779,57 +2070,93 @@ function renderSOP(){
 /* ═══════════════════════════════
    LANDED COST CALCULATOR
 ═══════════════════════════════ */
-function getLC(){const k=currentUser?'cs_lc_'+currentUser.email:'cs_lc_guest';const d=JSON.parse(localStorage.getItem(k)||'null');return d||DEFAULT_LANDED.map(i=>({...i}));}
+function getLC(){
+  var k=currentUser?'cs_lc_'+currentUser.email:'cs_lc_guest';
+  var d=JSON.parse(localStorage.getItem(k)||'null');
+  if(!d||d.length===0)return DEFAULT_LANDED.map(function(i){return Object.assign({},i);});
+  // Filter out corrupted rows
+  d=d.filter(function(r){return r.sku&&r.sku!=='23'&&r.name&&r.name!=='23'&&(r.fob>0||r.sell>0);});
+  if(d.length===0)return DEFAULT_LANDED.map(function(i){return Object.assign({},i);});
+  return d;
+}
 function saveLC(d){const k=currentUser?'cs_lc_'+currentUser.email:'cs_lc_guest';localStorage.setItem(k,JSON.stringify(d));}
 let LC_DATA=[];
 function calcLanded(r){const duties=r.fob*(r.duty/100);return r.fob+r.freight+duties+r.insurance+r.lastmile+r.handling;}
-function addLandedItem(){const row={sku:document.getElementById('lc-sku').value.trim(),name:document.getElementById('lc-name').value.trim(),fob:+document.getElementById('lc-fob').value||0,freight:+document.getElementById('lc-freight').value||0,duty:+document.getElementById('lc-duty').value||0,insurance:+document.getElementById('lc-ins').value||0,lastmile:+document.getElementById('lc-lastmile').value||0,handling:+document.getElementById('lc-handling').value||0,sell:+document.getElementById('lc-sell').value||0};if(!row.sku||!row.name)return;LC_DATA.push(row);saveLC(LC_DATA);renderLanded();}
+function addLandedItem(){
+  // Clear any bad data first
+  LC_DATA=LC_DATA.filter(function(r){return r.sku&&r.sku!=='23'&&r.name&&r.name!=='23';});
+  saveLC(LC_DATA);
+  document.getElementById('lc-add-form').style.display='';
+  document.getElementById('lc-add-form').scrollIntoView({behavior:'smooth',block:'center'});
+}
 function renderLanded(){
   if(!LC_DATA||LC_DATA.length===0)LC_DATA=getLC();
-  const avgMargin=LC_DATA.reduce((s,r)=>{const lc=calcLanded(r);return s+(lc>0&&r.sell>0?(r.sell-lc)/r.sell:0);},0)/Math.max(1,LC_DATA.length);
-  const totalValue=LC_DATA.reduce((s,r)=>s+calcLanded(r),0);
-  document.getElementById('lc-kpis').innerHTML=`
-    <div class="kpi-tile ok"><div class="kpi-label">SKUs Tracked</div><div class="kpi-value">${LC_DATA.length}</div></div>
-    <div class="kpi-tile ${avgMargin<0.2?'warn':'ok'}"><div class="kpi-label">Avg Gross Margin</div><div class="kpi-value">${(avgMargin*100).toFixed(1)}%</div></div>
-    <div class="kpi-tile ok"><div class="kpi-label">Avg Landed Cost</div><div class="kpi-value">$${(totalValue/Math.max(1,LC_DATA.length)).toFixed(2)}</div></div>
-    <div class="kpi-tile ${LC_DATA.some(r=>(r.sell-calcLanded(r))/r.sell<0.15)?'crit':'ok'}"><div class="kpi-label">Low Margin SKUs</div><div class="kpi-value">${LC_DATA.filter(r=>r.sell>0&&(r.sell-calcLanded(r))/r.sell<0.15).length}</div><div class="kpi-meta">Below 15% margin</div></div>
-  `;
-  document.getElementById('lc-tbody').innerHTML=LC_DATA.map((r,i)=>{
-    const lc=calcLanded(r);
-    const margin=r.sell>0?(r.sell-lc)/r.sell:0;
-    return `<tr>
-      <td><strong style="font-family:var(--mono);font-size:11px">${r.sku}</strong></td>
-      <td>${r.name}</td>
-      <td>$${r.fob.toFixed(2)}</td>
-      <td>$${r.freight.toFixed(2)}</td>
-      <td style="text-align:center">${r.duty}%</td>
-      <td>$${r.insurance.toFixed(2)}</td>
-      <td>$${r.lastmile.toFixed(2)}</td>
-      <td>$${r.handling.toFixed(2)}</td>
-      <td style="font-weight:700;color:var(--navy)">$${lc.toFixed(2)}</td>
-      <td>$${r.sell.toFixed(2)}</td>
-      <td style="font-weight:700;color:${margin<0.15?'var(--danger)':margin<0.25?'var(--amber)':'var(--accent)'}">${(margin*100).toFixed(1)}%</td>
-    </tr>`;
+  function calcLC(r){return r.fob+r.freight+(r.fob*r.duty/100)+r.insurance+r.lastmile+r.handling;}
+  var avgM=LC_DATA.reduce(function(s,r){var lc=calcLC(r);return s+(lc>0&&r.sell>0?(r.sell-lc)/r.sell:0);},0)/Math.max(1,LC_DATA.length);
+  var avgLC=LC_DATA.reduce(function(s,r){return s+calcLC(r);},0)/Math.max(1,LC_DATA.length);
+  var lowM=LC_DATA.filter(function(r){return r.sell>0&&(r.sell-calcLC(r))/r.sell<0.15;}).length;
+  var kpi=document.getElementById('lc-kpis');
+  if(kpi)kpi.innerHTML='<div class="kpi-tile ok"><div class="kpi-label">SKUs Tracked</div><div class="kpi-value">'+LC_DATA.length+'</div></div>'
+    +'<div class="kpi-tile '+(avgM<0.2?'warn':'ok')+'"><div class="kpi-label">Avg Gross Margin</div><div class="kpi-value">'+(avgM*100).toFixed(1)+'%</div></div>'
+    +'<div class="kpi-tile ok"><div class="kpi-label">Avg Landed Cost</div><div class="kpi-value">$'+avgLC.toFixed(2)+'</div></div>'
+    +'<div class="kpi-tile '+(lowM>0?'crit':'ok')+'"><div class="kpi-label">Low Margin SKUs</div><div class="kpi-value">'+lowM+'</div><div class="kpi-meta">Below 15% margin</div></div>';
+  var tbody=document.getElementById('lc-tbody');
+  if(tbody)tbody.innerHTML=LC_DATA.map(function(r,i){
+    var lc=calcLC(r);
+    var m=r.sell>0?(r.sell-lc)/r.sell:0;
+    var mc=m<0.15?'var(--danger)':m<0.25?'var(--amber)':'var(--accent)';
+    return '<tr>'
+      +'<td><strong style="font-family:var(--mono);font-size:11px">'+r.sku+'</strong></td>'
+      +'<td>'+r.name+'</td>'
+      +'<td>$'+r.fob.toFixed(2)+'</td>'
+      +'<td>$'+r.freight.toFixed(2)+'</td>'
+      +'<td style="text-align:center">'+r.duty+'%</td>'
+      +'<td>$'+r.insurance.toFixed(2)+'</td>'
+      +'<td>$'+r.lastmile.toFixed(2)+'</td>'
+      +'<td>$'+r.handling.toFixed(2)+'</td>'
+      +'<td style="font-weight:700;color:var(--navy)">$'+lc.toFixed(2)+'</td>'
+      +'<td>$'+r.sell.toFixed(2)+'</td>'
+      +'<td style="font-weight:700;color:'+mc+'">'+(m*100).toFixed(1)+'%</td>'
+      +'<td><button onclick="deleteLCRow('+i+')" style="background:none;border:none;color:var(--muted);cursor:pointer">&times;</button></td>'
+      +'</tr>';
   }).join('');
-  const maxLC=Math.max(...LC_DATA.map(r=>calcLanded(r)),1);
-  document.getElementById('lc-chart').innerHTML=LC_DATA.map(r=>{
-    const lc=calcLanded(r);
-    const fobH=Math.round(r.fob/lc*100);
-    const frH=Math.round(r.freight/lc*100);
-    const dutyH=Math.round((r.fob*r.duty/100)/lc*100);
-    const otherH=100-fobH-frH-dutyH;
-    const h=Math.max(8,Math.round(lc/maxLC*100));
-    return `<div class="bar-col">
-      <div class="bar-val">$${lc.toFixed(2)}</div>
-      <div style="height:${h}%;display:flex;flex-direction:column;justify-content:flex-end">
-        <div style="background:#8B5CF6;height:${otherH}%;min-height:2px;border-radius:2px 2px 0 0"></div>
-        <div style="background:var(--amber);height:${dutyH}%;min-height:2px"></div>
-        <div style="background:var(--accent);height:${frH}%;min-height:2px"></div>
-        <div style="background:var(--navy);height:${fobH}%;min-height:2px"></div>
-      </div>
-      <div class="bar-label">${r.sku.replace('SC-','')}</div>
-    </div>`;
-  }).join('');
+  var chart=document.getElementById('lc-chart');
+  if(chart&&LC_DATA.length>0){
+    var maxLC=Math.max.apply(null,LC_DATA.map(function(r){return calcLC(r);}).concat([0.01]));
+    chart.innerHTML=LC_DATA.map(function(r){
+      var lc=calcLC(r);
+      var h=Math.max(8,Math.round(lc/maxLC*100));
+      return '<div class="bar-col"><div class="bar-val">$'+lc.toFixed(1)+'</div>'
+        +'<div class="bar" style="height:'+h+'%;background:var(--accent)"></div>'
+        +'<div class="bar-label">'+r.sku.replace('SKU-','')+'</div></div>';
+    }).join('');
+  }
+}
+function deleteLCRow(idx){
+  if(!confirm('Delete this SKU?'))return;
+  LC_DATA.splice(idx,1);saveLC(LC_DATA);renderLanded();
+}
+function saveLandedItem(){
+  var sku=document.getElementById('lc-sku').value.trim();
+  var name=document.getElementById('lc-name').value.trim();
+  if(!sku||!name){alert('SKU and Name are required.');return;}
+  var row={
+    sku:sku,name:name,
+    fob:parseFloat(document.getElementById('lc-fob').value)||0,
+    freight:parseFloat(document.getElementById('lc-freight').value)||0,
+    duty:parseFloat(document.getElementById('lc-duty').value)||0,
+    insurance:parseFloat(document.getElementById('lc-ins').value)||0,
+    lastmile:parseFloat(document.getElementById('lc-lastmile').value)||0,
+    handling:parseFloat(document.getElementById('lc-handling').value)||0,
+    sell:parseFloat(document.getElementById('lc-sell').value)||0
+  };
+  LC_DATA.push(row);
+  saveLC(LC_DATA);
+  document.getElementById('lc-add-form').style.display='none';
+  ['lc-sku','lc-name','lc-fob','lc-freight','lc-duty','lc-ins','lc-lastmile','lc-handling','lc-sell'].forEach(function(id){
+    var e=document.getElementById(id);if(e)e.value='';
+  });
+  renderLanded();
 }
 
 /* ═══════════════════════════════
@@ -1839,14 +2166,7 @@ function getOEE(){const k=currentUser?'cs_oee_'+currentUser.email:'cs_oee_guest'
 function saveOEE(d){const k=currentUser?'cs_oee_'+currentUser.email:'cs_oee_guest';localStorage.setItem(k,JSON.stringify(d));}
 let OEE_DATA={lines:[],downtime:[]};
 function addOEELine(){
-  const line=prompt('Line/Machine name:');if(!line)return;
-  const planned=parseFloat(prompt('Planned hours per shift:')||8);
-  const downtime=parseFloat(prompt('Downtime hours:')||0);
-  const plannedU=parseInt(prompt('Planned units:')||0);
-  const actual=parseInt(prompt('Actual units produced:')||0);
-  const defects=parseInt(prompt('Defect count:')||0);
-  OEE_DATA.lines.push({line,planned,downtime,plannedUnits:plannedU,actual,defects});
-  saveOEE(OEE_DATA);renderOEE();
+  document.getElementById('oee-add-form').style.display='';
 }
 function calcOEE(r){
   const avail=(r.planned-r.downtime)/Math.max(r.planned,0.01);
@@ -1904,15 +2224,8 @@ function getRisk(){const k=currentUser?'cs_risk_'+currentUser.email:'cs_risk_gue
 function saveRisk(d){const k=currentUser?'cs_risk_'+currentUser.email:'cs_risk_guest';localStorage.setItem(k,JSON.stringify(d));}
 let RISK_DATA=[];
 function addRisk(){
-  const category=prompt('Category (Supplier/Logistics/Demand/Geopolitical/Quality):');if(!category)return;
-  const desc=prompt('Risk description:');if(!desc)return;
-  const prob=parseInt(prompt('Probability (1-5):')||3);
-  const impact=parseInt(prompt('Impact (1-5):')||3);
-  const mitigation=prompt('Mitigation action:');
-  const owner=prompt('Risk owner:');
-  const n=RISK_DATA.length+1;
-  RISK_DATA.push({id:'R-'+String(n).padStart(3,'0'),category,desc,prob,impact,mitigation:mitigation||'TBD',owner:owner||'TBD',status:'Monitoring'});
-  saveRisk(RISK_DATA);renderRisk();
+  document.getElementById('risk-add-form').style.display='';
+  document.getElementById('rk-id').value='R-'+String(RISK_DATA.length+1).padStart(3,'0');
 }
 function renderRisk(){
   if(!RISK_DATA||RISK_DATA.length===0)RISK_DATA=getRisk();
@@ -1976,41 +2289,50 @@ function renderRisk(){
 /* ═══════════════════════════════
    PATCH switchToolPanel + renderToolPanel
 ═══════════════════════════════ */
-const _origRenderToolPanel = renderToolPanel;
 function renderToolPanel(p){
-  if(p==='bom')renderBOM();
-  else if(p==='warehouse')renderWarehouse();
-  else if(p==='rfq')renderRFQ();
-  else if(p==='sop')renderSOP();
-  else if(p==='landed')renderLanded();
-  else if(p==='oee')renderOEE();
-  else if(p==='risk')renderRisk();
-  else _origRenderToolPanel(p);
+  if(p==='inventory')renderInventory();
+  else if(p==='procurement')renderProcurement();
+  else if(p==='forecast')renderForecast();
+  else if(p==='kpi')renderKPIs();
+  else if(p==='freight')renderFreight();
+  else if(p==='bom'){BOM_DATA=getBOM();renderBOM();}
+  else if(p==='warehouse'){WH_DATA=getWH();renderWarehouse();}
+  else if(p==='rfq'){RFQ_DATA=getRFQ();renderRFQ();}
+  else if(p==='sop'){SOP_DATA=getSOP();renderSOP();}
+  else if(p==='landed'){LC_DATA=getLC();renderLanded();}
+  else if(p==='oee'){OEE_DATA=getOEE();renderOEE();}
+  else if(p==='risk'){RISK_DATA=getRisk();renderRisk();}
 }
 
-const _origSwitchToolPanel = switchToolPanel;
+const _origSwitchToolPanel=null;
 function switchToolPanel(panel){
+  /* Update nav */
   document.querySelectorAll('.tool-nav-item').forEach(n=>n.classList.remove('active'));
   document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
   const ni=document.getElementById('tnav-'+panel);
   if(ni)ni.classList.add('active');
   const pa=document.getElementById('panel-'+panel);
   if(pa)pa.classList.add('active');
+  /* Update tool name in header */
   const names={inventory:'Inventory Manager',procurement:'Purchase Orders',forecast:'Demand Forecasting',kpi:'KPI Dashboard',freight:'Logistics & Freight',bom:'BOM + MRP Planner',warehouse:'Multi-Warehouse Planner',rfq:'RFQ & Negotiation Tracker',sop:'S&OP Planner',landed:'Landed Cost Calculator',oee:'OEE Tracker',risk:'Risk Scorecard'};
   const tn=document.getElementById('toolName');
   if(tn)tn.textContent=names[panel]||panel;
+  /* Plan gating */
   const plan=currentUser?.plan||'starter';
-  const proOnly=['sop','warehouse','rfq','landed'];
+  const proOnly=['warehouse','rfq','sop','landed'];
   const teamOnly=['oee','risk'];
-  ['forecast','freight'].forEach(mod=>{const lock=document.getElementById(mod+'-lock');if(lock)lock.style.display=(mod===panel&&plan==='starter')?'flex':'none';});
   if(proOnly.includes(panel)&&plan==='starter'){
-    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Pro Plan Required</div><div class="plo-desc">Upgrade to Pro to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\'pro\')">Upgrade to Pro</button></div>';}
+    if(pa){pa.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;gap:16px;text-align:center"><div style="font-size:48px">&#128274;</div><div style="font-size:20px;font-weight:700;color:var(--navy)">Pro Plan Required</div><div style="color:var(--muted);font-size:14px">Upgrade to Pro to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\x27pro\x27)">Upgrade to Pro</button></div>';}
     return;
   }
   if(teamOnly.includes(panel)&&(plan==='starter'||plan==='pro')){
-    if(pa){pa.innerHTML='<div class="plan-lock-overlay" style="position:relative;height:300px;display:flex"><div class="plo-icon">&#128274;</div><div class="plo-title">Team Plan Required</div><div class="plo-desc">Upgrade to Team to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\'team\')">Upgrade to Team</button></div>';}
+    if(pa){pa.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;gap:16px;text-align:center"><div style="font-size:48px">&#128274;</div><div style="font-size:20px;font-weight:700;color:var(--navy)">Team Plan Required</div><div style="color:var(--muted);font-size:14px">Upgrade to Team to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\x27team\x27)">Upgrade to Team</button></div>';}
     return;
   }
+  /* Show/hide freight lock for starter */
+  const fl=document.getElementById('freight-lock');
+  if(fl)fl.style.display=(panel==='freight'&&plan==='starter')?'flex':'none';
+  /* Render the panel */
   renderToolPanel(panel);
 }
 
@@ -2038,7 +2360,145 @@ document.addEventListener('DOMContentLoaded', function() {
   showPlan('starter');
 });
 
+olPanel=null;
+function switchToolPanel(panel){
+  /* Update nav */
+  document.querySelectorAll('.tool-nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.remove('active'));
+  const ni=document.getElementById('tnav-'+panel);
+  if(ni)ni.classList.add('active');
+  const pa=document.getElementById('panel-'+panel);
+  if(pa)pa.classList.add('active');
+  /* Update tool name in header */
+  const names={inventory:'Inventory Manager',procurement:'Purchase Orders',forecast:'Demand Forecasting',kpi:'KPI Dashboard',freight:'Logistics & Freight',bom:'BOM + MRP Planner',warehouse:'Multi-Warehouse Planner',rfq:'RFQ & Negotiation Tracker',sop:'S&OP Planner',landed:'Landed Cost Calculator',oee:'OEE Tracker',risk:'Risk Scorecard'};
+  const tn=document.getElementById('toolName');
+  if(tn)tn.textContent=names[panel]||panel;
+  /* Plan gating */
+  const plan=currentUser?.plan||'starter';
+  const proOnly=['warehouse','rfq','sop','landed'];
+  const teamOnly=['oee','risk'];
+  if(proOnly.includes(panel)&&plan==='starter'){
+    if(pa){pa.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;gap:16px;text-align:center"><div style="font-size:48px">&#128274;</div><div style="font-size:20px;font-weight:700;color:var(--navy)">Pro Plan Required</div><div style="color:var(--muted);font-size:14px">Upgrade to Pro to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\x27pro\x27)">Upgrade to Pro</button></div>';}
+    return;
+  }
+  if(teamOnly.includes(panel)&&(plan==='starter'||plan==='pro')){
+    if(pa){pa.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;gap:16px;text-align:center"><div style="font-size:48px">&#128274;</div><div style="font-size:20px;font-weight:700;color:var(--navy)">Team Plan Required</div><div style="color:var(--muted);font-size:14px">Upgrade to Team to unlock this module</div><button class="plo-btn" onclick="closeTool();handleSubscribe(\x27team\x27)">Upgrade to Team</button></div>';}
+    return;
+  }
+  /* Show/hide freight lock for starter */
+  const fl=document.getElementById('freight-lock');
+  if(fl)fl.style.display=(panel==='freight'&&plan==='starter')?'flex':'none';
+  /* Render the panel */
+  renderToolPanel(panel);
+}
+
+
+/* ═══════════════════════════════
+   COMPARE PLAN SWITCHER
+   Simple, reliable, no dependencies
+═══════════════════════════════ */
+function showPlan(plan){
+  var all=['starter','pro','team'];
+  for(var i=0;i<all.length;i++){
+    var t=document.getElementById('ctab-'+all[i]);
+    var p=document.getElementById('cp-'+all[i]);
+    if(t)t.classList.remove('active');
+    if(p)p.style.display='none';
+  }
+  var at=document.getElementById('ctab-'+plan);
+  var ap=document.getElementById('cp-'+plan);
+  if(at)at.classList.add('active');
+  if(ap)ap.style.display='block';
+}
+
+/* Run on load to ensure correct state */
+document.addEventListener('DOMContentLoaded', function() {
+  showPlan('starter');
+});
+
+
+
+function saveWarehouseItem(){
+  var sku=document.getElementById('wf-sku').value.trim();
+  var name=document.getElementById('wf-name').value.trim();
+  if(!sku||!name){alert('SKU and Name are required.');return;}
+  var row={sku:sku,name:name,whA:parseFloat(document.getElementById('wf-wha').value)||0,whB:parseFloat(document.getElementById('wf-whb').value)||0,whC:parseFloat(document.getElementById('wf-whc').value)||0,whD:parseFloat(document.getElementById('wf-whd').value)||0,cost:parseFloat(document.getElementById('wf-cost').value)||0};
+  var editIdx=document.getElementById('wh-add-form').dataset.editIdx;
+  if(editIdx!==undefined&&editIdx!==''){WH_DATA[parseInt(editIdx)]=row;}else{WH_DATA.push(row);}
+  saveWH(WH_DATA);document.getElementById('wh-add-form').style.display='none';document.getElementById('wh-add-form').dataset.editIdx='';
+  ['wf-sku','wf-name','wf-wha','wf-whb','wf-whc','wf-whd','wf-cost'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+  renderWarehouse();
+}
+function editWHRow(idx){
+  var r=WH_DATA[idx];
+  document.getElementById('wf-sku').value=r.sku||'';document.getElementById('wf-name').value=r.name||'';
+  document.getElementById('wf-wha').value=r.whA||0;document.getElementById('wf-whb').value=r.whB||0;
+  document.getElementById('wf-whc').value=r.whC||0;document.getElementById('wf-whd').value=r.whD||0;
+  document.getElementById('wf-cost').value=r.cost||0;
+  document.getElementById('wh-add-form').dataset.editIdx=idx;document.getElementById('wh-add-form').style.display='';
+}
+function deleteWHRow(idx){if(!confirm('Delete?'))return;WH_DATA.splice(idx,1);saveWH(WH_DATA);renderWarehouse();}
+
+function saveRFQRow(){
+  var id=document.getElementById('rf-id').value.trim();
+  var item=document.getElementById('rf-item').value.trim();
+  var supplier=document.getElementById('rf-supplier').value.trim();
+  if(!item||!supplier){alert('Item and Supplier are required.');return;}
+  var row={id:id||'RFQ-001',item:item,supplier:supplier,price:parseFloat(document.getElementById('rf-price').value)||0,lead:parseInt(document.getElementById('rf-lead').value)||7,quality:parseFloat(document.getElementById('rf-quality').value)||3,freight:parseFloat(document.getElementById('rf-freight').value)||0,reliability:parseFloat(document.getElementById('rf-rel').value)||3};
+  var editIdx=document.getElementById('rfq-add-form').dataset.editIdx;
+  if(editIdx!==undefined&&editIdx!==''){RFQ_DATA[parseInt(editIdx)]=row;}else{RFQ_DATA.push(row);}
+  saveRFQ(RFQ_DATA);document.getElementById('rfq-add-form').style.display='none';document.getElementById('rfq-add-form').dataset.editIdx='';renderRFQ();
+}
+function editRFQRow(idx){
+  var r=RFQ_DATA[idx];
+  document.getElementById('rf-id').value=r.id||'';document.getElementById('rf-item').value=r.item||'';
+  document.getElementById('rf-supplier').value=r.supplier||'';document.getElementById('rf-price').value=r.price||0;
+  document.getElementById('rf-lead').value=r.lead||7;document.getElementById('rf-quality').value=r.quality||3;
+  document.getElementById('rf-freight').value=r.freight||0;document.getElementById('rf-rel').value=r.reliability||3;
+  document.getElementById('rfq-add-form').dataset.editIdx=idx;document.getElementById('rfq-add-form').style.display='';
+}
+function deleteRFQRow(idx){if(!confirm('Delete?'))return;RFQ_DATA.splice(idx,1);saveRFQ(RFQ_DATA);renderRFQ();}
+
+function saveOEELine(){
+  var line=document.getElementById('of-line').value.trim();
+  if(!line){alert('Line name is required.');return;}
+  var row={line:line,planned:parseFloat(document.getElementById('of-planned').value)||8,downtime:parseFloat(document.getElementById('of-downtime').value)||0,plannedUnits:parseInt(document.getElementById('of-punits').value)||0,actual:parseInt(document.getElementById('of-actual').value)||0,defects:parseInt(document.getElementById('of-defects').value)||0};
+  var editIdx=document.getElementById('oee-add-form').dataset.editIdx;
+  if(editIdx!==undefined&&editIdx!==''){OEE_DATA.lines[parseInt(editIdx)]=row;}else{OEE_DATA.lines.push(row);}
+  saveOEE(OEE_DATA);document.getElementById('oee-add-form').style.display='none';document.getElementById('oee-add-form').dataset.editIdx='';
+  ['of-line','of-planned','of-downtime','of-punits','of-actual','of-defects'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+  renderOEE();
+}
+function editOEERow(idx){
+  var r=OEE_DATA.lines[idx];
+  document.getElementById('of-line').value=r.line||'';document.getElementById('of-planned').value=r.planned||8;
+  document.getElementById('of-downtime').value=r.downtime||0;document.getElementById('of-punits').value=r.plannedUnits||0;
+  document.getElementById('of-actual').value=r.actual||0;document.getElementById('of-defects').value=r.defects||0;
+  document.getElementById('oee-add-form').dataset.editIdx=idx;document.getElementById('oee-add-form').style.display='';
+}
+function deleteOEERow(idx){if(!confirm('Delete?'))return;OEE_DATA.lines.splice(idx,1);saveOEE(OEE_DATA);renderOEE();}
+
+function saveRiskRow(){
+  var desc=document.getElementById('rk-desc').value.trim();
+  if(!desc){alert('Risk description is required.');return;}
+  var row={id:document.getElementById('rk-id').value||'R-001',category:document.getElementById('rk-cat').value,desc:desc,prob:parseInt(document.getElementById('rk-prob').value)||1,impact:parseInt(document.getElementById('rk-impact').value)||1,mitigation:document.getElementById('rk-mit').value||'TBD',owner:document.getElementById('rk-owner').value||'TBD',status:document.getElementById('rk-status').value||'Monitoring'};
+  var editIdx=document.getElementById('risk-add-form').dataset.editIdx;
+  if(editIdx!==undefined&&editIdx!==''){RISK_DATA[parseInt(editIdx)]=row;}else{RISK_DATA.push(row);}
+  saveRisk(RISK_DATA);document.getElementById('risk-add-form').style.display='none';document.getElementById('risk-add-form').dataset.editIdx='';renderRisk();
+}
+function editRiskRow(idx){
+  var r=RISK_DATA[idx];
+  document.getElementById('rk-id').value=r.id||'';document.getElementById('rk-cat').value=r.category||'Supplier';
+  document.getElementById('rk-desc').value=r.desc||'';document.getElementById('rk-prob').value=r.prob||1;
+  document.getElementById('rk-impact').value=r.impact||1;document.getElementById('rk-mit').value=r.mitigation||'';
+  document.getElementById('rk-owner').value=r.owner||'';document.getElementById('rk-status').value=r.status||'Monitoring';
+  document.getElementById('risk-add-form').dataset.editIdx=idx;document.getElementById('risk-add-form').style.display='';
+}
+function deleteRiskRow(idx){if(!confirm('Delete?'))return;RISK_DATA.splice(idx,1);saveRisk(RISK_DATA);renderRisk();}
+
 </script>
+
+
 
 
 
