@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChainSheet — Supply Chain Workspace</title>
+<title>CS-LIVE-2025 | ChainSheet  Supply Chain Excel Templates</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" onerror="window.supabase={createClient:function(){return{auth:{getSession:async function(){return{data:{session:null}}},signUp:async function(){return{data:null,error:{message:'No internet connection. Please connect and reload.'}}},signInWithPassword:async function(){return{data:null,error:{message:'No internet connection. Please connect and reload.'}}},signOut:async function(){}},from:function(){return{select:function(){return{eq:function(){return{single:async function(){return{data:null,error:null}}}}}},upsert:async function(){return{error:null}},insert:async function(){return{error:null}}}}}}}"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -334,122 +334,27 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 .plan-benefit-box ul{list-style:none}
 .plan-benefit-box li{font-size:12px;color:var(--ink);padding:2px 0}
 .plan-benefit-box li::before{content:'✓ ';color:var(--accent);font-weight:700}
-/* ── TABLET ── */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:32px;padding:60px 5% 64px}
-  .hero-preview{display:none}
-  .hero h1{font-size:36px;letter-spacing:-1.5px}
-  .pricing-grid{grid-template-columns:1fr;max-width:420px}
-  .pricing-card.popular{margin-top:8px}
+  .hero{grid-template-columns:1fr;gap:36px}.hero-preview{display:none}
+  .pricing-grid{grid-template-columns:1fr;max-width:380px}
   .cc-features{grid-template-columns:1fr}
-  .cc-header{flex-direction:column;gap:16px}
-  .cc-btn{width:100%;text-align:center}
   .how-steps{grid-template-columns:1fr 1fr}
-  .how-step:nth-child(2n){border-right:none}
-  .how-step:nth-last-child(-n+2){border-bottom:none}
+  .how-step:nth-child(even){border-right:none}
   .forecast-grid{grid-template-columns:1fr}
-  .templates-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-  .compare-card{padding:22px}
 }
-
-/* ── MOBILE ── */
 @media(max-width:600px){
-  /* Nav */
-  nav{padding:0 4%;height:56px}
-  nav .nav-links{display:none}
-  .nav-login-btn{padding:6px 12px;font-size:12px}
-  .nav-signup-btn{padding:7px 14px;font-size:12px}
-  .logo{font-size:17px}
-
-  /* Hero */
-  .hero{padding:44px 4% 52px;gap:24px}
-  .hero-eyebrow{font-size:10px;letter-spacing:1.5px;margin-bottom:12px}
-  .hero h1{font-size:28px;letter-spacing:-1px;margin-bottom:14px}
-  .hero-desc{font-size:15px;margin-bottom:24px}
-  .hero-preview{display:none}
-  .hero-actions{gap:10px}
-  .btn-primary{padding:12px 20px;font-size:14px}
-  .hero-social-proof{flex-direction:column;align-items:flex-start;gap:6px}
-
-  /* Trust bar */
-  .trust-bar{gap:14px;padding:14px 4%;justify-content:flex-start}
-  .trust-item{font-size:12px}
-  .tdiv{display:none}
-
-  /* Sections */
-  .section{padding:48px 4%}
-  .sh{font-size:24px;letter-spacing:-.5px}
-  .ss{font-size:14px;margin-bottom:32px}
-
-  /* Pricing */
-  .pricing-grid{grid-template-columns:1fr;max-width:100%;gap:16px}
-  .pricing-card{padding:22px}
-  .plan-price{font-size:40px}
-  .popular-badge{font-size:10px;padding:3px 12px}
-
-  /* Template cards */
-  .templates-grid{grid-template-columns:1fr;gap:14px}
-  .tcard-visual{height:90px;font-size:32px}
-  .template-filter{gap:6px}
-  .filter-btn{padding:6px 12px;font-size:12px}
-
-  /* Compare tabs */
-  .compare-tabs{max-width:100%}
-  .ctab{padding:9px 10px;font-size:13px}
-  .compare-card{padding:18px}
-  .cc-price{font-size:34px}
-  .cc-features{grid-template-columns:1fr;gap:5px}
-  .cc-feat{font-size:12px}
-  .cc-header{flex-direction:column;gap:14px}
-  .cc-btn{width:100%;text-align:center;padding:11px 20px}
-
-  /* How it works */
+  nav .nav-links{display:none}.tool-sidebar{display:none}
   .how-steps{grid-template-columns:1fr}
-  .how-step{border-right:none;border-bottom:1px solid var(--border);padding:20px 16px}
+  .how-step{border-right:none;border-bottom:1px solid var(--border)}
   .how-step:last-child{border-bottom:none}
-
-  /* About grid */
-  #about .sh ~ div[style*="grid"]{grid-template-columns:1fr!important}
-
-  /* FAQ */
-  .faq-q{font-size:14px}
-
-  /* Footer */
-  footer{flex-direction:column;align-items:flex-start;padding:32px 4%;gap:16px}
-  .footer-links{gap:16px}
-
-  /* Modals */
-  .modal{padding:22px 16px 20px;border-radius:14px}
-  .modal-title{font-size:19px}
-  .card-row{grid-template-columns:1fr}
-  .plan-selector{grid-template-columns:repeat(3,1fr);gap:6px}
-  .plan-opt{padding:8px 4px}
-  .plan-opt-price{font-size:15px}
-  .plan-opt-name{font-size:9px}
-
-  /* Tool sidebar hidden on mobile */
-  .tool-sidebar{display:none}
-  .tool-content{padding:16px}
-  .tp-title{font-size:17px}
-  .kpi-row{grid-template-columns:1fr 1fr;gap:10px}
-  .kpi-value{font-size:20px}
-  .data-table{font-size:11px}
-  .data-table th,.data-table td{padding:6px 8px}
-
-  /* Mobile tool nav at bottom */
-  .tool-body{flex-direction:column}
-  .tool-topbar{height:50px;padding:0 14px}
-  .tool-name{font-size:12px}
-  .tool-close-btn{font-size:11px;padding:5px 10px}
+  .modal{padding:22px 16px 18px}.card-row{grid-template-columns:1fr}
 }
 
-/* Hamburger button */
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
 .hamburger span{display:block;width:22px;height:2px;background:white;border-radius:2px;transition:all .2s}
-@media(max-width:600px){
-  .hamburger{display:flex}
-}
+@media(max-width:600px){.hamburger{display:flex}}
 
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}.hamburger span{display:block;width:22px;height:2px;background:white;border-radius:2px;transition:all .2s}@media(max-width:600px){.hamburger{display:flex}}
 </style>
 </head>
 <body>
@@ -457,15 +362,12 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <!-- NAV -->
 <nav>
   <div class="logo" onclick="scrollTo(0,0)">Chain<span>Sheet</span></div>
-  <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#templates">Templates</a></li>
     <li><a href="#compare">Compare</a></li>
-    <li><a href="#about">About</a></li>
-    
+    <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-user-area" id="navUserArea">
@@ -485,6 +387,8 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <button class="btn-ghost" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See pricing →</button>
     </div>
     <div class="hero-social-proof"><p class="social-proof-text">Built for supply chain professionals worldwide</p></div>
+      <p class="social-proof-text"><strong>2,400+ teams</strong> running on ChainSheet</p>
+    </div>
   </div>
   <div class="hero-preview">
     <div class="preview-bar"><div class="preview-dot"></div><div class="preview-dot"></div><div class="preview-dot"></div></div>
@@ -505,9 +409,9 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <div class="trust-bar">
   <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>No charge for 7 days</div>
   <div class="tdiv"></div>
-  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Live web workspace included</div>
+  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
   <div class="tdiv"></div>
-  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Secure checkout via Lemon Squeezy</div>
+  <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Live web workspace included</div>
   <div class="tdiv"></div>
   <div class="trust-item"><svg class="ti" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Cancel anytime</div>
 </div>
@@ -516,7 +420,7 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <section class="section" id="pricing">
   <p class="sl">Pricing</p>
   <h2 class="sh">Simple, transparent subscriptions</h2>
-  <p class="ss">Templates + protected live workspace. Monthly or annual — save 2 months with annual.</p>
+  <p class="ss">Templates + protected live workspace. Monthly or annual  save 2 months with annual.</p>
   <div class="pricing-toggle">
     <span class="toggle-label active" id="lblMonthly">Monthly</span>
     <button class="toggle-track" id="billingToggle" onclick="toggleBilling()"><div class="toggle-knob"></div></button>
@@ -531,8 +435,8 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <div class="plan-annual-note" id="n-starter">&nbsp;</div>
       <p class="plan-desc">For individual ops managers or consultants getting started.</p>
       <ul class="plan-features">
-        <li>6 core Excel templates (.xlsx)</li>
-        <li>Web workspace — Inventory &amp; KPI</li>
+        <li>6 core workspace tools</li>
+        <li>Web workspace  Inventory &amp; KPI</li>
         <li>Excel 2016+ &amp; Google Sheets</li>
         <li>Email support (48h)</li>
         <li class="no">Advanced &amp; Pro templates</li>
@@ -584,7 +488,7 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
 <section class="section templates-section" id="templates">
   <p class="sl">Template Library</p>
   <h2 class="sh">12 advanced templates + live workspace</h2>
-  <p class="ss">All 12 supply chain tools are available directly in your browser workspace. No downloads, no Excel required — just log in and start managing your supply chain.</p>
+  <p class="ss">Every template ships with sample data, formula docs, and a user guide. Use in Excel, or open the live workspace  formulas run in the browser, logic is protected so it stays on-platform.</p>
   <div class="template-filter">
     <button class="filter-btn active" onclick="filterTemplates('all',this)">All</button>
     <button class="filter-btn" onclick="filterTemplates('inventory',this)">Inventory</button>
@@ -595,36 +499,23 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
     <button class="filter-btn" onclick="filterTemplates('analytics',this)">Analytics</button>
   </div>
   <div class="templates-grid" id="templatesGrid">
-    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#E0FBF4">📦 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">ABC</span></div><div class="tcard-title">Inventory Management System</div><p class="tcard-desc">Multi-location stock with ABC classification, EOQ, safety stock, auto reorder alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">Tracker</span><span class="tcard-sheet">Reorder Planner</span><span class="tcard-sheet">ABC Analysis</span><span class="tcard-sheet">Dashboard</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('inventory')">Open in App → </button></div></div></div>
-    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#EEF2FF">🛒 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Procurement</span><span class="ttag">PO</span></div><div class="tcard-title">Purchase Order &amp; Vendor Tracker</div><p class="tcard-desc">Full PO lifecycle, vendor scorecards, approval log, spend analytics, on-time tracking.</p><div class="tcard-sheets"><span class="tcard-sheet">PO Log</span><span class="tcard-sheet">Vendor Scorecard</span><span class="tcard-sheet">Spend Analytics</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('procurement')">Open in App → </button></div></div></div>
-    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F5F3FF">📈 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">KPIs</span><span class="ttag">Dashboard</span></div><div class="tcard-title">Supply Chain KPI Dashboard</div><p class="tcard-desc">20-metric executive dashboard: OTIF, inventory turns, freight % of COGS, PO on-time rate.</p><div class="tcard-sheets"><span class="tcard-sheet">Monthly Data</span><span class="tcard-sheet">KPI Dashboard</span><span class="tcard-sheet">Trend Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('kpi')">Open in App → </button></div></div></div>
-    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#FEF3C7">📊 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Forecasting</span><span class="ttag">Demand</span></div><div class="tcard-title">Demand Forecasting Model</div><p class="tcard-desc">Moving average, exponential smoothing, linear regression — MAPE scoring, seasonal index.</p><div class="tcard-sheets"><span class="tcard-sheet">Forecast Engine</span><span class="tcard-sheet">Seasonal Index</span><span class="tcard-sheet">Accuracy</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('forecast')">Open in App → </button></div></div></div>
-    <div class="tcard" data-cat="logistics"><div class="tcard-visual" style="background:#FEE2E2">🚚 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Logistics</span><span class="ttag">Freight</span></div><div class="tcard-title">Freight &amp; Shipment Tracker</div><p class="tcard-desc">Inbound/outbound shipments, carrier scorecards, OTIF, freight cost/kg, delay log.</p><div class="tcard-sheets"><span class="tcard-sheet">Shipment Log</span><span class="tcard-sheet">Carrier Perf.</span><span class="tcard-sheet">Cost Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('freight')">Open in App → </button></div></div></div>
-    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#ECFDF5">🏭 <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">BOM</span><span class="ttag">MRP</span></div><div class="tcard-title">Bill of Materials + MRP Planner</div><p class="tcard-desc">4-level BOM with cost rollup, 12-week net requirements, shortage alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">BOM</span><span class="tcard-sheet">MRP Planner</span><span class="tcard-sheet">Shortage Alerts</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn locked" onclick="launchTool('bom')">Open in App → </button></div></div></div>
-    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#F0FDF4">🗃️ <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">FIFO</span></div><div class="tcard-title">Multi-Warehouse Inventory Planner</div><p class="tcard-desc">8 warehouse locations, inter-warehouse transfers, FIFO costing, slow-mover analysis.</p><div class="tcard-sheets"><span class="tcard-sheet">Master Stock</span><span class="tcard-sheet">By Location</span><span class="tcard-sheet">FIFO Costing</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
-    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#FFF7ED">🔮 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">RFQ</span><span class="ttag">TCO</span></div><div class="tcard-title">Supplier RFQ &amp; Negotiation Tracker</div><p class="tcard-desc">Multi-supplier bid comparison, weighted scoring, TCO calculator, award recommendation.</p><div class="tcard-sheets"><span class="tcard-sheet">RFQ Log</span><span class="tcard-sheet">Bid Comparison</span><span class="tcard-sheet">TCO Calc</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
-    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#EFF6FF">🔮 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">S&OP</span><span class="ttag">Planning</span></div><div class="tcard-title">S&amp;OP Planner</div><p class="tcard-desc">Full monthly S&OP: demand vs supply reconciliation, capacity constraints, scenario modelling.</p><div class="tcard-sheets"><span class="tcard-sheet">Demand Plan</span><span class="tcard-sheet">Supply Plan</span><span class="tcard-sheet">Gap Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
-    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#FDF2F8">💰 <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Landed Cost</span><span class="ttag">Margin</span></div><div class="tcard-title">Landed Cost &amp; Margin Calculator</div><p class="tcard-desc">True landed cost per SKU: FOB, freight, duties, insurance, last-mile. Multi-scenario.</p><div class="tcard-sheets"><span class="tcard-sheet">Cost Breakdown</span><span class="tcard-sheet">Scenarios</span><span class="tcard-sheet">Margin by SKU</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
-    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#FFFBEB">⚙️ <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">OEE</span><span class="ttag">Capacity</span></div><div class="tcard-title">Production Capacity &amp; OEE Tracker</div><p class="tcard-desc">OEE per machine/line, planned vs actual, downtime classification, utilization heat maps.</p><div class="tcard-sheets"><span class="tcard-sheet">Capacity Plan</span><span class="tcard-sheet">OEE by Line</span><span class="tcard-sheet">Downtime Log</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">🔒 Team</button></div></div></div>
-    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F0F9FF">📉 <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Risk</span><span class="ttag">Resilience</span></div><div class="tcard-title">Supply Chain Risk Scorecard</div><p class="tcard-desc">Supplier, logistics, demand-side risk — probability/impact matrix and resilience index.</p><div class="tcard-sheets"><span class="tcard-sheet">Risk Register</span><span class="tcard-sheet">Impact Matrix</span><span class="tcard-sheet">Mitigation Plan</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">🔒 Team</button></div></div></div>
+    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#E0FBF4">? <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">ABC</span></div><div class="tcard-title">Inventory Management System</div><p class="tcard-desc">Multi-location stock with ABC classification, EOQ, safety stock, auto reorder alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">Tracker</span><span class="tcard-sheet">Reorder Planner</span><span class="tcard-sheet">ABC Analysis</span><span class="tcard-sheet">Dashboard</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('inventory')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#EEF2FF">? <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Procurement</span><span class="ttag">PO</span></div><div class="tcard-title">Purchase Order &amp; Vendor Tracker</div><p class="tcard-desc">Full PO lifecycle, vendor scorecards, approval log, spend analytics, on-time tracking.</p><div class="tcard-sheets"><span class="tcard-sheet">PO Log</span><span class="tcard-sheet">Vendor Scorecard</span><span class="tcard-sheet">Spend Analytics</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('procurement')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F5F3FF">? <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">KPIs</span><span class="ttag">Dashboard</span></div><div class="tcard-title">Supply Chain KPI Dashboard</div><p class="tcard-desc">20-metric executive dashboard: OTIF, inventory turns, freight % of COGS, PO on-time rate.</p><div class="tcard-sheets"><span class="tcard-sheet">Monthly Data</span><span class="tcard-sheet">KPI Dashboard</span><span class="tcard-sheet">Trend Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('kpi')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#FEF3C7">? <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Forecasting</span><span class="ttag">Demand</span></div><div class="tcard-title">Demand Forecasting Model</div><p class="tcard-desc">Moving average, exponential smoothing, linear regression  MAPE scoring, seasonal index.</p><div class="tcard-sheets"><span class="tcard-sheet">Forecast Engine</span><span class="tcard-sheet">Seasonal Index</span><span class="tcard-sheet">Accuracy</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('forecast')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="logistics"><div class="tcard-visual" style="background:#FEE2E2">? <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Logistics</span><span class="ttag">Freight</span></div><div class="tcard-title">Freight &amp; Shipment Tracker</div><p class="tcard-desc">Inbound/outbound shipments, carrier scorecards, OTIF, freight cost/kg, delay log.</p><div class="tcard-sheets"><span class="tcard-sheet">Shipment Log</span><span class="tcard-sheet">Carrier Perf.</span><span class="tcard-sheet">Cost Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn" onclick="launchTool('freight')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#ECFDF5">? <span class="tcard-plan-lock lock-starter">Starter</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">BOM</span><span class="ttag">MRP</span></div><div class="tcard-title">Bill of Materials + MRP Planner</div><p class="tcard-desc">4-level BOM with cost rollup, 12-week net requirements, shortage alerts.</p><div class="tcard-sheets"><span class="tcard-sheet">BOM</span><span class="tcard-sheet">MRP Planner</span><span class="tcard-sheet">Shortage Alerts</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Starter+</strong></span><button class="tcard-launch-btn locked" onclick="launchTool('bom')">Open in App → </button></div></div></div>
+    <div class="tcard" data-cat="inventory"><div class="tcard-visual" style="background:#F0FDF4">?  <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Inventory</span><span class="ttag">FIFO</span></div><div class="tcard-title">Multi-Warehouse Inventory Planner</div><p class="tcard-desc">8 warehouse locations, inter-warehouse transfers, FIFO costing, slow-mover analysis.</p><div class="tcard-sheets"><span class="tcard-sheet">Master Stock</span><span class="tcard-sheet">By Location</span><span class="tcard-sheet">FIFO Costing</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="procurement"><div class="tcard-visual" style="background:#FFF7ED">? <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">RFQ</span><span class="ttag">TCO</span></div><div class="tcard-title">Supplier RFQ &amp; Negotiation Tracker</div><p class="tcard-desc">Multi-supplier bid comparison, weighted scoring, TCO calculator, award recommendation.</p><div class="tcard-sheets"><span class="tcard-sheet">RFQ Log</span><span class="tcard-sheet">Bid Comparison</span><span class="tcard-sheet">TCO Calc</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="forecasting"><div class="tcard-visual" style="background:#EFF6FF">? <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">S&OP</span><span class="ttag">Planning</span></div><div class="tcard-title">S&amp;OP Planner</div><p class="tcard-desc">Full monthly S&OP: demand vs supply reconciliation, capacity constraints, scenario modelling.</p><div class="tcard-sheets"><span class="tcard-sheet">Demand Plan</span><span class="tcard-sheet">Supply Plan</span><span class="tcard-sheet">Gap Analysis</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#FDF2F8">? <span class="tcard-plan-lock lock-pro">Pro</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Landed Cost</span><span class="ttag">Margin</span></div><div class="tcard-title">Landed Cost &amp; Margin Calculator</div><p class="tcard-desc">True landed cost per SKU: FOB, freight, duties, insurance, last-mile. Multi-scenario.</p><div class="tcard-sheets"><span class="tcard-sheet">Cost Breakdown</span><span class="tcard-sheet">Scenarios</span><span class="tcard-sheet">Margin by SKU</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Pro+</strong></span><button class="tcard-launch-btn locked">🔒 Pro</button></div></div></div>
+    <div class="tcard" data-cat="production"><div class="tcard-visual" style="background:#FFFBEB">⚙ <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">OEE</span><span class="ttag">Capacity</span></div><div class="tcard-title">Production Capacity &amp; OEE Tracker</div><p class="tcard-desc">OEE per machine/line, planned vs actual, downtime classification, utilization heat maps.</p><div class="tcard-sheets"><span class="tcard-sheet">Capacity Plan</span><span class="tcard-sheet">OEE by Line</span><span class="tcard-sheet">Downtime Log</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">🔒 Team</button></div></div></div>
+    <div class="tcard" data-cat="analytics"><div class="tcard-visual" style="background:#F0F9FF">? <span class="tcard-plan-lock lock-team">Team</span></div><div class="tcard-body"><div class="tcard-tags"><span class="ttag">Risk</span><span class="ttag">Resilience</span></div><div class="tcard-title">Supply Chain Risk Scorecard</div><p class="tcard-desc">Supplier, logistics, demand-side risk  probability/impact matrix and resilience index.</p><div class="tcard-sheets"><span class="tcard-sheet">Risk Register</span><span class="tcard-sheet">Impact Matrix</span><span class="tcard-sheet">Mitigation Plan</span></div><div class="tcard-footer"><span class="tcard-plan-req">Included in <strong>Team</strong></span><button class="tcard-launch-btn locked">🔒 Team</button></div></div></div>
   </div>
 </section>
 
 <!-- COMPARE SLIDER -->
-<section class="section compare-section" <section class="section">
-  <p class="sl">Process</p>
-  <h2 class="sh">Up and running in 4 steps</h2>
-  <p class="ss" style="margin-bottom:32px">No ERP integrations, no IT tickets.</p>
-  <div class="how-steps">
-    <div class="how-step"><p class="step-n">01 / Sign up</p><p class="step-t">Create your account</p><p class="step-d">Pick a plan, create your account, and complete checkout via Lemon Squeezy. Your workspace is ready instantly.</p></div>
-    <div class="how-step"><p class="step-n">02 / Open workspace</p><p class="step-t">Everything runs in the browser</p><p class="step-d">No downloads, no installs. Log in and open your workspace — all your supply chain tools are ready to use immediately.</p></div>
-    <div class="how-step"><p class="step-n">03 / Enter your data</p><p class="step-t">Live formulas, instant results</p><p class="step-d">Add your SKUs, purchase orders, and forecasts. Every formula runs instantly in the browser and your data saves automatically to your account.</p></div>
-    <div class="how-step"><p class="step-n">04 / Operate</p><p class="step-t">Dashboards stay live</p><p class="step-d">Your data persists between sessions. KPIs, inventory status, and forecasts update in real time every time you log in.</p></div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section" id="compare" style="background:var(--warm)">
+<section class="section compare-section" id="compare">
   <p class="sl">Plan Comparison</p>
   <h2 class="sh">Explore each plan in detail</h2>
   <p class="ss" style="margin-bottom:24px">Switch plans with the tabs below to see exactly what's included at each tier.</p>
@@ -633,143 +524,133 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
     <button class="ctab" id="ctab-pro" onclick="showPlan('pro')">Pro</button>
     <button class="ctab" id="ctab-team" onclick="showPlan('team')">Team</button>
   </div>
-
-  <!-- STARTER PANE -->
-  <div class="compare-pane" id="cp-starter" style="display:block">
+  <div class="compare-pane active" id="cp-starter" style="display:block">
     <div class="compare-card">
       <div class="cc-header">
         <div>
-          <p class="cc-plan">STARTER PLAN</p>
+          <div class="cc-plan-name">Starter Plan</div>
           <div class="cc-price">$<span id="cp-starter-price">9</span><sub>/mo</sub></div>
+          <div class="cc-price-note" id="cp-starter-note">&nbsp;</div>
           <p class="cc-desc">For individual ops managers, freelance consultants, or small teams just getting started.</p>
         </div>
-        <button class="cc-btn" onclick="handleSubscribe('starter')">Start free trial</button>
+        <button class="cc-btn outline" onclick="handleSubscribe('starter')">Start free trial</button>
       </div>
       <div class="cc-features">
-        <div class="cc-col">
-          <div class="cc-feat yes">6 workspace tools included</div>
-          <div class="cc-feat yes">Inventory Management System</div>
-          <div class="cc-feat yes">Purchase Order &amp; Vendor Tracker</div>
-          <div class="cc-feat yes">Demand Forecasting Model</div>
-          <div class="cc-feat yes">Freight &amp; Shipment Tracker</div>
-          <div class="cc-feat yes">BOM + MRP Planner</div>
-        </div>
-        <div class="cc-col">
-          <div class="cc-feat yes">KPI Dashboard</div>
-          <div class="cc-feat yes">Web workspace — browser based</div>
-          <div class="cc-feat yes">Data saved to your account</div>
-          <div class="cc-feat yes">Email support (48h)</div>
-          <div class="cc-feat no">Advanced Pro tools (6)</div>
-          <div class="cc-feat no">Team seats</div>
-        </div>
+        <div class="cc-feat yes">6 workspace tools included</div>
+        <div class="cc-feat">Inventory Management System</div>
+        <div class="cc-feat">Purchase Order &amp; Vendor Tracker</div>
+        <div class="cc-feat">Demand Forecasting Model</div>
+        <div class="cc-feat">Freight &amp; Shipment Tracker</div>
+        <div class="cc-feat">BOM + MRP Planner</div>
+        <div class="cc-feat">KPI Dashboard</div>
+        <div class="cc-feat">Web workspace  Inventory module</div>
+        <div class="cc-feat">Web workspace  KPI module</div>
+        <div class="cc-feat">Email support (48h)</div>
+        <div class="cc-feat"></div>
+        <div class="cc-feat no">Advanced Pro templates (4)</div>
+        <div class="cc-feat no">Full workspace (5 modules)</div>
+        <div class="cc-feat no">Team seats</div>
+        <div class="cc-feat no">Custom branding</div>
       </div>
       <div class="cc-nav">
-        <button class="cc-nav-btn" onclick="showPlan('team')">&#8592; Team</button>
-        <span class="cc-nav-pos">1 of 3</span>
-        <button class="cc-nav-btn" onclick="showPlan('pro')">Pro &#8594;</button>
+        <button class="cc-nav-btn" onclick="switchComparePlan('team',document.querySelectorAll('.ctab')[2])">← Team</button>
+        <span class="cc-nav-label">1 of 3</span>
+        <button class="cc-nav-btn" onclick="switchComparePlan('pro',document.querySelectorAll('.ctab')[1])">Pro →</button>
       </div>
     </div>
   </div>
-
-  <!-- PRO PANE -->
   <div class="compare-pane" id="cp-pro" style="display:none">
     <div class="compare-card popular">
       <div class="cc-header">
         <div>
-          <p class="cc-plan">PRO PLAN <span class="popular-badge">Most Popular</span></p>
+          <div class="cc-plan-name">⭐ Pro Plan  Most Popular</div>
           <div class="cc-price">$<span id="cp-pro-price">19</span><sub>/mo</sub></div>
-          <p class="cc-desc">Every tool, full workspace, and priority support. The plan most subscribers choose.</p>
+          <div class="cc-price-note" id="cp-pro-note">&nbsp;</div>
+          <p class="cc-desc">Every template, the full workspace, and priority support. What most subscribers choose.</p>
         </div>
-        <button class="cc-btn" onclick="handleSubscribe('pro')">Start free trial</button>
+        <button class="cc-btn accent" onclick="handleSubscribe('pro')">Start free trial</button>
       </div>
       <div class="cc-features">
-        <div class="cc-col">
-          <div class="cc-feat yes">Everything in Starter</div>
-          <div class="cc-feat yes">All 12 workspace tools</div>
-          <div class="cc-feat yes">Multi-Warehouse Planner</div>
-          <div class="cc-feat yes">Supplier RFQ &amp; Negotiation Tracker</div>
-          <div class="cc-feat yes">S&amp;OP Planner</div>
-          <div class="cc-feat yes">Landed Cost &amp; Margin Calculator</div>
-        </div>
-        <div class="cc-col">
-          <div class="cc-feat yes">Full workspace — all modules</div>
-          <div class="cc-feat yes">Priority email support (24h)</div>
-          <div class="cc-feat yes">Custom formula help</div>
-          <div class="cc-feat yes">Data saved to your account</div>
-          <div class="cc-feat no">Team seats (5)</div>
-          <div class="cc-feat no">Custom branding</div>
-        </div>
+        <div class="cc-feat">Everything in Starter</div>
+        <div class="cc-feat">All 12 templates (.xlsx)</div>
+        <div class="cc-feat">Multi-Warehouse Inventory Planner</div>
+        <div class="cc-feat">Supplier RFQ &amp; Negotiation Tracker</div>
+        <div class="cc-feat">S&amp;OP Planner</div>
+        <div class="cc-feat">Landed Cost &amp; Margin Calculator</div>
+        <div class="cc-feat">Full workspace  all 5 modules</div>
+        <div class="cc-feat">Procurement web module</div>
+        <div class="cc-feat">Forecasting web module</div>
+        <div class="cc-feat">Logistics web module</div>
+        <div class="cc-feat">Priority email support (24h)</div>
+        <div class="cc-feat">Custom formula help</div>
+        <div class="cc-feat no">Team seats (5)</div>
+        <div class="cc-feat no">Custom branding</div>
+        <div class="cc-feat no">Onboarding call</div>
       </div>
       <div class="cc-nav">
-        <button class="cc-nav-btn" onclick="showPlan('starter')">&#8592; Starter</button>
-        <span class="cc-nav-pos">2 of 3</span>
-        <button class="cc-nav-btn" onclick="showPlan('team')">Team &#8594;</button>
+        <button class="cc-nav-btn" onclick="switchComparePlan('starter',document.querySelectorAll('.ctab')[0])">← Starter</button>
+        <span class="cc-nav-label">2 of 3</span>
+        <button class="cc-nav-btn" onclick="switchComparePlan('team',document.querySelectorAll('.ctab')[2])">Team →</button>
       </div>
     </div>
   </div>
-
-  <!-- TEAM PANE -->
   <div class="compare-pane" id="cp-team" style="display:none">
     <div class="compare-card">
       <div class="cc-header">
         <div>
-          <p class="cc-plan">TEAM PLAN</p>
+          <div class="cc-plan-name">Team Plan</div>
           <div class="cc-price">$<span id="cp-team-price">39</span><sub>/mo</sub></div>
-          <p class="cc-desc">For procurement, ops, and logistics teams. One subscription, up to 5 people, all tools.</p>
+          <div class="cc-price-note" id="cp-team-note">&nbsp;</div>
+          <p class="cc-desc">For procurement, ops, and logistics teams. One subscription, up to 5 people, all templates.</p>
         </div>
-        <button class="cc-btn" onclick="handleSubscribe('team')">Start free trial</button>
+        <button class="cc-btn navy" onclick="handleSubscribe('team')">Start free trial</button>
       </div>
       <div class="cc-features">
-        <div class="cc-col">
-          <div class="cc-feat yes">Everything in Pro</div>
-          <div class="cc-feat yes">5 team seats — shared access</div>
-          <div class="cc-feat yes">Production OEE Tracker</div>
-          <div class="cc-feat yes">Supply Chain Risk Scorecard</div>
-          <div class="cc-feat yes">Full workspace — all 5 modules</div>
-          <div class="cc-feat yes">Onboarding call included</div>
-        </div>
-        <div class="cc-col">
-          <div class="cc-feat yes">Same-day dedicated support</div>
-          <div class="cc-feat yes">Shared workspace data (team)</div>
-          <div class="cc-feat yes">Custom formula help</div>
-          <div class="cc-feat yes">Data saved to your account</div>
-          <div class="cc-feat yes">Priority support queue</div>
-          <div class="cc-feat yes">Custom branding on workspace</div>
-        </div>
+        <div class="cc-feat">Everything in Pro</div>
+        <div class="cc-feat">5 team seats  shared access</div>
+        <div class="cc-feat">Production Capacity &amp; OEE Tracker</div>
+        <div class="cc-feat">Supply Chain Risk Scorecard</div>
+        <div class="cc-feat">Full workspace  all 5 modules</div>
+        <div class="cc-feat">Same-day dedicated support</div>
+        <div class="cc-feat">Onboarding call included</div>
+        <div class="cc-feat">Custom branding on templates</div>
+        <div class="cc-feat">Priority support queue</div>
+        <div class="cc-feat">Shared workspace data (team)</div>
+        <div class="cc-feat"></div>
+        <div class="cc-feat">Custom formula help</div>
       </div>
       <div class="cc-nav">
-        <button class="cc-nav-btn" onclick="showPlan('pro')">&#8592; Pro</button>
-        <span class="cc-nav-pos">3 of 3</span>
-        <button class="cc-nav-btn" onclick="showPlan('starter')">Starter &#8594;</button>
+        <button class="cc-nav-btn" onclick="switchComparePlan('pro',document.querySelectorAll('.ctab')[1])">← Pro</button>
+        <span class="cc-nav-label">3 of 3</span>
+        <button class="cc-nav-btn" onclick="switchComparePlan('starter',document.querySelectorAll('.ctab')[0])">Starter →</button>
       </div>
     </div>
   </div>
 </section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <p class="sl">Process</p>
+  <h2 class="sh">Up and running in 4 steps</h2>
+  <p class="ss" style="margin-bottom:32px">No ERP integrations, no IT tickets.</p>
+  <div class="how-steps">
+    <div class="how-step"><p class="step-n">01 / Sign up</p><p class="step-t">Start your trial</p><p class="step-d">Card collected on signup  no charge for 7 days. Cancel before day 7 and pay nothing.</p></div>
+    <div class="how-step"><p class="step-n">02 / Open workspace</p><p class="step-t">Everything runs in the browser</p><p class="step-d">No downloads, no installs. Log in and open your workspace — all your supply chain tools are ready to use immediately.</p></div>
+    <div class="how-step"><p class="step-n">03 / Use the workspace</p><p class="step-t">Live browser tool</p><p class="step-d">Formulas run in the browser. Data saved to your account. Logic protected  stays on platform.</p></div>
+    <div class="how-step"><p class="step-n">04 / Operate</p><p class="step-t">Dashboards stay live</p><p class="step-d">Your data persists between sessions. Export reports or share with teammates on the Team plan.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section class="section" id="about" style="background:var(--white)">
   <p class="sl">About</p>
   <h2 class="sh">The story behind ChainSheet</h2>
-  <p class="ss" style="max-width:680px">ChainSheet was built out of a simple frustration: supply chain management software is either too expensive, too complex, or not designed for teams in Central America and Latin America.</p>
+  <p class="ss" style="max-width:680px">ChainSheet was built out of a simple frustration: supply chain management software is either too expensive, too complex, or not designed for growing businesses worldwide.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:820px">
-    <div style="background:var(--warm);border-radius:14px;padding:28px">
-      <div style="font-size:28px;margin-bottom:12px">🌍</div>
-      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Built for teams worldwide</h3>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6">Most supply chain tools are built for large enterprises with big budgets. ChainSheet is designed to work for growing businesses everywhere — from solo consultants to mid-size operations teams across any industry or country.</p>
-    </div>
-    <div style="background:var(--warm);border-radius:14px;padding:28px">
-      <div style="font-size:28px;margin-bottom:12px">📊</div>
-      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Excel-first philosophy</h3>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6">Your team already knows Excel. ChainSheet gives you professional-grade supply chain templates that work in Excel, Google Sheets, or directly in our browser workspace — no new software to learn.</p>
-    </div>
-    <div style="background:var(--warm);border-radius:14px;padding:28px">
-      <div style="font-size:28px;margin-bottom:12px">🔒</div>
-      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Your data, protected</h3>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6">All data entered in the web workspace is saved securely to your account and encrypted at rest. The formula logic stays on our platform so your workflows are always protected.</p>
-    </div>
-    <div style="background:var(--warm);border-radius:14px;padding:28px">
-      <div style="font-size:28px;margin-bottom:12px">🚀</div>
-      <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Currently launching</h3>
-      <p style="font-size:14px;color:var(--muted);line-height:1.6">ChainSheet is in its early launch phase. We are actively improving the platform based on feedback from our first users. Have a suggestion? Email us at <a href="mailto:support@chainsheet.co" style="color:var(--accent-dim);font-weight:600">support@chainsheet.co</a></p>
-    </div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px"><div style="font-size:28px;margin-bottom:12px">🌍</div><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Built for teams worldwide</h3><p style="font-size:14px;color:var(--muted);line-height:1.6">Most supply chain tools are built for large enterprises with big budgets. ChainSheet is designed to work for growing businesses everywhere — from solo consultants to mid-size operations teams across any industry or country.</p></div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px"><div style="font-size:28px;margin-bottom:12px">📊</div><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Browser-first philosophy</h3><p style="font-size:14px;color:var(--muted);line-height:1.6">No downloads, no installs. ChainSheet runs entirely in your browser with live formulas — inventory, procurement, forecasting, KPIs, logistics and more. Your data saves automatically to your account.</p></div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px"><div style="font-size:28px;margin-bottom:12px">🔒</div><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Your data, protected</h3><p style="font-size:14px;color:var(--muted);line-height:1.6">All data entered in the workspace is saved securely to your account and encrypted at rest. Your data is yours — export or access it anytime.</p></div>
+    <div style="background:var(--warm);border-radius:14px;padding:28px"><div style="font-size:28px;margin-bottom:12px">🚀</div><h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Currently launching</h3><p style="font-size:14px;color:var(--muted);line-height:1.6">ChainSheet is in its early launch phase. We are actively improving the platform based on feedback from our first users. Have a suggestion? Email us at <a href="mailto:support@chainsheet.co" style="color:var(--accent-dim);font-weight:600">support@chainsheet.co</a></p></div>
   </div>
 </section>
 <section class="section" id="faq">
@@ -777,22 +658,55 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
   <h2 class="sh">Frequently asked</h2>
   <div style="max-width:660px">
     <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Why is a card required for the free trial?</span><span class="faq-chevron">▾</span></button><div class="faq-a">We collect card details upfront so you get instant, uninterrupted access. You won't be charged until day 8. Cancel any time before that in your account settings and you pay nothing.</div></div>
-    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Do I need to install anything?</span><span class="faq-chevron">&#9662;</span></button><div class="faq-a">No. ChainSheet runs entirely in your browser &#8212; no downloads, no installs, no Excel required. All you need is an internet connection and a modern browser like Chrome, Safari, or Firefox.</div></div>
-    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What is the "web workspace"?</span><span class="faq-chevron">▾</span></button><div class="faq-a">The web workspace is a live in-browser supply chain tool. You enter your data on the site, and all calculations — EOQ, MAPE, OTIF, etc. — run instantly. Your data is saved to your account. The formula logic is protected on-platform so it can't be extracted or copied out. It's the same power as the Excel templates but always accessible and always live.</div></div>
+    
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What is the "web workspace"?</span><span class="faq-chevron">▾</span></button><div class="faq-a">The web workspace is a live in-browser supply chain tool. You enter your data on the site, and all calculations  EOQ, MAPE, OTIF, etc.  run instantly. Your data is saved to your account. The formula logic is protected on-platform so it can't be extracted or copied out. It's the same power as the Excel templates but always accessible and always live.</div></div>
     <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Can I cancel anytime?</span><span class="faq-chevron">▾</span></button><div class="faq-a">Yes. Cancel any time from your account. Monthly plans: access until end of billing period. Annual plans: cancellable anytime, non-refundable after 30 days.</div></div>
-    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What's the difference between Starter and Pro?</span><span class="faq-chevron">▾</span></button><div class="faq-a">Starter gives you the 6 core templates plus the Inventory and KPI workspace modules. Pro unlocks all 12 templates and all 5 workspace modules — Inventory, Procurement, Forecasting, KPIs, and Logistics — plus priority support and custom formula help.</div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">What's the difference between Starter and Pro?</span><span class="faq-chevron">▾</span></button><div class="faq-a">Starter gives you the 6 core templates plus the Inventory and KPI workspace modules. Pro unlocks all 12 templates and all 5 workspace modules  Inventory, Procurement, Forecasting, KPIs, and Logistics  plus priority support and custom formula help.</div></div>
     
   </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <div><div class="logo">Chain<span>Sheet</span></div><p class="footer-copy">&copy; 2025 ChainSheet. All rights reserved.</p></div>
   <ul class="footer-links"><li><a href="#pricing">Pricing</a></li><li><a href="#templates">Templates</a></li><li><a href="#">Support</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul>
-<div style="text-align:center;font-size:10px;color:var(--border);padding:4px">v3.0</div>
 </footer>
 
 <!-- TOOL OVERLAY -->
+
+      <!-- KPI -->
+      <div class="tool-panel" id="panel-kpi">
+        <div class="tp-header">
+          <div><div class="tp-title">Supply Chain KPIs</div><div class="tp-subtitle">20 live metrics from your inventory and procurement data</div></div>
+          <div class="tp-actions"><button class="tp-btn ghost" onclick="renderKPIs()">&#8635; Refresh</button></div>
+        </div>
+        <div class="kpi-row" id="kpi-main"></div>
+        <div class="chart-wrap"><div class="chart-title">Monthly Fulfillment Rate (simulated)</div><div class="bar-chart" id="kpi-chart"></div></div>
+      </div>
+      <!-- FREIGHT -->
+      <div class="tool-panel" id="panel-freight">
+        <div class="tp-header">
+          <div><div class="tp-title">Logistics &amp; Freight</div><div class="tp-subtitle">Shipment tracking with carrier performance analysis</div></div>
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addFreightRow()">+ Add Shipment</button></div>
+        </div>
+        <div class="kpi-row" id="freight-kpis"></div>
+        <div style="position:relative">
+          <div class="data-table-wrap"><table class="data-table"><thead><tr><th>ID</th><th>Direction</th><th>Route</th><th>Carrier</th><th>Ship Date</th><th>ETA</th><th>Weight (kg)</th><th>Cost</th><th>Status</th></tr></thead><tbody id="freight-tbody"></tbody></table></div>
+          <div class="plan-lock-overlay" id="freight-lock" style="display:none">
+            <div class="plo-icon">&#128274;</div>
+            <div class="plo-title">Pro Plan Required</div>
+            <div class="plo-desc">Upgrade to Pro to unlock Logistics</div>
+            <button class="plo-btn" onclick="closeTool();handleSubscribe('pro')">Upgrade to Pro</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+
 <div class="tool-overlay" id="toolOverlay">
   <div class="tool-topbar">
     <div class="logo">Chain<span>Sheet</span></div>
@@ -807,13 +721,13 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <div class="tool-nav-item" id="tnav-forecast" onclick="switchToolPanel('forecast')"><span class="tni">&#128200;</span>Forecasting</div>
       <div class="tool-nav-item" id="tnav-kpi" onclick="switchToolPanel('kpi')"><span class="tni">&#128202;</span>KPI Dashboard</div>
       <div class="tool-nav-item" id="tnav-freight" onclick="switchToolPanel('freight')"><span class="tni">&#128666;</span>Logistics</div>
-      <div class="tool-nav-item" id="tnav-bom" onclick="switchToolPanel('bom')"><span class="tni">&#127981;</span>BOM + MRP</div>
-      <div class="tool-nav-item" id="tnav-warehouse" onclick="switchToolPanel('warehouse')"><span class="tni">&#128451;</span>Multi-Warehouse</div>
-      <div class="tool-nav-item" id="tnav-rfq" onclick="switchToolPanel('rfq')"><span class="tni">&#128203;</span>RFQ Tracker</div>
-      <div class="tool-nav-item" id="tnav-sop" onclick="switchToolPanel('sop')"><span class="tni">&#128200;</span>S&amp;OP Planner</div>
-      <div class="tool-nav-item" id="tnav-landed" onclick="switchToolPanel('landed')"><span class="tni">&#128176;</span>Landed Cost</div>
-      <div class="tool-nav-item" id="tnav-oee" onclick="switchToolPanel('oee')"><span class="tni">&#9881;&#65039;</span>OEE Tracker</div>
-      <div class="tool-nav-item" id="tnav-risk" onclick="switchToolPanel('risk')"><span class="tni">&#128201;</span>Risk Scorecard</div>
+      <div class="tool-nav-item" id="tnav-bom" onclick="switchToolPanel('bom')"><span class="tni">🏭</span>BOM + MRP</div>
+      <div class="tool-nav-item" id="tnav-warehouse" onclick="switchToolPanel('warehouse')"><span class="tni">📦</span>Multi-Warehouse</div>
+      <div class="tool-nav-item" id="tnav-rfq" onclick="switchToolPanel('rfq')"><span class="tni">📋</span>RFQ Tracker</div>
+      <div class="tool-nav-item" id="tnav-sop" onclick="switchToolPanel('sop')"><span class="tni">📈</span>S&amp;OP Planner</div>
+      <div class="tool-nav-item" id="tnav-landed" onclick="switchToolPanel('landed')"><span class="tni">💰</span>Landed Cost</div>
+      <div class="tool-nav-item" id="tnav-oee" onclick="switchToolPanel('oee')"><span class="tni">⚙️</span>OEE Tracker</div>
+      <div class="tool-nav-item" id="tnav-risk" onclick="switchToolPanel('risk')"><span class="tni">📊</span>Risk Scorecard</div>
     </div>
     <div class="tool-content">
       <!-- INVENTORY -->
@@ -873,31 +787,9 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       </div>
       <!-- FORECAST -->
       <div class="tool-panel" id="panel-forecast">
-        <div class="tp-header"><div><div class="tp-title">Demand Forecasting</div><div class="tp-subtitle">Moving average &amp; exponential smoothing — MAPE scored automatically</div></div><div class="tp-actions"><button class="tp-btn ghost" onclick="clearForecastData()">Reset</button><button class="tp-btn accent" onclick="addForecastItem()">+ Add SKU</button></div></div>
+        <div class="tp-header"><div><div class="tp-title">Demand Forecasting</div><div class="tp-subtitle">Moving average &amp; exponential smoothing  MAPE scored automatically</div></div></div>
         <div style="position:relative">
-          <div class="add-row-form" id="fcst-add-form" style="display:none">
-          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add SKU Forecast — Enter 12 months of actual demand</div>
-          <div class="form-grid">
-            <div class="fg-field"><label>SKU</label><input id="fcst-sku" placeholder="SKU-002"></div>
-            <div class="fg-field"><label>Item Name</label><input id="fcst-name" placeholder="Product Name"></div>
-            <div class="fg-field"><label>January</label><input id="fcst-jan" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>February</label><input id="fcst-feb" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>March</label><input id="fcst-mar" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>April</label><input id="fcst-apr" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>May</label><input id="fcst-may" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>June</label><input id="fcst-jun" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>July</label><input id="fcst-jul" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>August</label><input id="fcst-aug" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>September</label><input id="fcst-sep" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>October</label><input id="fcst-oct" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>November</label><input id="fcst-nov" type="number" placeholder="0"></div>
-            <div class="fg-field"><label>December</label><input id="fcst-dec" type="number" placeholder="0"></div>
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="tp-btn accent" onclick="saveForecastItem()">Save SKU Forecast</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('fcst-add-form').style.display='none'">Cancel</button>
-          </div>
-        </div>
+          <div class="add-row-form" id="fcst-add-form" style="display:none"><div style="font-size:12px;font-weight:700;margin-bottom:10px">Add SKU Forecast</div><div class="form-grid"><div class="fg-field"><label>SKU</label><input id="fcst-sku" placeholder="SKU-002"></div><div class="fg-field"><label>Item Name</label><input id="fcst-name" placeholder="Product Name"></div><div class="fg-field"><label>January</label><input id="fcst-jan" type="number" placeholder="0"></div><div class="fg-field"><label>February</label><input id="fcst-feb" type="number" placeholder="0"></div><div class="fg-field"><label>March</label><input id="fcst-mar" type="number" placeholder="0"></div><div class="fg-field"><label>April</label><input id="fcst-apr" type="number" placeholder="0"></div><div class="fg-field"><label>May</label><input id="fcst-may" type="number" placeholder="0"></div><div class="fg-field"><label>June</label><input id="fcst-jun" type="number" placeholder="0"></div><div class="fg-field"><label>July</label><input id="fcst-jul" type="number" placeholder="0"></div><div class="fg-field"><label>August</label><input id="fcst-aug" type="number" placeholder="0"></div><div class="fg-field"><label>September</label><input id="fcst-sep" type="number" placeholder="0"></div><div class="fg-field"><label>October</label><input id="fcst-oct" type="number" placeholder="0"></div><div class="fg-field"><label>November</label><input id="fcst-nov" type="number" placeholder="0"></div><div class="fg-field"><label>December</label><input id="fcst-dec" type="number" placeholder="0"></div></div><div style="display:flex;gap:8px"><button class="tp-btn accent" onclick="saveForecastItem()">Save Forecast</button><button class="tp-btn ghost" onclick="document.getElementById('fcst-add-form').style.display='none'">Cancel</button></div></div>
         <div class="forecast-grid" id="forecast-grid"></div>
           <div class="plan-lock-overlay" id="forecast-lock" style="display:none">
             <div class="plo-icon">&#128274;</div>
@@ -917,86 +809,36 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
         <div class="chart-wrap"><div class="chart-title">Monthly Fulfillment Rate (simulated)</div><div class="bar-chart" id="kpi-chart"></div></div>
       </div>
       <!-- FREIGHT -->
-      <div class="tool-panel" <div class="tool-panel" id="panel-freight">
+      <div class="tool-panel" id="panel-freight">
         <div class="tp-header">
           <div><div class="tp-title">Logistics &amp; Freight</div><div class="tp-subtitle">Shipment tracking with carrier performance analysis</div></div>
-          <div class="tp-actions">
-            <button class="tp-btn accent" onclick="addFreightRow()">+ Add Shipment</button>
-          </div>
-        </div>
-        <div class="kpi-row" id="freight-kpis"></div>
-        <div class="add-row-form" id="freight-add-form" style="display:none" data-edit-idx="">
-          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Shipment Details</div>
-          <div class="form-grid">
-            <div class="fg-field"><label>Shipment ID</label><input id="ff-id" placeholder="SHP-001"></div>
-            <div class="fg-field"><label>Direction</label><select id="ff-dir" style="width:100%;padding:9px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans)"><option>Inbound</option><option>Outbound</option></select></div>
-            <div class="fg-field"><label>Route</label><input id="ff-route" placeholder="Origin to Destination"></div>
-            <div class="fg-field"><label>Carrier</label><input id="ff-carrier" placeholder="DHL, FedEx, etc."></div>
-            <div class="fg-field"><label>Ship Date</label><input id="ff-ship" type="date"></div>
-            <div class="fg-field"><label>ETA</label><input id="ff-eta" placeholder="TBD or date"></div>
-            <div class="fg-field"><label>Weight (kg)</label><input id="ff-kg" type="number" placeholder="500"></div>
-            <div class="fg-field"><label>Total Cost ($)</label><input id="ff-cost" type="number" placeholder="400"></div>
-            <div class="fg-field"><label>Status</label><select id="ff-status" style="width:100%;padding:9px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;font-family:var(--sans)"><option>Booked</option><option>In Transit</option><option>Delivered</option><option>Exception</option></select></div>
-          </div>
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <button class="tp-btn accent" onclick="saveFreightRow()">Save Shipment</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('freight-add-form').style.display='none';resetFreightForm()">Cancel</button>
-          </div>
-        </div>
-        <div class="data-table-wrap">
-          <table class="data-table">
-            <thead><tr><th>ID</th><th>Direction</th><th>Route</th><th>Carrier</th><th>Ship Date</th><th>ETA</th><th>Weight (kg)</th><th>Cost</th><th>Cost/kg</th><th>Status</th><th></th></tr></thead>
-            <tbody id="freight-tbody"></tbody>
-          </table>
-        </div>
-        <div class="chart-wrap"><div class="chart-title">Cost per KG by Shipment</div><div class="bar-chart" id="freight-chart"></div></div>
-      </div>
 
-      <!-- BOM + MRP PANEL -->
-      <div class="tool-panel" id="panel-bom">
-        <div class="tp-header">
-          <div><div class="tp-title">Bill of Materials + MRP Planner</div><div class="tp-subtitle">4-level BOM with cost rollup and 12-week net requirements planning</div></div>
-          <div class="tp-actions">
-            <button class="tp-btn ghost" onclick="resetBOM()">Reset data</button>
-            <button class="tp-btn accent" onclick="showBOMForm()">+ Add Component</button>
-          </div>
-        </div>
+<div class="tool-panel" id="panel-bom">
+        <div class="tp-header"><div><div class="tp-title">BOM + MRP Planner</div><div class="tp-subtitle">4-level BOM with cost rollup and 12-week net requirements planning</div></div><div class="tp-actions"><button class="tp-btn ghost" onclick="resetBOM()">Reset</button><button class="tp-btn accent" onclick="showBOMForm()">+ Add Component</button></div></div>
         <div class="kpi-row" id="bom-kpis"></div>
-        <div class="add-row-form" id="bom-add-form" style="display:none">
+        <div class="add-row-form" id="bom-add-form" style="display:none" data-edit-idx="">
           <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add BOM Component</div>
           <div class="form-grid">
             <div class="fg-field"><label>Level (1-4)</label><input id="fb-level" type="number" min="1" max="4" value="1"></div>
-            <div class="fg-field"><label>Parent Item</label><input id="fb-parent" placeholder="PUMP-ASSY-001"></div>
-            <div class="fg-field"><label>Component SKU</label><input id="fb-sku" placeholder="SC-001"></div>
-            <div class="fg-field"><label>Component Name</label><input id="fb-name" placeholder="Bearing Type A4"></div>
+            <div class="fg-field"><label>Parent Item</label><input id="fb-parent" placeholder="PRODUCT-001"></div>
+            <div class="fg-field"><label>Component SKU</label><input id="fb-sku" placeholder="COMP-001"></div>
+            <div class="fg-field"><label>Component Name</label><input id="fb-name" placeholder="Example Component"></div>
             <div class="fg-field"><label>Qty per Unit</label><input id="fb-qty" type="number" value="1"></div>
-            <div class="fg-field"><label>Unit Cost ($)</label><input id="fb-cost" type="number" step="0.01" placeholder="4.50"></div>
+            <div class="fg-field"><label>Unit Cost ($)</label><input id="fb-cost" type="number" step="0.01" placeholder="5.00"></div>
             <div class="fg-field"><label>Lead Time (days)</label><input id="fb-lead" type="number" placeholder="7"></div>
-            <div class="fg-field"><label>Unit of Measure</label><input id="fb-uom" placeholder="EA"></div>
+            <div class="fg-field"><label>UOM</label><input id="fb-uom" placeholder="EA"></div>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="tp-btn accent" onclick="saveBOMRow()">Save Component</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('bom-add-form').style.display='none'">Cancel</button>
-          </div>
+          <div style="display:flex;gap:8px"><button class="tp-btn accent" onclick="saveBOMRow()">Save</button><button class="tp-btn ghost" onclick="document.getElementById('bom-add-form').style.display='none'">Cancel</button></div>
         </div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Level</th><th>Parent</th><th>SKU</th><th>Component</th><th>Qty/Unit</th><th>UOM</th><th>Unit Cost</th><th>Ext. Cost</th><th>Lead Time</th><th></th></tr></thead><tbody id="bom-tbody"></tbody></table></div>
-        <div class="chart-wrap">
-          <div class="chart-title">MRP — 12-Week Net Requirements</div>
-          <div style="margin-bottom:12px;display:flex;align-items:center;gap:12px">
-            <div class="fg-field" style="margin:0"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Weekly Production Target (units)</label><input id="mrp-target" type="number" value="10" style="width:120px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:var(--sans)" oninput="renderBOM()"></div>
-          </div>
-          <div class="data-table-wrap" style="margin:0"><table class="data-table" id="mrp-table"><thead><tr><th>Component</th><th>Wk1</th><th>Wk2</th><th>Wk3</th><th>Wk4</th><th>Wk5</th><th>Wk6</th><th>Wk7</th><th>Wk8</th><th>Wk9</th><th>Wk10</th><th>Wk11</th><th>Wk12</th><th>Total</th></tr></thead><tbody id="mrp-tbody"></tbody></table></div>
-        </div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Level</th><th>Parent</th><th>SKU</th><th>Component</th><th>Qty</th><th>UOM</th><th>Unit Cost</th><th>Ext. Cost</th><th>Lead Time</th><th></th></tr></thead><tbody id="bom-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">MRP — 12-Week Net Requirements</div><div style="margin-bottom:10px"><label style="font-size:11px;font-weight:700;color:var(--muted)">Weekly Production Target</label><input id="mrp-target" type="number" value="10" style="width:100px;padding:5px 8px;border:1px solid var(--border);border-radius:5px;font-size:12px;margin-left:8px" oninput="renderBOM()"></div><div class="data-table-wrap" style="margin:0"><table class="data-table"><thead><tr><th>Component</th><th>Wk1</th><th>Wk2</th><th>Wk3</th><th>Wk4</th><th>Wk5</th><th>Wk6</th><th>Wk7</th><th>Wk8</th><th>Wk9</th><th>Wk10</th><th>Wk11</th><th>Wk12</th><th>Total</th></tr></thead><tbody id="mrp-tbody"></tbody></table></div></div>
       </div>
 
       <!-- MULTI-WAREHOUSE PANEL -->
       <div class="tool-panel" id="panel-warehouse">
-        <div class="tp-header">
-          <div><div class="tp-title">Multi-Warehouse Inventory Planner</div><div class="tp-subtitle">Track stock across up to 4 warehouse locations with FIFO costing</div></div>
-          <div class="tp-actions"><button class="tp-btn accent" onclick="addWarehouseItem()">+ Add Item</button></div>
-        </div>
+        <div class="tp-header"><div><div class="tp-title">Multi-Warehouse Planner</div><div class="tp-subtitle">Track stock across 4 warehouse locations with FIFO costing</div></div><div class="tp-actions"><button class="tp-btn accent" onclick="addWarehouseItem()">+ Add Item</button></div></div>
+        <div class="kpi-row" id="wh-kpis"></div>
         <div class="add-row-form" id="wh-add-form" style="display:none" data-edit-idx="">
-          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit Item</div>
           <div class="form-grid">
             <div class="fg-field"><label>SKU</label><input id="wf-sku" placeholder="SKU-001"></div>
             <div class="fg-field"><label>Item Name</label><input id="wf-name" placeholder="Product Name"></div>
@@ -1006,92 +848,54 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
             <div class="fg-field"><label>WH-D Stock</label><input id="wf-whd" type="number" placeholder="0"></div>
             <div class="fg-field"><label>Unit Cost ($)</label><input id="wf-cost" type="number" step="0.01" placeholder="10.00"></div>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="tp-btn accent" onclick="saveWarehouseItem()">Save Item</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('wh-add-form').style.display='none'">Cancel</button>
-          </div>
+          <div style="display:flex;gap:8px"><button class="tp-btn accent" onclick="saveWarehouseItem()">Save</button><button class="tp-btn ghost" onclick="document.getElementById('wh-add-form').style.display='none'">Cancel</button></div>
         </div>
-        <div class="kpi-row" id="wh-kpis"></div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px">
-          <div style="font-size:11px;font-weight:700;margin-bottom:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Warehouse Locations</div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px" id="wh-locations"></div>
-        </div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>WH-A</th><th>WH-B</th><th>WH-C</th><th>WH-D</th><th>Total Stock</th><th>Unit Cost</th><th>FIFO Value</th><th>Status</th></tr></thead><tbody id="wh-tbody"></tbody></table></div>
-        <div class="chart-wrap"><div class="chart-title">Total Stock by SKU</div><div class="bar-chart" id="wh-chart"></div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Warehouse Locations</div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px" id="wh-locations"></div></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>WH-A</th><th>WH-B</th><th>WH-C</th><th>WH-D</th><th>Total</th><th>Unit Cost</th><th>FIFO Value</th><th>Status</th><th></th></tr></thead><tbody id="wh-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">Stock Distribution</div><div class="bar-chart" id="wh-chart"></div></div>
       </div>
 
       <!-- RFQ PANEL -->
       <div class="tool-panel" id="panel-rfq">
-        <div class="tp-header">
-          <div><div class="tp-title">Supplier RFQ &amp; Negotiation Tracker</div><div class="tp-subtitle">Compare supplier bids with weighted scoring and TCO calculation</div></div>
-          <div class="tp-actions"><button class="tp-btn accent" onclick="addRFQ()">+ New RFQ Bid</button></div>
-        </div>
+        <div class="tp-header"><div><div class="tp-title">RFQ &amp; Negotiation Tracker</div><div class="tp-subtitle">Compare supplier bids with weighted scoring and TCO calculation</div></div><div class="tp-actions"><button class="tp-btn accent" onclick="addRFQ()">+ New RFQ Bid</button></div></div>
+        <div class="kpi-row" id="rfq-kpis"></div>
         <div class="add-row-form" id="rfq-add-form" style="display:none" data-edit-idx="">
-          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit RFQ Bid</div>
           <div class="form-grid">
             <div class="fg-field"><label>RFQ #</label><input id="rf-id" placeholder="RFQ-001"></div>
-            <div class="fg-field"><label>Item</label><input id="rf-item" placeholder="Bearing Type A4"></div>
-            <div class="fg-field"><label>Supplier</label><input id="rf-supplier" placeholder="AcmeParts Co."></div>
+            <div class="fg-field"><label>Item</label><input id="rf-item" placeholder="Item name"></div>
+            <div class="fg-field"><label>Supplier</label><input id="rf-supplier" placeholder="Supplier name"></div>
             <div class="fg-field"><label>Unit Price ($)</label><input id="rf-price" type="number" step="0.01" placeholder="10.00"></div>
             <div class="fg-field"><label>Lead Time (days)</label><input id="rf-lead" type="number" placeholder="7"></div>
-            <div class="fg-field"><label>Quality Score (1-5)</label><input id="rf-quality" type="number" step="0.1" min="1" max="5" placeholder="4.0"></div>
+            <div class="fg-field"><label>Quality (1-5)</label><input id="rf-quality" type="number" step="0.1" min="1" max="5" placeholder="4.0"></div>
             <div class="fg-field"><label>Freight/unit ($)</label><input id="rf-freight" type="number" step="0.01" placeholder="0.50"></div>
             <div class="fg-field"><label>Reliability (1-5)</label><input id="rf-rel" type="number" step="0.1" min="1" max="5" placeholder="4.0"></div>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="tp-btn accent" onclick="saveRFQRow()">Save Bid</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('rfq-add-form').style.display='none'">Cancel</button>
-          </div>
+          <div style="display:flex;gap:8px"><button class="tp-btn accent" onclick="saveRFQRow()">Save Bid</button><button class="tp-btn ghost" onclick="document.getElementById('rfq-add-form').style.display='none'">Cancel</button></div>
         </div>
-        <div class="kpi-row" id="rfq-kpis"></div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>RFQ #</th><th>Item</th><th>Supplier</th><th>Unit Price</th><th>Lead Time</th><th>Quality Score</th><th>Freight Est.</th><th>TCO/Unit</th><th>Weighted Score</th><th>Recommendation</th></tr></thead><tbody id="rfq-tbody"></tbody></table></div>
-        <div class="chart-wrap"><div class="chart-title">Supplier Weighted Score Comparison</div><div class="bar-chart" id="rfq-chart"></div></div>
-        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px">
-          <div style="font-size:13px;font-weight:700;margin-bottom:10px">Scoring Weights (must total 100%)</div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-            <div class="fg-field"><label>Price Weight %</label><input id="w-price" type="number" value="40" oninput="renderRFQ()"></div>
-            <div class="fg-field"><label>Lead Time %</label><input id="w-lead" type="number" value="25" oninput="renderRFQ()"></div>
-            <div class="fg-field"><label>Quality %</label><input id="w-quality" type="number" value="25" oninput="renderRFQ()"></div>
-            <div class="fg-field"><label>Reliability %</label><input id="w-rel" type="number" value="10" oninput="renderRFQ()"></div>
-          </div>
-        </div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>RFQ#</th><th>Item</th><th>Supplier</th><th>Price</th><th>Lead</th><th>Quality</th><th>Freight</th><th>TCO</th><th>Score</th><th>Rec.</th><th></th></tr></thead><tbody id="rfq-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">Supplier Weighted Score</div><div class="bar-chart" id="rfq-chart"></div></div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:14px"><div style="font-size:12px;font-weight:700;margin-bottom:10px">Scoring Weights (must total 100%)</div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px"><div class="fg-field"><label>Price %</label><input id="w-price" type="number" value="40" oninput="renderRFQ()"></div><div class="fg-field"><label>Lead Time %</label><input id="w-lead" type="number" value="25" oninput="renderRFQ()"></div><div class="fg-field"><label>Quality %</label><input id="w-quality" type="number" value="25" oninput="renderRFQ()"></div><div class="fg-field"><label>Reliability %</label><input id="w-rel" type="number" value="10" oninput="renderRFQ()"></div></div></div>
       </div>
 
       <!-- S&OP PANEL -->
       <div class="tool-panel" id="panel-sop">
-        <div class="tp-header">
-          <div><div class="tp-title">S&amp;OP Planner</div><div class="tp-subtitle">Reconcile demand vs supply — monthly planning cycle with gap analysis</div></div>
-          <div class="tp-actions">
-            <button class="tp-btn ghost" onclick="resetSOP()">Reset</button>
-            <button class="tp-btn accent" onclick="saveSOP()">Save Plan</button>
-          </div>
-        </div>
+        <div class="tp-header"><div><div class="tp-title">S&amp;OP Planner</div><div class="tp-subtitle">Reconcile demand vs supply — monthly planning with gap analysis</div></div><div class="tp-actions"><button class="tp-btn ghost" onclick="resetSOP()">Reset</button><button class="tp-btn accent" onclick="saveSOP()">Save Plan</button></div></div>
         <div class="kpi-row" id="sop-kpis"></div>
-        <div class="data-table-wrap"><table class="data-table" id="sop-table"><thead><tr><th>Month</th><th>Demand Forecast</th><th>Supply Plan</th><th>Opening Stock</th><th>Closing Stock</th><th>Gap</th><th>Capacity %</th><th>Status</th></tr></thead><tbody id="sop-tbody"></tbody></table></div>
-        <div class="forecast-grid" style="margin-top:16px">
-          <div class="forecast-card">
-            <div class="fc-title">Scenario Analysis</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-              <div class="fg-field"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Upside %</label><input id="sop-upside" type="number" value="15" oninput="renderSOP()"></div>
-              <div class="fg-field"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Downside %</label><input id="sop-downside" type="number" value="10" oninput="renderSOP()"></div>
-            </div>
-            <div id="sop-scenarios"></div>
-          </div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Month</th><th>Demand Forecast</th><th>Supply Plan</th><th>Capacity %</th><th>Opening Stock</th><th>Closing Stock</th><th>Gap</th><th>Status</th></tr></thead><tbody id="sop-tbody"></tbody></table></div>
+        <div class="forecast-grid" style="margin-top:14px">
+          <div class="forecast-card"><div class="fc-title">Scenario Analysis</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class="fg-field"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase">Upside %</label><input id="sop-upside" type="number" value="15" onchange="renderSOP()"></div><div class="fg-field"><label style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase">Downside %</label><input id="sop-downside" type="number" value="10" onchange="renderSOP()"></div></div><div id="sop-scenarios"></div></div>
           <div class="forecast-card"><div class="fc-title">Executive Summary</div><div id="sop-exec-summary"></div></div>
         </div>
       </div>
 
       <!-- LANDED COST PANEL -->
       <div class="tool-panel" id="panel-landed">
-        <div class="tp-header">
-          <div><div class="tp-title">Landed Cost &amp; Margin Calculator</div><div class="tp-subtitle">True landed cost per SKU — FOB + freight + duties + last mile</div></div>
-          <div class="tp-actions"><button class="tp-btn accent" onclick="addLandedItem()">+ Add SKU</button></div>
-        </div>
+        <div class="tp-header"><div><div class="tp-title">Landed Cost &amp; Margin Calculator</div><div class="tp-subtitle">True landed cost per SKU — FOB + freight + duties + last mile</div></div><div class="tp-actions"><button class="tp-btn accent" onclick="addLandedItem()">+ Add SKU</button></div></div>
         <div class="kpi-row" id="lc-kpis"></div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>FOB</th><th>Freight</th><th>Duties %</th><th>Insurance</th><th>Last Mile</th><th>Handling</th><th>Landed Cost</th><th>Sell Price</th><th>Gross Margin</th><th></th></tr></thead><tbody id="lc-tbody"></tbody></table></div>
-        <div class="chart-wrap"><div class="chart-title">Cost Breakdown by SKU (FOB / Freight / Duties / Other)</div><div class="bar-chart" id="lc-chart"></div></div>
-        <div id="lc-add-form" style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:18px;margin-top:16px;display:none">
-          <div style="font-size:13px;font-weight:700;margin-bottom:12px">Add New SKU</div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>SKU</th><th>Item</th><th>FOB</th><th>Freight</th><th>Duties%</th><th>Insurance</th><th>Last Mile</th><th>Handling</th><th>Landed Cost</th><th>Sell Price</th><th>Margin</th><th></th></tr></thead><tbody id="lc-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">Cost Breakdown by SKU</div><div class="bar-chart" id="lc-chart"></div></div>
+        <div id="lc-add-form" style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:14px;display:none">
+          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add New SKU</div>
           <div class="form-grid">
             <div class="fg-field"><label>SKU</label><input id="lc-sku" placeholder="SKU-001"></div>
             <div class="fg-field"><label>Item Name</label><input id="lc-name" placeholder="Product Name"></div>
@@ -1103,72 +907,53 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
             <div class="fg-field"><label>Handling ($)</label><input id="lc-handling" type="number" step="0.01" placeholder="0.15"></div>
             <div class="fg-field"><label>Selling Price ($)</label><input id="lc-sell" type="number" step="0.01" placeholder="25.00"></div>
           </div>
-          <div style="display:flex;gap:8px;margin-top:8px">
-            <button class="tp-btn accent" onclick="saveLandedItem()">Save SKU</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('lc-add-form').style.display='none'">Cancel</button>
-          </div>
+          <div style="display:flex;gap:8px;margin-top:8px"><button class="tp-btn accent" onclick="saveLandedItem()">Save SKU</button><button class="tp-btn ghost" onclick="document.getElementById('lc-add-form').style.display='none'">Cancel</button></div>
         </div>
       </div>
 
       <!-- OEE TRACKER PANEL -->
       <div class="tool-panel" id="panel-oee">
-        <div class="tp-header">
-          <div><div class="tp-title">Production Capacity &amp; OEE Tracker</div><div class="tp-subtitle">Overall Equipment Effectiveness — Availability × Performance × Quality</div></div>
-          <div class="tp-actions"><button class="tp-btn accent" onclick="addOEELine()">+ Add Line</button></div>
-        </div>
+        <div class="tp-header"><div><div class="tp-title">Production OEE Tracker</div><div class="tp-subtitle">Overall Equipment Effectiveness — Availability × Performance × Quality</div></div><div class="tp-actions"><button class="tp-btn accent" onclick="addOEELine()">+ Add Line</button></div></div>
+        <div class="kpi-row" id="oee-kpis"></div>
         <div class="add-row-form" id="oee-add-form" style="display:none" data-edit-idx="">
-          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit Production Line</div>
           <div class="form-grid">
             <div class="fg-field"><label>Line / Machine Name</label><input id="of-line" placeholder="Line A - Assembly"></div>
-            <div class="fg-field"><label>Planned Hours/Shift</label><input id="of-planned" type="number" step="0.5" placeholder="8"></div>
+            <div class="fg-field"><label>Planned Hours</label><input id="of-planned" type="number" step="0.5" placeholder="8"></div>
             <div class="fg-field"><label>Downtime Hours</label><input id="of-downtime" type="number" step="0.1" placeholder="0.5"></div>
             <div class="fg-field"><label>Planned Units</label><input id="of-punits" type="number" placeholder="200"></div>
-            <div class="fg-field"><label>Actual Units Produced</label><input id="of-actual" type="number" placeholder="185"></div>
+            <div class="fg-field"><label>Actual Units</label><input id="of-actual" type="number" placeholder="185"></div>
             <div class="fg-field"><label>Defect Count</label><input id="of-defects" type="number" placeholder="3"></div>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="tp-btn accent" onclick="saveOEELine()">Save Line</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('oee-add-form').style.display='none'">Cancel</button>
-          </div>
+          <div style="display:flex;gap:8px"><button class="tp-btn accent" onclick="saveOEELine()">Save Line</button><button class="tp-btn ghost" onclick="document.getElementById('oee-add-form').style.display='none'">Cancel</button></div>
         </div>
-        <div class="kpi-row" id="oee-kpis"></div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Line / Machine</th><th>Planned Hrs</th><th>Downtime Hrs</th><th>Planned Units</th><th>Actual Units</th><th>Defects</th><th>Availability</th><th>Performance</th><th>Quality</th><th>OEE</th><th></th></tr></thead><tbody id="oee-tbody"></tbody></table></div>
-        <div class="chart-wrap"><div class="chart-title">OEE % by Production Line</div><div class="bar-chart" id="oee-chart"></div></div>
-        <div class="data-table-wrap" style="margin-top:16px"><div style="padding:12px 16px;font-size:12px;font-weight:700;background:var(--navy);color:white;border-radius:10px 10px 0 0">Downtime Log</div><table class="data-table"><thead><tr><th>Line</th><th>Date</th><th>Duration (hrs)</th><th>Category</th><th>Notes</th></tr></thead><tbody id="downtime-tbody"></tbody></table></div>
+        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Line/Machine</th><th>Planned Hrs</th><th>Downtime</th><th>Planned Units</th><th>Actual Units</th><th>Defects</th><th>Availability</th><th>Performance</th><th>Quality</th><th>OEE</th><th></th></tr></thead><tbody id="oee-tbody"></tbody></table></div>
+        <div class="chart-wrap"><div class="chart-title">OEE % by Line</div><div class="bar-chart" id="oee-chart"></div></div>
+        <div class="data-table-wrap" style="margin-top:14px"><div style="padding:10px 14px;font-size:12px;font-weight:700;background:var(--navy);color:white;border-radius:10px 10px 0 0">Downtime Log</div><table class="data-table"><thead><tr><th>Line</th><th>Date</th><th>Duration (hrs)</th><th>Category</th><th>Notes</th></tr></thead><tbody id="downtime-tbody"></tbody></table></div>
       </div>
 
       <!-- RISK SCORECARD PANEL -->
       <div class="tool-panel" id="panel-risk">
-        <div class="tp-header">
-          <div><div class="tp-title">Supply Chain Risk Scorecard</div><div class="tp-subtitle">Probability × Impact matrix with mitigation tracking and resilience index</div></div>
-          <div class="tp-actions"><button class="tp-btn accent" onclick="addRisk()">+ Add Risk</button></div>
+        <div class="tp-header"><div><div class="tp-title">Supply Chain Risk Scorecard</div><div class="tp-subtitle">Probability × Impact matrix with mitigation tracking and resilience index</div></div>
+
+          <div class="tp-actions"><button class="tp-btn accent" onclick="addFreightRow()">+ Add Shipment</button></div>
         </div>
-        <div class="add-row-form" id="risk-add-form" style="display:none" data-edit-idx="">
-          <div style="font-size:12px;font-weight:700;margin-bottom:10px">Add / Edit Risk</div>
-          <div class="form-grid">
-            <div class="fg-field"><label>Risk ID</label><input id="rk-id" placeholder="R-001"></div>
-            <div class="fg-field"><label>Category</label><select id="rk-cat" style="width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans)"><option>Supplier</option><option>Logistics</option><option>Demand</option><option>Geopolitical</option><option>Quality</option><option>Financial</option><option>Other</option></select></div>
-            <div class="fg-field" style="grid-column:span 2"><label>Risk Description</label><input id="rk-desc" placeholder="Describe the risk"></div>
-            <div class="fg-field"><label>Probability (1-5)</label><input id="rk-prob" type="number" min="1" max="5" placeholder="3"></div>
-            <div class="fg-field"><label>Impact (1-5)</label><input id="rk-impact" type="number" min="1" max="5" placeholder="4"></div>
-            <div class="fg-field" style="grid-column:span 2"><label>Mitigation Action</label><input id="rk-mit" placeholder="Action to reduce risk"></div>
-            <div class="fg-field"><label>Risk Owner</label><input id="rk-owner" placeholder="Procurement"></div>
-            <div class="fg-field"><label>Status</label><select id="rk-status" style="width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--sans)"><option>Monitoring</option><option>In Progress</option><option>Active</option><option>Planned</option><option>Resolved</option></select></div>
+        <div class="kpi-row" id="freight-kpis"></div>
+        <div style="position:relative">
+          <div class="data-table-wrap"><table class="data-table"><thead><tr><th>ID</th><th>Direction</th><th>Route</th><th>Carrier</th><th>Ship Date</th><th>ETA</th><th>Weight (kg)</th><th>Cost</th><th>Status</th></tr></thead><tbody id="freight-tbody"></tbody></table></div>
+          <div class="plan-lock-overlay" id="freight-lock" style="display:none">
+            <div class="plo-icon">&#128274;</div>
+            <div class="plo-title">Pro Plan Required</div>
+            <div class="plo-desc">Upgrade to Pro to unlock Logistics</div>
+            <button class="plo-btn" onclick="closeTool();handleSubscribe('pro')">Upgrade to Pro</button>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="tp-btn accent" onclick="saveRiskRow()">Save Risk</button>
-            <button class="tp-btn ghost" onclick="document.getElementById('risk-add-form').style.display='none'">Cancel</button>
-          </div>
-        </div>
-        <div class="kpi-row" id="risk-kpis"></div>
-        <div class="data-table-wrap"><table class="data-table"><thead><tr><th>Risk ID</th><th>Category</th><th>Description</th><th>Probability</th><th>Impact</th><th>Score</th><th>Level</th><th>Mitigation</th><th>Owner</th><th>Status</th><th></th></tr></thead><tbody id="risk-tbody"></tbody></table></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
-          <div class="chart-wrap" style="margin:0"><div class="chart-title">Risks by Category</div><div id="risk-category-chart"></div></div>
-          <div class="chart-wrap" style="margin:0"><div class="chart-title">Resilience Index</div><div id="risk-resilience"></div></div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
 <!-- AUTH MODAL -->
+
 <div class="modal-overlay" id="authOverlay" onclick="overlayClick(event,'authOverlay')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('authOverlay')">&#215;</button>
@@ -1178,30 +963,72 @@ footer{background:var(--navy);padding:40px 5%;display:flex;justify-content:space
       <div class="step-line"></div><div class="step-dot pending">2</div>
       </div>
       <div class="modal-title">Create your account</div>
-      <div class="modal-subtitle">Pick a plan, then add your card — 7-day trial, cancel before day 7 for free.</div>
+      <div class="modal-subtitle">Pick a plan, then add your card  7-day trial, cancel before day 7 for free.</div>
       <div class="plan-selector" id="signupPlanSelector">
         <div class="plan-opt" onclick="selectSignupPlan('starter',this)"><div class="plan-opt-name">Starter</div><div class="plan-opt-price" id="sop-starter">$9<sub>/mo</sub></div><div class="plan-opt-note">6 templates</div></div>
         <div class="plan-opt selected" onclick="selectSignupPlan('pro',this)"><div class="plan-opt-name">&#11088; Pro</div><div class="plan-opt-price" id="sop-pro">$19<sub>/mo</sub></div><div class="plan-opt-note">All 12</div></div>
-        <div class="plan-opt" onclick="selectSignupPlan('team',this)"><div class="plan-opt-name">Team</div>
-
-</div>
+        <div class="plan-opt" onclick="selectSignupPlan('team',this)"><div class="plan-opt-name">Team</div><div class="plan-opt-price" id="sop-team">$39<sub>/mo</sub></div><div class="plan-opt-note">5 seats</div></div>
       </div>
-      <!-- Success View -->
-      <div id="suSuccessView" style="display:none">
-        <div class="modal-success">
-          <div class="success-icon">&#127881;</div>
-          <div class="success-title">Account created!</div>
-          <div class="success-desc">Welcome to ChainSheet. You will be redirected to checkout to activate your plan.</div>
-          <div class="plan-benefit-box"><h4 id="su-benefit-title">Your plan includes:<</h4>
+      <div class="form-error-banner" id="signupError"></div>
+      <div class="field"><label>Full name</label><input type="text" id="suName" placeholder="Alex Johnson" autocomplete="name"><div class="field-error" id="suNameErr">Please enter your name.</div></div>
+      <div class="field"><label>Work email</label><input type="email" id="suEmail" placeholder="alex@company.com" autocomplete="email"><div class="field-error" id="suEmailErr">Enter a valid email.</div></div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="suPw" placeholder="At least 8 characters" oninput="checkPwStrength(this.value)">
+        <div class="pw-bars"><div class="pw-bar" id="pwb1"></div><div class="pw-bar" id="pwb2"></div><div class="pw-bar" id="pwb3"></div><div class="pw-bar" id="pwb4"></div></div>
+        <div class="pw-label" id="pwLabel">Enter a password</div>
+        <div class="field-error" id="suPwErr">At least 8 characters.</div>
+      </div>
+      <button class="btn-form accent" onclick="doSignupStep1()">Continue to payment &#8594;</button>
+      <div class="modal-switch">Already have an account? <a onclick="switchAuth('login')">Log in</a></div>
+    </div>
+    <!-- Step 2: Payment -->
+    <!-- Login -->
+    <div id="loginView" style="display:none">
+      <div class="modal-title">Welcome back</div>
+      <div class="modal-subtitle">Log in to access your templates and workspace.</div>
+      <div class="form-error-banner" id="loginError"></div>
+      <div class="field"><label>Email</label><input type="email" id="liEmail" placeholder="alex@company.com" autocomplete="email"><div class="field-error" id="liEmailErr">Enter a valid email.</div></div>
+      <div class="field"><label>Password</label><input type="password" id="liPw" placeholder="Your password" autocomplete="current-password"><div class="field-error" id="liPwErr">Please enter your password.</div></div>
+      <button class="btn-form" onclick="doLogin()">Log in</button>
+      <div class="modal-switch">No account? <a onclick="switchAuth('signup')">Start free trial</a></div>
+    </div>
+    <!-- Success -->
+    <div id="suSuccessView" style="display:none">
+      <div class="modal-success">
+        <div class="success-icon">&#127881;</div>
+        <div class="success-title">Trial started!</div>
+        <div class="success-desc">Your 7-day free trial is live. You won't be charged until <strong id="su-success-date"></strong>.</div>
+        <div class="plan-benefit-box"><h4 id="su-benefit-title">Your plan includes:</h4><ul id="su-benefit-list"></ul></div>
+        <button class="btn-form accent" onclick="closeModal('authOverlay');openTool()">Open my workspace &#8594;</button>
+        <button class="btn-form" style="margin-top:8px;background:transparent;color:var(--ink);border:1px solid var(--border)" onclick="closeModal('authOverlay')">Browse templates</button>
       </div>
     </div>
   </div>
-</div>
+
+
 
 <script>
+console.log('ChainSheet JS loaded OK - v2025');
+
 const SUPABASE_URL='https://jjnjjtxayyafejgfbhqs.supabase.co';
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqbmpqdHhheXlhZmVqZ2ZiaHFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNTI0MjYsImV4cCI6MjA5NzkyODQyNn0.S3925uixfDf8EiFO995vlQrECyvjoV6326FwTPHOWJE';
-const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+
+/* Safe Supabase stub - works even when CDN blocked */
+function makeSbStub(msg){return{auth:{getSession:async()=>({data:{session:null}}),signUp:async()=>({data:null,error:{message:msg||'Please open chainsheet.co in your browser'}}),signInWithPassword:async()=>({data:null,error:{message:msg||'Please open chainsheet.co in your browser'}}),signOut:async()=>({})},from:()=>({select:()=>({eq:()=>({single:async()=>({data:null,error:null})})}),upsert:async()=>({error:null}),insert:async()=>({error:null})})};}
+
+let sb=makeSbStub('Connecting...');
+/* Initialize real Supabase once page loads */
+document.addEventListener('DOMContentLoaded',function(){
+  if(typeof window!=='undefined'&&window.supabase&&window.supabase.createClient){
+    try{
+      var realSb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+      sb.auth=realSb.auth;
+      sb.from=realSb.from.bind(realSb);
+      console.log('Supabase connected');
+    }catch(e){console.warn('Supabase init failed:',e);}
+  }
+});
 
 
 
@@ -1211,9 +1038,9 @@ let currentUser=JSON.parse(localStorage.getItem('cs_session')||'null');
 let pendingPlan=null,isAnnual=false,selectedSignupPlan='pro';
 const PLANS={starter:{name:'Starter',monthly:9,annual:7},pro:{name:'Pro',monthly:19,annual:15},team:{name:'Team',monthly:39,annual:32}};
 const PLAN_BENEFITS={
-  starter:['6 core Excel templates (.xlsx)','Inventory & KPI web modules','Email support (48h)'],
-  pro:['All 12 Excel templates (.xlsx)','Full workspace — all 5 modules','Priority support (24h)','Custom formula help'],
-  team:['Everything in Pro','5 team seats','OEE & Risk Scorecard templates','Same-day support','Custom branding','Onboarding call']
+  starter:['6 workspace tools','Inventory, PO, KPI, Forecasting, Logistics, BOM+MRP','Email support (48h)'],
+  pro:['All 12 workspace tools','Full workspace — all modules','Priority support (24h)','Custom formula help'],
+  team:['Everything in Pro','5 team seats','OEE Tracker & Risk Scorecard','Same-day support']
 };
 const DEFAULT_INV=[
   {sku:'SKU-001',name:'Example Product',cat:'General',qty:100,cost:10.00,rop:20,roq:50,daily:5}
@@ -1383,25 +1210,63 @@ function filterTemplates(cat,btn){document.querySelectorAll('.filter-btn').forEa
 /* FAQ */
 function toggleFaq(btn){const a=btn.nextElementSibling,open=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(e=>e.classList.remove('open'));document.querySelectorAll('.faq-btn').forEach(b=>b.classList.remove('open'));if(!open){a.classList.add('open');btn.classList.add('open')}}
 /* NAV */
+/* Retry Supabase init if not loaded yet */
+function ensureSB(){
+  if(window.supabase&&sb&&!sb._isStub){return;}
+  if(window.supabase){
+    try{
+      Object.assign(sb,window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY));
+    }catch(e){}
+  }
+}
+
 
 /* Restore session on page load */
 (async()=>{
-  const {data:{session}}=await sb.auth.getSession();
-  if(session){
-    const {data:sub}=await sb.from('subscriptions').select('plan').eq('user_id',session.user.id).single();
-    currentUser={name:session.user.user_metadata?.name||session.user.email,email:session.user.email,plan:sub?.plan||'starter',id:session.user.id};
-    localStorage.setItem('cs_session',JSON.stringify(currentUser));
-  }
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(session){
+      const {data:sub}=await sb.from('subscriptions').select('plan').eq('user_id',session.user.id).single();
+      currentUser={name:session.user.user_metadata?.name||session.user.email,email:session.user.email,plan:sub?.plan||'starter',id:session.user.id};
+      localStorage.setItem('cs_session',JSON.stringify(currentUser));
+      renderNav();
+    }
+  }catch(e){console.warn('Session restore error:',e);}
 })();
 
 function renderNav(){const area=document.getElementById('navUserArea');if(currentUser){const init=currentUser.name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);const plan=currentUser.plan||'starter';area.innerHTML=`<span class="nav-greeting">Hi, ${currentUser.name.split(' ')[0]}</span><span class="plan-badge ${plan}" style="margin:0 4px">${PLANS[plan]?.name||plan}</span><div class="nav-avatar">${init}</div><button style="background:var(--accent);border:none;color:var(--navy);padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--sans)" onclick="openTool()">Workspace</button><button class="nav-logout-btn" onclick="doLogout()">Log out</button>`}else{area.innerHTML=`<button class="nav-login-btn" onclick="openAuthModal('login')">Log in</button><button class="nav-signup-btn" onclick="openAuthModal('signup')">Start free trial</button>`}}
 renderNav();
 /* MODALS */
-function openAuthModal(type){switchAuth(type);document.getElementById('authOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function openAuthModal(type){
+  /* Hide all views */
+  ['su-step1','suSuccessView','loginView'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.style.display='none';
+  });
+  /* Show the right view */
+  var show=type==='login'?'loginView':'su-step1';
+  var el=document.getElementById(show);
+  if(el)el.style.display='';
+  /* Clear errors */
+  clearErrors();
+  /* Open the overlay */
+  var overlay=document.getElementById('authOverlay');
+  if(overlay)overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
 function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=''}
 function overlayClick(e,id){if(e.target.id===id)closeModal(id)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal('authOverlay')});
-function switchAuth(mode){['su-step1','su-step2','loginView','suSuccessView'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});const show=mode==='signup'?'su-step1':mode==='login'?'loginView':'';if(show){const el=document.getElementById(show);if(el)el.style.display=''};clearErrors()}
+function switchAuth(mode){
+  ['su-step1','loginView','suSuccessView'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.style.display='none';
+  });
+  var show=mode==='signup'?'su-step1':'loginView';
+  var el=document.getElementById(show);
+  if(el)el.style.display='';
+  clearErrors();
+}
 function clearErrors(){document.querySelectorAll('.field-error').forEach(e=>e.classList.remove('show'));document.querySelectorAll('.field input').forEach(e=>e.classList.remove('error'));document.querySelectorAll('.form-error-banner').forEach(e=>{e.classList.remove('show');e.textContent=''})}
 function showFE(fid,eid){const f=document.getElementById(fid);if(f)f.classList.add('error');const e=document.getElementById(eid);if(e)e.classList.add('show')}
 function showBE(bid,msg){const e=document.getElementById(bid);if(e){e.textContent=msg;e.classList.add('show')}}
@@ -1410,7 +1275,7 @@ function checkPwStrength(pw){const bars=[1,2,3,4].map(i=>document.getElementById
 function formatCard(el){let v=el.value.replace(/\\D/g,'').slice(0,16);el.value=v.replace(/(.{4})/g,'$1 ').trim()}
 function formatExp(el){let v=el.value.replace(/\\D/g,'').slice(0,4);if(v.length>=3)v=v.slice(0,2)+' / '+v.slice(2);el.value=v}
 /* SIGNUP STEP 1 */
-async function doSignupStep1(){
+async function doSignupStep1(){ensureSB();
   clearErrors();
   const name=document.getElementById('suName').value.trim();
   const email=document.getElementById('suEmail').value.trim().toLowerCase();
@@ -1468,7 +1333,7 @@ async function doSignupStep1(){
 /* SIGNUP STEP 2 */
 function doSignupStep2(){clearErrors();const card=document.getElementById('su-card').value.replace(/\\s/g,'');const exp=document.getElementById('su-exp').value.replace(/\\s/g,'');const cvc=document.getElementById('su-cvc').value.trim();const holder=document.getElementById('su-holder').value.trim();let ok=true;if(card.length!==16){showFE('su-card','su-cardErr');ok=false}if(exp.replace('/','').length<4){showFE('su-exp','su-expErr');ok=false}if(cvc.length<3){showFE('su-cvc','su-cvcErr');ok=false}if(!holder){showFE('su-holder','su-holderErr');ok=false}if(!ok)return;const btn=document.getElementById('su2Btn');btn.disabled=true;btn.textContent='Activating...';setTimeout(()=>{const name=document.getElementById('suName').value.trim();const email=document.getElementById('suEmail').value.trim().toLowerCase();const pw=document.getElementById('suPw').value;const plan=selectedSignupPlan;DB.users[email]={name,email,pw,plan,trialStart:Date.now()};DB.save();setSession({name,email,plan});const d=new Date();d.setDate(d.getDate()+7);document.getElementById('su-success-date').textContent=d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});document.getElementById('su-benefit-title').textContent=`Your ${PLANS[plan].name} Plan includes:`;document.getElementById('su-benefit-list').innerHTML=PLAN_BENEFITS[plan].map(b=>`<li>${b}</li>`).join('');document.getElementById('su-step2').style.display='none';document.getElementById('suSuccessView').style.display='';btn.disabled=false;btn.textContent='Start free trial ࢐'},1800)}
 /* LOGIN */
-async function doLogin(){
+async function doLogin(){ensureSB();
   clearErrors();
   const email=document.getElementById('liEmail').value.trim().toLowerCase();
   const pw=document.getElementById('liPw').value;
@@ -1500,8 +1365,18 @@ async function doLogin(){
 }
 function setSession(u){currentUser=u;localStorage.setItem('cs_session',JSON.stringify(u));UD=getUD();renderNav()}
 async function doLogout(){
-  await sb.auth.signOut();
-  currentUser=null;localStorage.removeItem('cs_session');renderNav();
+  try{ await sb.auth.signOut(); }catch(e){}
+  currentUser=null;
+  localStorage.removeItem('cs_session');
+  /* Close workspace if open */
+  var tool=document.getElementById('toolOverlay');
+  if(tool)tool.classList.remove('open');
+  /* Close any modals */
+  var auth=document.getElementById('authOverlay');
+  if(auth)auth.classList.remove('open');
+  document.body.style.overflow='';
+  renderNav();
+  window.scrollTo(0,0);
 }
 /* SUBSCRIBE */
 function handleSubscribe(plan){
@@ -2356,11 +2231,8 @@ function showPlan(plan){
 }
 
 /* Run on load to ensure correct state */
-document.addEventListener('DOMContentLoaded', function() {
-  showPlan('starter');
-});
 
-olPanel=null;
+
 function switchToolPanel(panel){
   /* Update nav */
   document.querySelectorAll('.tool-nav-item').forEach(n=>n.classList.remove('active'));
@@ -2414,6 +2286,8 @@ function showPlan(plan){
 /* Run on load to ensure correct state */
 document.addEventListener('DOMContentLoaded', function() {
   showPlan('starter');
+  renderNav();
+  updateAllPrices();
 });
 
 
@@ -2496,25 +2370,11 @@ function editRiskRow(idx){
 }
 function deleteRiskRow(idx){if(!confirm('Delete?'))return;RISK_DATA.splice(idx,1);saveRisk(RISK_DATA);renderRisk();}
 
+
+
+
+
 </script>
-
-
-
-
-
-
-<!-- MOBILE MENU -->
-<div id="mobileMenu" style="display:none;position:fixed;inset:0;background:var(--navy);z-index:300;flex-direction:column;padding:80px 5% 40px">
-  <button onclick="toggleMobileMenu()" style="position:absolute;top:18px;right:20px;background:none;border:none;color:white;font-size:26px;cursor:pointer">&#215;</button>
-  <a href="#pricing"     onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">Pricing</a>
-  <a href="#templates"   onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">Templates</a>
-  <a href="#compare"     onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">Compare</a>
-  <a href="#about"       onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">About</a>
-  <a href="#faq"         onclick="toggleMobileMenu()" style="color:rgba(255,255,255,.8);font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)">FAQ</a>
-  <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
-    <button onclick="toggleMobileMenu();openAuthModal('login')"  style="background:transparent;border:1px solid rgba(255,255,255,.4);color:white;padding:14px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;font-family:var(--sans)">Log in</button>
-    <button onclick="toggleMobileMenu();openAuthModal('signup')" style="background:var(--accent);border:none;color:var(--navy);padding:14px;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans)">Start free trial</button>
-  </div>
 
 </body>
 </html>
